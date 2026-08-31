@@ -1,0 +1,146 @@
+.hero {
+  padding: 80px 0 60px;
+  overflow: hidden;
+  color: var(--color-ink);
+  background: url('/assets/images/hero-background.png') center bottom / cover no-repeat;
+}
+
+.hero__monogram {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 30px;
+  object-fit: contain;
+}
+
+.hero__content {
+  width: 549px;
+}
+
+.hero__title {
+  font-family: var(--font-small-caps);
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.hero__title span {
+  color: var(--color-gold);
+  font-family: var(--font-infant);
+}
+
+.hero__subtitle {
+  font-family: var(--font-small-caps);
+  font-size: 28px;
+  line-height: 22px;
+  letter-spacing: 0.4px;
+}
+
+.hero__benefits {
+  margin-top: 34px;
+  padding-left: 46px;
+}
+
+.hero__benefit + .hero__benefit {
+  margin-top: 12px;
+}
+
+.hero__benefit {
+  width: 519px;
+  font-family: var(--font-infant);
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 125%;
+}
+
+.hero__benefit::marker {
+  color: var(--color-gold);
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+}
+
+.hero__scroll {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 45px auto 0;
+}
+
+.hero__scroll img {
+  width: 72px;
+  height: 72px;
+}
+
+@media (max-width: 1279px) {
+  .hero {
+    padding: 64px 0 54px;
+    background-position: 58% bottom;
+  }
+
+  .hero__content {
+    width: 52%;
+    min-width: 440px;
+  }
+
+  .hero__title {
+    font-size: 48px;
+    line-height: 50px;
+  }
+
+  .hero__subtitle {
+    font-size: 24px;
+    line-height: 26px;
+  }
+
+  .hero__benefit {
+    width: auto;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 650px;
+    padding: 42px 0 220px;
+    background-position: 67% bottom;
+  }
+
+  .hero__content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero__monogram {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 22px;
+  }
+
+  .hero__title {
+    max-width: 100%;
+    font-size: 38px;
+    line-height: 42px;
+    white-space: normal;
+  }
+
+  .hero__subtitle {
+    margin-top: 4px;
+    font-size: 21px;
+    line-height: 24px;
+  }
+
+  .hero__benefits {
+    margin-top: 26px;
+    padding-left: 30px;
+  }
+
+  .hero__benefit {
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  .hero__benefit::marker {
+    font-size: 18px;
+  }
+}

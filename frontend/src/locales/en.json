@@ -1,0 +1,56 @@
+{
+  "meta": {"title": "Irina Purtova — English and French tutor", "description": "One-to-one online English and French lessons with Irina Purtova"},
+  "common": {"trial": "Book a trial lesson", "linkUnavailable": "link coming soon", "openMenu": "Open menu", "closeMenu": "Close menu", "mainNavigation": "Main navigation", "socialNetworks": "Social media", "languageSelection": "Choose language", "logoLabel": "Irina Purtova — English and French tutor", "logoRole": "English & French tutor"},
+  "navigation": ["Home", "About", "Lessons", "Reviews", "FAQ", "Contact"],
+  "hero": {"titleStart": "English", "titleEnd": "Français", "subtitle": "Foreign language tutor", "benefits": ["One-to-one online lessons for adults and children", "Confident use of English & French in real life", "A strong focus on speaking practice", "Clear and accessible grammar", "A flexible schedule and a motivating learning atmosphere"]},
+  "about": {
+    "heading": "About the tutor", "portraitAlt": "Silhouette of the tutor", "introCardTitle": "ABOUT ME", "educationCardTitle": "EDUCATION", "experienceCardTitle": "EXPERIENCE", "educationIconAlt": "Books", "experienceIconAlt": "Globe",
+    "introTitle": "Hello! Привет! Bonjour!", "introText": "I’m Irina, 37, an English and French tutor and translator with international experience.",
+    "facts": ["I have been teaching English & French privately since I was 20.", "Since 2016, I have lived and worked in France and worked with international guests as a translator for the Mosturflot cruise company. This experience helped me achieve near-native fluency in both languages.", "During this time, I visited 10 European countries, including France, the Netherlands, Belgium and Luxembourg."],
+    "education": ["Faculty of Foreign Languages, Mari State University", "L'université de Montpellier-III Paul-Valéry, faculté des lettres et de la littérature", "English teacher — Grammar School No. 14, Yoshkar-Ola"],
+    "stats": ["years abroad", "years teaching at a grammar school", "years of private teaching"],
+    "quote": "“I will help you make a foreign language more than a school subject — your second voice: natural, confident and precise.”"
+  },
+  "learningGoals": {
+    "heading": "What do you need English for?", "tabsLabel": "Learning goals", "imageAlt": "{{goal}}: photo {{index}}", "previousImage": "Previous photo: {{goal}}", "nextImage": "Next photo: {{goal}}", "pagination": "Choose a photo",
+    "items": [
+      {"title": "Travel", "points": ["Meeting new people and talking to locals", "Communicating freely at airports, hotels, cafés, shops and more", "Handling everyday situations abroad"]},
+      {"title": "Business", "points": ["Negotiating and corresponding with international clients", "Confidence and credibility as an investment in your business", "Finding information and entering international markets"]},
+      {"title": "Hobbies", "points": ["Watching films and series in the original language", "Listening to podcasts and music", "Reading your favourite books", "Enjoying relaxed conversations with people"]},
+      {"title": "Education", "points": ["Speaking English without fear or panic", "Grammar as a strong language foundation", "Finding and understanding information in other languages"]}
+    ]
+  },
+  "reviews": {
+    "heading": "What my students say", "controls": "Review controls", "previous": "Previous review", "next": "Next review", "viewport": "Student reviews", "avatarAlt": "Student portrait", "starsAlt": "Five stars", "readMore": "Read the full review", "close": "Close review", "back": "Back to reviews",
+    "instagram": {"aria": "Watch student video reviews on Instagram Reels", "title": "More real-life reviews", "text": "Visit Instagram for more genuine student reviews in short Reels videos", "cta": "Watch Reels"},
+    "items": [
+      {"name": "Elena", "occupation": "UX/UI Designer, Russia", "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."},
+      {"name": "Elena", "occupation": "UX/UI Designer, Russia", "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."},
+      {"name": "Elena", "occupation": "UX/UI Designer, Russia", "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."},
+      {"name": "Elena", "occupation": "UX/UI Designer, Russia", "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."},
+      {"name": "Elena", "occupation": "UX/UI Designer, Russia", "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."},
+      {"name": "Elena", "occupation": "UX/UI Designer, Russia", "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."}
+    ]
+  },
+  "faq": {
+    "sectionLabel": "Questions and contact", "heading": "FAQ / Frequently asked questions",
+    "items": [
+      {"question": "How many lessons will I need before I can speak?", "answer": "This is discussed individually and depends on your current level. We define your goals and timeline during the trial lesson. As a rule, after 1–2 months of regular lessons two or three times a week, you will begin forming simple sentences. Confident speech usually takes 9–12 months. It all depends on your goals and the time you can devote to learning."},
+      {"question": "Can I reschedule or cancel a lesson?", "answer": "Yes, provided that you let me know at least 24 hours before the lesson begins. Otherwise, the lesson is charged in full."},
+      {"question": "How do I pay?", "answer": "Payment is made before or immediately after the lesson by bank transfer, or in cash for in-person meetings. If a lesson is cancelled less than 24 hours in advance, it is considered completed and is charged in full."},
+      {"question": "How much do lessons cost and how is the price calculated?", "answer": "The price of regular lessons is agreed individually after the trial lesson and depends on your goals and level. A trial lesson lasts 20–30 minutes and costs RUB 1,500."},
+      {"question": "What do I need for lessons?", "answer": "The essentials are a notebook or planner, a pen and, if you like, highlighters. I provide all worksheets, exercises, texts and homework electronically or in print during our lessons. Just stay connected and be ready to learn!"},
+      {"question": "When do lessons take place?", "answer": "Lessons are held by appointment. I offer a flexible schedule, so we can choose different days and times each week to suit your commitments. My standard availability is from 10:00 to 22:00."},
+      {"question": "Can I learn English and French at the same time without getting confused?", "answer": "Of course, as long as you are not starting both languages from A1 at the same time. Ideally, one of the languages should already be at A2–B1 level or above."},
+      {"question": "Do you prepare students for international exams?", "answer": "No."},
+      {"question": "How many lessons per week are best?", "answer": "Two or three lessons a week is ideal. To maintain an already confident speaking level, one 1–1.5-hour lesson per week may be enough, depending on your preference."}
+    ]
+  },
+  "contact": {"heading": "Start with a message — continue with confident English", "intro": "Send your details and I will contact you by email or another convenient method, answer your questions and help you choose a suitable time for your first lesson.", "email": "Email", "comment": "Comments or preferred lesson times", "commentPlaceholder": "Start typing...", "consentStart": "I agree to the processing of my personal data in accordance with the", "privacy": "Privacy Policy", "and": "and", "offer": "Terms of Service", "submit": "Send request", "note": "We will reply by email shortly"},
+  "coffee": {"photoAlt": "Conversation club members chatting over coffee", "badge": "Beyond lessons", "headingLine1": "English is not just for lessons —", "headingLine2": "it comes alive in conversation", "description": "I founded a network of English coffee clubs in Yoshkar-Ola. These friendly small-group meetings offer speaking practice in a relaxed atmosphere, helping participants speak more freely, discuss a range of topics and overcome the language barrier.", "features": ["Small groups of 3–4 people", "Speaking practice in the English Coffee Club format", "Real English conversation in an informal setting", "Ideal for anyone who wants more practice beyond one-to-one lessons"], "cta": "Ask about the next group"},
+  "frenchLessons": {"headingLine1": "French", "headingLine2": "language lessons", "benefits": ["Learn the language from the very beginning", "Advance to an upper or conversational level"]},
+  "atmosphere": {"heading": "My atmosphere", "qrAlt": "Social media QR code", "alts": ["Students learning English together", "A team preparing a business presentation", "A woman with sunflowers", "A traveller in the mountains", "A countryside road trip", "", "Two students working on an assignment", "A business conversation in English", "A study group working around a shared table", "A sunny mood with sunflowers", "Music and relaxation by the sea", "A team discussing their results", "", "The freedom of mountain travel", "A study group working together", "An English lesson in a friendly atmosphere", "A countryside trip", "Listening to music by the sea", "Working on an international project"]},
+  "footer": {"description": "Foreign languages for travel, business, hobbies and education", "navigationLabel": "Footer navigation", "navigation": "Navigation", "aboutTeacher": "About the tutor", "learningGoals": "Learning goals", "contacts": "Contact", "privacy": "Privacy Policy", "rights": "All rights reserved"},
+  "validation": {"emailRequired": "Enter your email", "emailInvalid": "Enter a valid email address", "consentRequired": "Please consent to the processing of your data", "checkForm": "Please check the form", "success": "Your details have been checked. Sending will be available once the backend is connected."},
+  "swiper": {"previousPhoto": "Previous photo", "nextPhoto": "Next photo", "firstPhoto": "This is the first photo", "lastPhoto": "This is the last photo", "photoBullet": "Go to photo {{index}}", "previousReview": "Previous review", "nextReview": "Next review", "firstReview": "This is the first review", "lastReview": "This is the last review"}
+}

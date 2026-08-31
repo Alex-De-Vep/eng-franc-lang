@@ -1,0 +1,137 @@
+.french-lessons {
+  padding: 20px 0 20px;
+  margin: 90px 0;
+  background: url('/assets/images/french-lessons.png') center / cover no-repeat;
+}
+
+.french-lessons__content-container {
+  display: block;
+}
+
+.french-lessons__content {
+  padding: 18px 0;
+}
+
+.french-lessons__heading {
+  width: 400px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 125%;
+  text-align: center;
+}
+
+.french-lessons__divider {
+  width: 400px;
+  margin-top: 24px;
+}
+
+.french-lessons__benefit {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 24px;
+  padding-left: 12px;
+  font-family: var(--font-infant);
+  color: #684C3B;
+  font-size: 18px;
+  line-height: 100%;
+  white-space: nowrap;
+}
+
+.french-lessons__benefit + .french-lessons__benefit {
+  margin-top: 12px;
+}
+
+.french-lessons__benefit img {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 29px;
+}
+
+.french-lessons__benefit .french-lessons__croissant {
+  width: 30px;
+  height: 30px;
+  flex-basis: 30px;
+  transform: rotate(-45deg);
+}
+
+.french-lessons__cta {
+  margin-top: 40px;
+  padding: 12px 20px;
+  border: 1px solid rgba(184, 155, 130, 0.5);
+  font-family: var(--font-infant);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@media (max-width: 1279px) {
+  .french-lessons {
+    margin: 70px 0;
+    background-position: 58% center;
+  }
+
+  .french-lessons__content {
+    width: 52%;
+    min-width: 420px;
+  }
+
+  .french-lessons__heading,
+  .french-lessons__divider {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .french-lessons__benefit {
+    max-width: 440px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 767px) {
+  .french-lessons {
+    padding: 34px 0;
+    margin: 56px 0;
+    background:
+      linear-gradient(rgba(255, 252, 247, 0.78), rgba(255, 252, 247, 0.78)),
+      url('/assets/images/french-lessons.png') 62% center / cover no-repeat;
+  }
+
+  .french-lessons__content {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+  }
+
+  .french-lessons__heading {
+    max-width: 330px;
+    margin-inline: auto;
+    font-size: 43px;
+    line-height: 48px;
+  }
+
+  .french-lessons__divider {
+    max-width: 330px;
+    margin: 20px auto 0;
+  }
+
+  .french-lessons__benefit {
+    max-width: 100%;
+    margin-top: 22px;
+    padding-left: 0;
+    font-size: 17px;
+    line-height: 21px;
+  }
+
+  .french-lessons__benefit + .french-lessons__benefit {
+    margin-top: 14px;
+  }
+
+  .french-lessons__cta {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 30px;
+    font-size: 17px;
+  }
+}

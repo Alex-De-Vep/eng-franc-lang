@@ -1,0 +1,42 @@
+:root {
+  --color-page: #fffdf9;
+  --page-gradient: linear-gradient(
+    to bottom,
+    #fffcf7 0%,
+    #faf6ef 35%,
+    #f6f1e8 70%,
+    #fffcf7 100%
+  );
+  --color-surface: #fefcf8;
+  --color-text: #533b2c;
+  --color-text-soft: #684c3b;
+  --color-ink: #1f1b18;
+  --color-muted: #6d6d6d;
+  --color-olive: #6f7447;
+  --color-olive-active: #7c8251;
+  --color-gold: #c4a35a;
+  --color-beige: #ddd1bc;
+  --color-sage: #e9eacf;
+  --color-link: #0c75a9;
+  --color-border-gold: rgba(196, 163, 90, 0.35);
+  --shadow-soft: 0 2px 2px rgba(0, 0, 0, 0.04);
+  --shadow-button: 0 2px 2px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --radius-small: 7px;
+  --radius-medium: 9px;
+  --radius-large: 15px;
+  --radius-image: 19px;
+  --container-width: 1248px;
+  --page-gutter: 48px;
+  --space-1: 6px;
+  --space-2: 9px;
+  --space-3: 12px;
+  --space-4: 18px;
+  --space-5: 24px;
+  --space-6: 30px;
+  --space-7: 42px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Cormorant', Georgia, serif;
+  --font-infant: 'Cormorant Infant', Georgia, serif;
+  --font-small-caps: 'Cormorant SC', Georgia, serif;
+}
