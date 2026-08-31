@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import ru from './locales/ru.json';
 import en from './locales/en.json';
 import fr from './locales/fr.json';
+import { basePathSegmentCount, withBasePath } from './basePath.js';
 
 export const supportedLocales = ['ru', 'en', 'fr'];
 export const fallbackLocale = 'ru';
@@ -26,7 +27,7 @@ export async function initI18n({ documentRoot = document, detectionOrder = ['pat
     interpolation: { escapeValue: false },
     detection: {
       order: detectionOrder,
-      lookupFromPathIndex: 0,
+      lookupFromPathIndex: basePathSegmentCount(),
       lookupLocalStorage: 'i18nextLng',
       caches: ['localStorage'],
       htmlTag: documentRoot.documentElement,
@@ -38,8 +39,8 @@ export async function initI18n({ documentRoot = document, detectionOrder = ['pat
   return { i18n: instance, locale, t: instance.getFixedT(locale) };
 }
 
-export function localePath(locale, hash = '') {
+export function localePath(locale, hash = '', basePath) {
   const safeLocale = supportedLocales.includes(locale) ? locale : fallbackLocale;
   const safeHash = hash && hash.startsWith('#') ? hash : '';
-  return `/${safeLocale}/${safeHash}`;
+  return withBasePath(`${safeLocale}/${safeHash}`, basePath);
 }

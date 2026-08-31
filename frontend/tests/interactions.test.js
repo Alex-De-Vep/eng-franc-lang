@@ -18,6 +18,7 @@ import { LearningGoals } from '../src/sections/LearningGoals.js';
 import { Atmosphere } from '../src/sections/Atmosphere.js';
 import { createSiteContent } from '../src/data/content.js';
 import { initI18n, localePath } from '../src/i18n.js';
+import { basePathSegmentCount, resolveAssetMarkup, withBasePath } from '../src/basePath.js';
 import ru from '../src/locales/ru.json';
 import en from '../src/locales/en.json';
 import fr from '../src/locales/fr.json';
@@ -451,6 +452,14 @@ describe('localization', () => {
   it('preserves a supported locale and hash in language paths', () => {
     expect(localePath('en', '#reviews')).toBe('/en/#reviews');
     expect(localePath('de', '#faq')).toBe('/ru/#faq');
+  });
+
+  it('builds locale and asset paths under a GitHub Pages project base', () => {
+    expect(localePath('en', '#reviews', '/eng-franc-lang/')).toBe('/eng-franc-lang/en/#reviews');
+    expect(withBasePath('fr/', '/eng-franc-lang/')).toBe('/eng-franc-lang/fr/');
+    expect(basePathSegmentCount('/eng-franc-lang/')).toBe(1);
+    expect(resolveAssetMarkup('<img src="/assets/logo.svg">', '/eng-franc-lang/'))
+      .toBe('<img src="/eng-franc-lang/assets/logo.svg">');
   });
 
   it('gives the language in the URL priority over a saved choice', async () => {

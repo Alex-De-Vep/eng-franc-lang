@@ -29,6 +29,7 @@ import { Atmosphere } from './sections/Atmosphere.js';
 import { Footer } from './sections/Footer.js';
 import { createSiteContent } from './data/content.js';
 import { initI18n } from './i18n.js';
+import { resolveAssetMarkup } from './basePath.js';
 import { initAccordion, initContactForm, initLearningGoals, initMobileNavigation, initReviewModal, initReviewsSlider, initSmoothNavigation } from './interactions.js';
 
 const app = document.querySelector('#app');
@@ -39,7 +40,7 @@ const context = { locale, t, content };
 document.title = t('meta.title');
 document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
 
-app.innerHTML = [
+app.innerHTML = resolveAssetMarkup([
   Header(context),
   '<main>',
   Hero(context),
@@ -52,7 +53,7 @@ app.innerHTML = [
   Atmosphere(context),
   '</main>',
   Footer(context),
-].join('');
+].join(''));
 
 initSmoothNavigation();
 initMobileNavigation(document, t);
