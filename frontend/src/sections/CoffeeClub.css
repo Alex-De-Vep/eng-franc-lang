@@ -26,8 +26,7 @@
   color: var(--color-olive);
   font-family: var(--font-serif);
   font-size: 22px;
-  line-height: 22px;
-  letter-spacing: 0.6px;
+  line-height: 100%;
 }
 
 .coffee-club__signature img {
@@ -36,9 +35,9 @@
 }
 
 .coffee-club__signature-line {
-  width: 308px;
+  width: 300px;
   height: 1px;
-  margin: 12px 0 0 43px;
+  margin: 12px 0;
   background: var(--color-gold);
 }
 
