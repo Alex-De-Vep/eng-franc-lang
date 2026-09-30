@@ -5,6 +5,7 @@ export function FrenchLessons({ t }) {
   const benefits = t('frenchLessons.benefits', { returnObjects: true });
   return `
     <section class="french-lessons" aria-labelledby="french-title">
+      <img class="french-lessons__background" src="/assets/images/french-lessons-1280.webp" srcset="/assets/images/french-lessons-1280.webp 1280w, /assets/images/french-lessons.webp 2172w" sizes="100vw" width="2172" height="724" alt="" loading="lazy" decoding="async" aria-hidden="true" />
       <div class="container french-lessons__content-container">
         <div class="french-lessons__content">
           <h2 class="french-lessons__heading" id="french-title">${t('frenchLessons.headingLine1')}<br />${t('frenchLessons.headingLine2')}</h2>

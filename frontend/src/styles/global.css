@@ -30,6 +30,12 @@ main {
     width: 100%;
     padding-inline: 32px;
   }
+
+  .form-field__control {
+    min-height: 48px;
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -43,9 +49,9 @@ main {
   }
 
   .form-field__control {
-    min-height: 44px;
-    font-size: 16px;
-    line-height: 20px;
+    min-height: 48px;
+    font-size: 20px;
+    line-height: 24px;
   }
 
   .form-field__control--textarea {
@@ -205,7 +211,22 @@ textarea:focus-visible {
 }
 
 .form-field__control[aria-invalid='true'] {
-  border-color: #a33b32;
+  border-color: #b42318;
+  background: #fff4f2;
+  outline-color: rgba(180, 35, 24, 0.2);
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.12);
+}
+
+.form-field__control[aria-invalid='true']:hover,
+.form-field__control[aria-invalid='true']:focus {
+  border-color: #921c13;
+  outline-color: rgba(180, 35, 24, 0.3);
+  box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.14);
+}
+
+.form-field:has(.form-field__control[aria-invalid='true']) .form-field__label {
+  color: #921c13;
+  font-weight: 600;
 }
 
 .form-field__error {
@@ -215,6 +236,19 @@ textarea:focus-visible {
   font-family: 'Inter', sans-serif;
   font-size: 8px;
   line-height: 9px;
+}
+
+.form-field__error:not(:empty) {
+  min-height: 0;
+  padding: 7px 9px;
+  margin-top: 6px;
+  border-left: 3px solid #b42318;
+  border-radius: 4px;
+  color: #8f1d15;
+  background: #fff0ee;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
 }
 
 .mail-icon {

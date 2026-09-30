@@ -1,18 +1,6 @@
 import { SectionHeading } from '../components/SectionHeading.js';
 import { ContactBlock } from '../components/ContactBlock.js';
 import { Divider } from '../components/Divider.js';
-function InstagramReviewCard(t, content) {
-  return `
-    <div class="reviews__slide swiper-slide reviews__slide--instagram">
-      <a class="review-card review-card--instagram" href="${content.reviewsInstagramUrl}" target="_blank" rel="noopener noreferrer" aria-label="${t('reviews.instagram.aria')}">
-        <img class="review-card__instagram-icon" src="/assets/icons/instagram.svg" alt="" />
-        <h3 class="review-card__instagram-title">${t('reviews.instagram.title')}</h3>
-        <p class="review-card__instagram-text">${t('reviews.instagram.text')}</p>
-        <span class="review-card__instagram-cta">${t('reviews.instagram.cta')} <img src="/assets/icons/arrow-right.svg" alt="" /></span>
-      </a>
-    </div>
-  `;
-}
 
 function ReviewCard(review, index, t) {
   return `
@@ -23,6 +11,8 @@ function ReviewCard(review, index, t) {
           <div class="review-card__meta">
             <h3 class="review-card__name">${review.name}</h3>
             <p class="review-card__occupation">${review.occupation}</p>
+            <p class="review-card__age">${review.age}</p>
+            <p class="review-card__city">${review.city}</p>
             <img class="review-card__stars" src="/assets/icons/stars.svg" alt="${t('reviews.starsAlt')}" />
           </div>
         </div>
@@ -49,7 +39,7 @@ export function Reviews({ t, content }) {
           </div>
         </div>
         <div class="reviews__viewport swiper" aria-label="${t('reviews.viewport')}">
-          <div class="reviews__track swiper-wrapper">${InstagramReviewCard(t, content)}${content.reviews.map((review, index) => ReviewCard(review, index, t)).join('')}</div>
+          <div class="reviews__track swiper-wrapper">${content.reviews.map((review, index) => ReviewCard(review, index, t)).join('')}</div>
         </div>
       </div>
       <dialog class="review-modal" aria-labelledby="review-modal-name">
@@ -64,6 +54,8 @@ export function Reviews({ t, content }) {
               <div class="review-modal__meta">
                 <h2 class="review-modal__name" id="review-modal-name"></h2>
                 <p class="review-modal__occupation"></p>
+                <p class="review-modal__age"></p>
+                <p class="review-modal__city"></p>
                 <img class="review-modal__stars" src="/assets/icons/stars.svg" alt="${t('reviews.starsAlt')}" />
               </div>
             </header>

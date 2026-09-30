@@ -9,7 +9,7 @@ export function CoffeeClub({ t }) {
     <section class="coffee-club" aria-labelledby="coffee-title">
       <div class="container coffee-club__inner">
         <div class="coffee-club__visual">
-          <img class="coffee-club__photo" src="/assets/images/coffee-club.png" alt="${t('coffee.photoAlt')}" />
+          <img class="coffee-club__photo" src="/assets/images/coffee-club.webp" width="446" height="456" alt="${t('coffee.photoAlt')}" loading="lazy" decoding="async" />
           <div class="coffee-club__signature-block">
             <div class="coffee-club__signature"><img src="/assets/icons/fleur-large.svg" alt="" /><span>English Coffee Club</span></div>
             <span class="coffee-club__signature-line" aria-hidden="true"></span>

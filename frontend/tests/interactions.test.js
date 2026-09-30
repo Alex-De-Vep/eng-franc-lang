@@ -10,8 +10,10 @@ const { swiperConstructor } = vi.hoisted(() => ({
 vi.mock('swiper', () => ({ default: swiperConstructor }));
 vi.mock('swiper/modules', () => ({ A11y: { name: 'A11y' }, Navigation: { name: 'Navigation' }, Pagination: { name: 'Pagination' } }));
 
-import { initAccordion, initContactForm, initLearningGoals, initMobileNavigation, initReviewModal, initReviewsSlider, initSmoothNavigation, validateContactForm } from '../src/interactions.js';
+import { initAccordion, initAtmosphereModal, initContactForm, initContactSuccessModal, initLearningGoals, initMobileNavigation, initReviewModal, initReviewsSlider, initSmoothNavigation, validateContactForm } from '../src/interactions.js';
+import { ContactSuccessModal } from '../src/components/ContactSuccessModal.js';
 import { Header } from '../src/sections/Header.js';
+import { Footer } from '../src/sections/Footer.js';
 import { Reviews } from '../src/sections/Reviews.js';
 import { FaqContact } from '../src/sections/FaqContact.js';
 import { LearningGoals } from '../src/sections/LearningGoals.js';
@@ -36,13 +38,99 @@ const siteContent = createSiteContent(t, 'ru');
 const context = { t, content: siteContent, locale: 'ru' };
 
 describe('atmosphere gallery', () => {
-  it('fills every non-social tile with an optimized photograph', () => {
+  it('fills every non-social tile with an optimized photograph and renders linked QR codes', () => {
     document.body.innerHTML = Atmosphere(context);
     const photoTiles = siteContent.atmosphereTiles.filter((tile) => tile.image);
+    const qrTiles = siteContent.atmosphereTiles.filter((tile) => tile.qr);
 
     expect(document.querySelectorAll('.atmosphere__photo')).toHaveLength(photoTiles.length);
-    expect(document.querySelectorAll('.atmosphere__qr')).toHaveLength(2);
-    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.getAttribute('src').startsWith('/assets/images/learning-goals/'))).toBe(true);
+    expect(document.querySelectorAll('.atmosphere__photo-button')).toHaveLength(photoTiles.length);
+    expect(document.querySelectorAll('.atmosphere__qr')).toHaveLength(qrTiles.length);
+    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.getAttribute('src').endsWith('-640.webp'))).toBe(true);
+    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.getAttribute('srcset').endsWith('640w'))).toBe(true);
+    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => !image.getAttribute('srcset').includes(image.dataset.fullSrc))).toBe(true);
+    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.dataset.fullSrc.endsWith('.webp'))).toBe(true);
+    qrTiles.forEach((tile) => {
+      const link = document.querySelector(`.atmosphere__qr-link[href="${tile.qr.url}"]`);
+      expect(link).not.toBeNull();
+      expect(link.getAttribute('target')).toBe('_blank');
+      expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+      expect(link.querySelector('.atmosphere__qr').getAttribute('src')).toBe(tile.qr.image);
+    });
+  });
+
+  it('opens a selected photo in one dialog and restores focus after closing', () => {
+    document.body.className = '';
+    document.body.innerHTML = Atmosphere(context);
+    const dialog = document.querySelector('.atmosphere-modal');
+    const opener = document.querySelectorAll('.atmosphere__photo-button')[1];
+    const sourceImage = opener.querySelector('.atmosphere__photo');
+    dialog.showModal = vi.fn(() => dialog.setAttribute('open', ''));
+    dialog.close = vi.fn(() => {
+      dialog.removeAttribute('open');
+      dialog.dispatchEvent(new Event('close'));
+    });
+    initAtmosphereModal();
+
+    opener.click();
+
+    expect(dialog.showModal).toHaveBeenCalledOnce();
+    expect(dialog.querySelector('.atmosphere-modal__image').getAttribute('src')).toBe(sourceImage.dataset.fullSrc);
+    expect(dialog.querySelector('.atmosphere-modal__image').getAttribute('src')).not.toBe(sourceImage.getAttribute('src'));
+    expect(dialog.querySelector('.atmosphere-modal__image').getAttribute('alt')).toBe(sourceImage.getAttribute('alt'));
+    expect(document.body.classList.contains('atmosphere-modal-open')).toBe(true);
+
+    dialog.querySelector('.atmosphere-modal__close').click();
+
+    expect(dialog.close).toHaveBeenCalledOnce();
+    expect(document.body.classList.contains('atmosphere-modal-open')).toBe(false);
+    expect(document.activeElement).toBe(opener);
+  });
+
+  it('closes the photo dialog on Escape and backdrop click', () => {
+    document.body.innerHTML = Atmosphere(context);
+    const dialog = document.querySelector('.atmosphere-modal');
+    const opener = document.querySelector('.atmosphere__photo-button');
+    dialog.showModal = vi.fn(() => dialog.setAttribute('open', ''));
+    dialog.close = vi.fn(() => {
+      dialog.removeAttribute('open');
+      dialog.dispatchEvent(new Event('close'));
+    });
+    initAtmosphereModal();
+
+    opener.click();
+    dialog.dispatchEvent(new Event('cancel', { cancelable: true }));
+    expect(dialog.close).toHaveBeenCalledTimes(1);
+
+    opener.click();
+    dialog.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    expect(dialog.close).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('social contact links', () => {
+  it('renders active Telegram and WhatsApp links in the header and footer', () => {
+    document.body.innerHTML = `${Header(context)}${Footer(context)}`;
+
+    ['https://t.me/iriskame', 'https://wa.me/qr/7XAE6K2W2LJLM1'].forEach((url) => {
+      expect(document.querySelector(`.site-header__social-link[href="${url}"]`)).not.toBeNull();
+      expect(document.querySelector(`.site-footer__social[href="${url}"]`)).not.toBeNull();
+    });
+  });
+
+  it('hides unavailable decorative social fallbacks from assistive technology', () => {
+    const disabledContent = {
+      ...siteContent,
+      socialLinks: [{ label: 'Telegram', icon: '/assets/icons/telegram.svg', url: null }],
+    };
+
+    document.body.innerHTML = `${Header({ ...context, content: disabledContent })}${Footer({ ...context, content: disabledContent })}`;
+
+    document.querySelectorAll('.site-header__social-link--disabled, .site-footer__social--disabled').forEach((fallback) => {
+      expect(fallback.getAttribute('aria-hidden')).toBe('true');
+      expect(fallback.hasAttribute('aria-label')).toBe(false);
+      expect(fallback.querySelector('img').getAttribute('alt')).toBe('');
+    });
   });
 });
 
@@ -120,11 +208,13 @@ describe('mobile navigation', () => {
   it('closes after choosing a navigation link or clicking outside the panel', () => {
     const toggle = document.querySelector('.site-header__menu-toggle');
     toggle.click();
-    document.querySelector('.site-header__nav-link').click();
+    const navigationLink = document.querySelector('.site-header__nav-link');
+    navigationLink.addEventListener('click', (event) => event.preventDefault(), { once: true });
+    navigationLink.click();
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
 
     toggle.click();
-    document.querySelector('.site-header__brand').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
   });
 
@@ -178,6 +268,9 @@ describe('learning goals', () => {
     expect(mediaPanels[0].hidden).toBe(false);
     expect([...panels].slice(1).every((panel) => panel.hidden)).toBe(true);
     expect([...mediaPanels].slice(1).every((panel) => panel.hidden)).toBe(true);
+    expect([...document.querySelectorAll('.learning-goals__slide img')].every((image) => image.getAttribute('src').endsWith('-640.webp'))).toBe(true);
+    expect([...document.querySelectorAll('.learning-goals__slide img')].every((image) => image.getAttribute('srcset').endsWith('640w'))).toBe(true);
+    expect([...document.querySelectorAll('.learning-goals__slide img')].every((image) => image.hasAttribute('width') && image.hasAttribute('height'))).toBe(true);
   });
 
   it('shows the selected goal title and points', () => {
@@ -267,16 +360,12 @@ describe('reviews slider', () => {
     expect(swiperConstructor).not.toHaveBeenCalled();
   });
 
-  it('renders the Instagram Reels link first and keeps every review', () => {
+  it('renders every review without an Instagram promo card', () => {
     document.body.innerHTML = Reviews(context);
     const slides = document.querySelectorAll('.reviews__slide');
-    const instagramLink = slides[0].querySelector('.review-card--instagram');
 
-    expect(slides).toHaveLength(siteContent.reviews.length + 1);
-    expect(instagramLink.getAttribute('href')).toBe(siteContent.reviewsInstagramUrl);
-    expect(instagramLink.getAttribute('target')).toBe('_blank');
-    expect(instagramLink.getAttribute('rel')).toBe('noopener noreferrer');
-    expect(slides[0].querySelector('.review-card__more')).toBeNull();
+    expect(slides).toHaveLength(siteContent.reviews.length);
+    expect(document.querySelector('.review-card--instagram')).toBeNull();
     expect(document.querySelectorAll('.review-card__more')).toHaveLength(siteContent.reviews.length);
   });
 });
@@ -302,6 +391,8 @@ describe('review modal', () => {
     expect(dialog.showModal).toHaveBeenCalledOnce();
     expect(dialog.querySelector('.review-modal__name').textContent).toBe(cards[1].querySelector('.review-card__name').textContent);
     expect(dialog.querySelector('.review-modal__occupation').textContent).toBe(cards[1].querySelector('.review-card__occupation').textContent);
+    expect(dialog.querySelector('.review-modal__age').textContent).toBe(cards[1].querySelector('.review-card__age').textContent);
+    expect(dialog.querySelector('.review-modal__city').textContent).toBe(cards[1].querySelector('.review-card__city').textContent);
     expect(dialog.querySelector('.review-modal__text').textContent).toBe(cards[1].querySelector('.review-card__text').textContent);
     expect(document.body.classList.contains('review-modal-open')).toBe(true);
   });
@@ -383,12 +474,20 @@ describe('contact form', () => {
     document.body.innerHTML = `
       <form data-contact-form>
         <input name="email" />
+        <textarea name="comment"></textarea>
+        <input name="website" />
         <input name="consent" type="checkbox" />
         <p data-form-error="email"></p>
+        <p data-form-error="comment"></p>
         <p data-form-error="consent"></p>
+        <button type="submit">Send</button>
         <p class="contact-form__status"></p>
       </form>
     `;
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('reports invalid email and missing consent', () => {
@@ -401,16 +500,111 @@ describe('contact form', () => {
     });
   });
 
-  it('accepts a valid email and shows the demo status without a request', () => {
+  it('does not call fetch when the form is invalid', () => {
+    const fetchImpl = vi.fn();
     const form = document.querySelector('form');
-    form.elements.email.value = 'student@example.com';
-    form.elements.consent.checked = true;
-    initContactForm(document, t);
+    initContactForm(document, t, 'ru', { fetchImpl });
 
     form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
 
-    expect(form.querySelector('.contact-form__status').dataset.state).toBe('success');
-    expect(form.querySelector('.contact-form__status').textContent).toContain('backend');
+    expect(fetchImpl).not.toHaveBeenCalled();
+    expect(form.querySelector('.contact-form__status').dataset.state).toBe('error');
+  });
+
+  it('sends the locale payload once and blocks a duplicate submit', async () => {
+    let resolveRequest;
+    const fetchImpl = vi.fn(() => new Promise((resolve) => {
+      resolveRequest = resolve;
+    }));
+    const form = document.querySelector('form');
+    form.elements.email.value = 'student@example.com';
+    form.elements.comment.value = 'Evening lessons';
+    form.elements.consent.checked = true;
+    initContactForm(document, t, 'fr', { fetchImpl });
+
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+
+    expect(fetchImpl).toHaveBeenCalledOnce();
+    expect(JSON.parse(fetchImpl.mock.calls[0][1].body)).toEqual({
+      email: 'student@example.com',
+      comment: 'Evening lessons',
+      consent: true,
+      locale: 'fr',
+      website: '',
+    });
+    expect(form.getAttribute('aria-busy')).toBe('true');
+    expect(form.querySelector('button').disabled).toBe(true);
+
+    resolveRequest({ ok: true, status: 200, json: async () => ({ ok: true }) });
+    await vi.waitFor(() => expect(form.querySelector('button').disabled).toBe(false));
+  });
+
+  it('clears the form after a successful request', async () => {
+    const onSuccess = vi.fn();
+    const form = document.querySelector('form');
+    form.elements.email.value = 'student@example.com';
+    form.elements.comment.value = 'A comment';
+    form.elements.consent.checked = true;
+    initContactForm(document, t, 'ru', {
+      fetchImpl: vi.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ ok: true }) }),
+      onSuccess,
+    });
+
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+
+    await vi.waitFor(() => expect(form.querySelector('.contact-form__status').dataset.state).toBe('success'));
+    expect(form.elements.email.value).toBe('');
+    expect(form.elements.comment.value).toBe('');
+    expect(form.elements.consent.checked).toBe(false);
+    expect(form.querySelector('.contact-form__status').textContent).toBe(ru.validation.success);
+    expect(onSuccess).toHaveBeenCalledWith(expect.objectContaining({ form }));
+  });
+
+  it.each([
+    [400, { error: 'VALIDATION_ERROR', fields: { comment: 'too_long' } }, ru.validation.checkForm],
+    [429, { error: 'RATE_LIMITED' }, ru.validation.rateLimited],
+    [500, { error: 'SEND_FAILED' }, ru.validation.sendError],
+  ])('handles an API %s response', async (statusCode, payload, message) => {
+    const form = document.querySelector('form');
+    form.elements.email.value = 'student@example.com';
+    form.elements.consent.checked = true;
+    initContactForm(document, t, 'ru', {
+      fetchImpl: vi.fn().mockResolvedValue({ ok: false, status: statusCode, json: async () => payload }),
+    });
+
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+
+    await vi.waitFor(() => expect(form.querySelector('.contact-form__status').textContent).toBe(message));
+    expect(form.querySelector('.contact-form__status').dataset.state).toBe('error');
+  });
+
+  it('handles network errors and request timeouts separately', async () => {
+    const form = document.querySelector('form');
+    form.elements.email.value = 'student@example.com';
+    form.elements.consent.checked = true;
+    initContactForm(document, t, 'ru', {
+      fetchImpl: vi.fn().mockRejectedValue(new TypeError('offline')),
+    });
+
+    form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    await vi.waitFor(() => expect(form.querySelector('.contact-form__status').textContent).toBe(ru.validation.networkError));
+
+    document.body.innerHTML = document.body.innerHTML;
+    const timeoutForm = document.querySelector('form');
+    timeoutForm.elements.email.value = 'student@example.com';
+    timeoutForm.elements.consent.checked = true;
+    vi.useFakeTimers();
+    initContactForm(document, t, 'ru', {
+      timeoutMs: 10,
+      fetchImpl: vi.fn((url, { signal }) => new Promise((resolve, reject) => {
+        signal.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')));
+      })),
+    });
+
+    timeoutForm.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    await vi.advanceTimersByTimeAsync(11);
+    expect(timeoutForm.querySelector('.contact-form__status').textContent).toBe(ru.validation.timeout);
   });
 
   it('renders page and modal forms without duplicate ids', () => {
@@ -420,6 +614,65 @@ describe('contact form', () => {
     expect(new Set(ids).size).toBe(ids.length);
     expect(document.querySelector('#page-contact-form')).not.toBeNull();
     expect(document.querySelector('#modal-contact-form')).not.toBeNull();
+  });
+
+  it('uses the same request handler for page and modal forms', async () => {
+    document.body.innerHTML = `${FaqContact(context)}${Reviews(context)}`;
+    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ ok: true }) });
+    initContactForm(document, t, 'ru', { fetchImpl });
+
+    document.querySelectorAll('[data-contact-form]').forEach((form) => {
+      form.elements.email.value = 'student@example.com';
+      form.elements.consent.checked = true;
+      form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    });
+
+    await vi.waitFor(() => expect(fetchImpl).toHaveBeenCalledTimes(2));
+  });
+});
+
+describe('contact success modal', () => {
+  beforeEach(() => {
+    document.body.className = '';
+    document.body.innerHTML = `<button id="opener">Send</button>${ContactSuccessModal(t)}`;
+    const dialog = document.querySelector('.contact-success-modal');
+    dialog.showModal = vi.fn(() => dialog.setAttribute('open', ''));
+    dialog.close = vi.fn(() => {
+      dialog.removeAttribute('open');
+      dialog.dispatchEvent(new Event('close'));
+    });
+  });
+
+  it('opens after success and closes with focus restored', () => {
+    const opener = document.querySelector('#opener');
+    const modal = initContactSuccessModal();
+
+    modal.open(opener);
+
+    expect(modal.dialog.showModal).toHaveBeenCalledOnce();
+    expect(document.body.classList.contains('contact-success-modal-open')).toBe(true);
+    expect(document.activeElement).toBe(document.querySelector('.contact-success-modal__button'));
+
+    document.querySelector('.contact-success-modal__button').click();
+
+    expect(modal.dialog.close).toHaveBeenCalledOnce();
+    expect(document.body.classList.contains('contact-success-modal-open')).toBe(false);
+    expect(document.activeElement).toBe(opener);
+  });
+
+  it('closes from the cross, Escape and backdrop', () => {
+    const modal = initContactSuccessModal();
+    modal.open();
+    document.querySelector('.contact-success-modal__close').click();
+    expect(modal.dialog.close).toHaveBeenCalledTimes(1);
+
+    modal.open();
+    modal.dialog.dispatchEvent(new Event('cancel', { cancelable: true }));
+    expect(modal.dialog.close).toHaveBeenCalledTimes(2);
+
+    modal.open();
+    modal.dialog.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    expect(modal.dialog.close).toHaveBeenCalledTimes(3);
   });
 });
 

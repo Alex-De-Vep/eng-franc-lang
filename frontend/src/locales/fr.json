@@ -36,7 +36,7 @@
   },
   "about": {
     "heading": "À propos de la professeure",
-    "portraitAlt": "Silhouette de la professeure",
+    "portraitAlt": "Photo d’Irina",
     "introCardTitle": "À PROPOS DE MOI",
     "educationCardTitle": "FORMATION",
     "experienceCardTitle": "EXPÉRIENCE",
@@ -115,42 +115,217 @@
     "readMore": "Lire l’avis complet",
     "close": "Fermer l’avis",
     "back": "Retour aux avis",
-    "instagram": {
-      "aria": "Voir les témoignages vidéo des élèves sur Instagram Reels",
-      "title": "Encore plus de témoignages",
-      "text": "Rendez-vous sur Instagram pour découvrir davantage de témoignages authentiques en courtes vidéos Reels",
-      "cta": "Voir les Reels"
-    },
     "items": [
       {
-        "name": "Elena",
-        "occupation": "Designer UX/UI, Russie",
-        "text": "Je suis les cours d’Irina depuis plusieurs mois et j’ai enfin cessé d’avoir peur de parler anglais. Les leçons offrent beaucoup de pratique orale, des explications claires et des exemples utiles tirés de situations réelles."
+        "avatar": "/assets/images/reviews/farid.webp",
+        "name": "Farid",
+        "occupation": "Entrepreneur",
+        "age": "31 ans",
+        "city": "Thaïlande",
+        "text": "J'ai étudié l'anglais avec Ira ! C'est le meilleur investissement ! Pour moi, l'efficacité compte, mais ici j'ai reçu bien plus encore ! Une conversation vivante et intelligente et une amie géniale !)) Avec qui c'est toujours amusant et facile, sur la même longueur d'onde.)\nLes progrès dans la langue sont venus naturellement, sans bachotage ennuyeux. Je recommande sincèrement !"
+      },
+      {
+        "avatar": "/assets/images/reviews/ksenia-illustrator.webp",
+        "name": "Ksenia",
+        "occupation": "Illustratrice et designer",
+        "age": "26 ans",
+        "city": "Iochkar-Ola",
+        "text": "Je dois l’avouer, il est un peu difficile de reprendre les cours d’anglais après une pause 😅\n\nD’ailleurs, je ne vous ai jamais expliqué pourquoi j’avais décidé de reprendre. Cela pourra peut-être être utile à quelqu’un 💌\nÀ l’école, j’avais un très bon niveau d’anglais car j’avais choisi cette matière à l’examen national, mais j’avais toujours des difficultés de prononciation 😢\nEnsuite, mon niveau a commencé à baisser : il faut s’immerger dans la langue pour entretenir et améliorer ses connaissances. À l’université, j’ai étudié l’espagnol et le français et je pensais que comprendre l’anglais suffisait. Mais récemment, je me suis rendu compte que je perdais mes acquis, que j’oubliais des mots et que je ne savais plus comment construire mes phrases.\n\nL’univers m’a entendue : j’ai rencontré par hasard mon ancienne professeure Irina dans un café — nous travaillions ensemble lorsque j’étais en 5e–6e année 😂 J’y ai bien sûr vu un signe et je me suis inscrite à des cours de conversation ! Nous travaillons maintenant deux fois par semaine et je sens déjà des progrès. Ils sont encore modestes, mais mon cerveau s’est remis en marche : le premier pas est donc fait ✌🏼"
+      },
+      {
+        "avatar": "/assets/images/reviews/dmitrii.webp",
+        "name": "Dmitry",
+        "occupation": "Développeur",
+        "age": "24 ans",
+        "city": "Iochkar-Ola / Saint-Pétersbourg",
+        "text": "Un immense merci à Irina Evgenievna pour les cours d’anglais ! Au début, tenir une conversation en anglais était inhabituel et un peu difficile. Mais peu à peu, la nervosité et la tension disparaissent, le cerveau s’adapte et parler devient un véritable plaisir.\nChaque cours se déroulait dans une ambiance détendue, ce qui facilitait l’assimilation des nouvelles notions. Je ne garde que des impressions très positives de nos cours !"
+      },
+      {
+        "name": "Ksyusha",
+        "occupation": "Artiste et designer",
+        "age": "25 ans",
+        "city": "Iochkar-Ola",
+        "text": "Je profite de mes pauses au travail de manière utile 🤭\nVoici nos cours d’anglais avec Irina ! À la fin de chaque cours, nous ouvrons les pages et choisissons what is happiness for me 🥰\n\nAujourd’hui, nous avons même travaillé dehors : le vent ne nous a pas arrêtées.\n\nD’ailleurs, Irina parle aussi français et propose des cours en ligne ! Une enseignante née, je la recommande !\n\nC’est l’approche que je rêvais depuis longtemps de trouver : on n’a pas peur et on ne tremble pas avant le cours, on vient retrouver sa professeure comme une amie, pour partager de l’énergie et rire ensemble. Et bien sûr, on ne reçoit pas des connaissances théoriques et froides, mais les compétences pratiques réellement nécessaires pour communiquer en anglais."
+      },
+      {
+        "avatar": "/assets/images/reviews/ekaterina-musician.webp",
+        "name": "Ekaterina",
+        "occupation": "Musicienne et professeure d’anglais",
+        "age": "45 ans",
+        "city": "Iochkar-Ola",
+        "text": "Hello my friends! Today I would tell you about one of my dreams and the person who helped me to do it. This is my English teacher Irina! She is really cool! I studied English with her from the end of May. And now I feel I can speak English fluently! I can present my thoughts and dreams and so on! It's happiness for me! I'm proud of myself! Sure, I don't know English enough well and I have a lot of mistakes but it is okay. Everybody is not ideal!\nI had a dream to speak English fluently. And one of the day I stopped dreaming and saw her on social media. And I asked myself: “Why not?”\nWhile I was learning English with Irina I also was studying at Moscow university and now I have a new professional education. I am an English teacher too). It's so cool! I can do it! One of my dreams is realized. 🙌 Thank you, Irina! 😘"
+      },
+      {
+        "avatar": "/assets/images/reviews/anastasia-realestate.webp",
+        "name": "Anastasia",
+        "occupation": "Experte en investissement immobilier",
+        "age": "43 ans",
+        "city": "Émirats arabes unis",
+        "text": "Les cours se déroulent toujours dans une ambiance agréable et amicale. J’aime que les mots et les expressions abordés pendant le cours, ainsi que tout ce qui soulève une question, soient également écrits dans la messagerie.\nIl n’est pas nécessaire de prendre des notes : tout reste dans le téléphone et je peux y revenir à tout moment pour me rafraîchir la mémoire.\nMerci 🫶"
+      },
+      {
+        "avatar": "/assets/images/reviews/tatiana-walker.webp",
+        "name": "Tatiana",
+        "occupation": "Coach de marche nordique",
+        "age": "25 ans",
+        "city": "Iochkar-Ola",
+        "text": "« Et puis IL est apparu, un danseur de kizomba turc que je connaissais. Nous avons dansé la kizomba et la tarraxa pendant plus de trois heures...\n...Mes jambes ont soudain lâché : elles n’étaient tout simplement pas habituées à un tel effort et chaque pas me faisait mal.\nJ’ai longtemps réfléchi à la manière d’expliquer la situation à mon partenaire de danse, puisqu’il ne parlait qu’anglais. Il fallait le dire avec tact pour ne pas le vexer et pouvoir lui décrire ce qui se passait lorsqu’il demanderait : “Qu’est-ce qui ne va pas ?”\nJ’ai préparé ce dialogue en anglais pendant une heure entière — de deux à trois heures du matin, je m’en souviens encore — et chaque pas réveillait la douleur dans mon pied...\nJ’ai enfin décidé de lui parler. Ma bouche est devenue sèche et je reconnaissais à peine ma propre voix, mais tout a fonctionné. Je le dois à ma professeure d’anglais Irina : à cet instant, je me suis souvenue de tous ses cours et ils m’ont énormément aidée 🤗\nMerci, Irina ! »"
+      },
+      {
+        "avatar": "/assets/images/reviews/maria.webp",
+        "name": "Maria",
+        "occupation": "Étudiante en langues étrangères",
+        "age": "20 ans",
+        "city": "Iochkar-Ola",
+        "text": "Je tiens à remercier Irina et à la recommander comme une excellente professeure de français et d’anglais 🥰👍🏻 Nos cours avaient lieu à des horaires pratiques et l’ambiance était toujours très amicale et joyeuse 😄 Vous pouvez en être certains : c’est une enseignante qui aime vraiment son métier et qui vous mènera au résultat 🫶🏼"
+      },
+      {
+        "avatar": "/assets/images/reviews/zoya.webp",
+        "name": "Zoya",
+        "occupation": "Patineuse artistique",
+        "age": "16 ans",
+        "city": "Moscou",
+        "text": "Je travaille avec Irina depuis plus de deux ans. Pendant cette période, j’ai progressé aussi bien en grammaire qu’à l’oral. Avec elle, j’ai également préparé et réussi l’examen OGE. Comme professeure, elle est attentionnée, bienveillante et explique tout très clairement.\nMerci beaucoup pour votre travail, votre compréhension et votre soutien ! Nous continuons encore aujourd’hui et travaillons tout particulièrement l’anglais oral, qui me sera utile plus tard pour mon métier, dans la vie quotidienne et pendant mes voyages.\nThank you! ❤️"
+      },
+      {
+        "avatar": "/assets/images/reviews/ekaterina-model.webp",
+        "name": "Ekaterina",
+        "occupation": "Mannequin",
+        "age": "30 ans",
+        "city": "Thaïlande",
+        "text": "Irina, merci infiniment pour nos cours d’anglais ! Je te suis sincèrement reconnaissante pour ta patience et parce que tu m’as enfin aidée à comprendre ce fichu Past Simple 😄\n\nLa grammaire et toutes ces bases étaient précisément ce qui me faisait trébucher à chaque fois, jusqu’à abandonner l’anglais. Grâce à toi, j’ai enfin acquis une compréhension sur laquelle je peux continuer à construire.\n\nConnaître ces bases, c’est comme apprendre à faire du vélo : une fois qu’on a vraiment compris, on ne l’oublie plus. Il m’est maintenant beaucoup plus facile de m’orienter dans tout le reste et de comprendre comment les choses s’articulent. Sans ces fondations, l’anglais ne formait jamais un ensemble cohérent pour moi.\n\nJe regrette de ne pas pouvoir poursuivre des cours réguliers pour le moment, mais je tiens vraiment à te remercier. Tu m’as énormément aidée ❤️"
+      },
+      {
+        "avatar": "/assets/images/reviews/oksana.webp",
+        "name": "Oksana",
+        "occupation": "Élève",
+        "age": "36 ans",
+        "city": "Thaïlande",
+        "text": "J'aimerais vous parler de nos cours d'anglais avec Irina. Ira et moi travaillons ensemble depuis environ trois ans. Quand j'ai commencé, mon anglais se limitait à Hello, my name is Oksana; I'm from Russia; How are you?; I'm fine; two beer please 😁\nAprès tout ce temps, mon anglais est devenu bien, bien, bien meilleur. Avant, je ne pouvais pas communiquer sans traducteur ; aujourd'hui je ne l'utilise presque plus.\nL'approche d'Ira est tout simplement idéale : nous n'apprenons pas de règles ni de grammaire, j'apprends tout au fil de la conversation, et les sujets sont très abordables. Apprendre avec Ira est très agréable — nous rions beaucoup, nous bavardons, et mon niveau ne cesse de progresser.\nJe ne suis pas son élève la plus assidue, j'en suis sûre, mais je suis très reconnaissante qu'Ira ne m'abandonne pas et voie en moi un potentiel. Ensemble, nous avons traversé toutes mes étapes, du déni à l'acceptation du fait que je ne dois pas céder à ma paresse et que je dois continuer. Je suis certaine qu'aucun autre professeur ne vous soutiendrait ainsi, et je sais que si j'avais appris avec quelqu'un d'autre, j'aurais abandonné depuis longtemps. Mais si Ira voit en vous un potentiel, vous n'avez aucune chance d'abandonner — vous finirez par parler, croyez-moi 😁\nCe que je veux dire : si vous êtes une personne aussi distraite, paresseuse et instable que moi, mais que vous voulez vraiment voyager et vous sentir chez vous dans différents pays, si vous voulez connaître la langue, je recommande Ira de tout mon cœur ! Avec elle, vous obtiendrez les connaissances tant attendues !"
+      },
+      {
+        "avatar": "/assets/images/reviews/anna.webp",
+        "name": "Anna",
+        "occupation": "Élève",
+        "age": "30 ans",
+        "city": "Portugal",
+        "text": "Quand j'ai commencé les cours avec Irina, mon anglais était pratiquement nul. J'arrivais à peine à former une phrase simple, et à la seule idée de devoir parler à un étranger, je me figeais. J'avais peur de dire quelque chose de faux et d'avoir l'air stupide.\nMais aujourd'hui, je communique sereinement à l'étranger dans toutes les situations du quotidien : commander un café, demander mon chemin, m'installer à l'hôtel — tout cela n'est plus un problème. Et surtout, la peur de parler a complètement disparu.\nIrina propose une approche individuelle adaptée à chaque élève et rend les cours confortables, sans pression, sur des sujets variés et intéressants. Elle permet aussi d'adapter l'emploi du temps de manière flexible — très pratique pour les personnes qui travaillent.\nIrina est une excellente professeure et une vraie professionnelle. Je la recommande vivement à tous ceux qui ont peur de se lancer !"
+      },
+      {
+        "avatar": "/assets/images/reviews/tamara.webp",
+        "name": "Tamara",
+        "occupation": "Élève de 10e année, lycée Bauman",
+        "age": "",
+        "city": "Iochkar-Ola",
+        "text": "Good morning! ☀️\nLes cours avec Irina créent une atmosphère de détente et de légèreté. Pour être honnête, c'est la première enseignante avec une approche aussi intéressante et variée : on peut s'asseoir comme on veut, voire s'allonger ; thé, café, on danse ; les récits de voyage fascinants d'Irina, qu'on pourrait écouter pendant des heures en rêvant de s'y rendre et d'apprendre l'anglais.\nLa matière est aussi bien assimilée — bien sûr, selon l'effort qu'on y met et selon qu'on révise ou non, mais Irina fait tout de même l'essentiel du travail. Il y a aussi de la pratique, mais pas ennuyeuse ni rabâchée : plutôt raisonnable et mémorable, facile et claire. Il y a des choses à retenir, mais c'est partout pareil.\nJ'aime la façon dont Irina présente la langue : pas de règles bêtement apprises par cœur, mais une vraie manière de parler pour pouvoir communiquer avec les gens d'autres pays. À chaque cours, nous abordons des sujets variés — cela élargit l'horizon et la connaissance de la langue.\nLes cours portent vraiment leurs fruits, et je le vois. Avant, je ne savais pas demander « ça va ? » en anglais, et maintenant je raconte comment s'est passée ma journée. Il y a de vrais progrès, et surtout, Irina explique toujours quand quelque chose n'est pas clair. Elle explique tout : la matière, les coutumes et traditions, et même à propos de 67. Irina est une personne aux multiples facettes, et il est agréable d'apprendre avec elle — dommage que tous les professeurs n'aient pas cette qualité.\nIrina aime les sportifs, car la discipline passe avant tout dans l'apprentissage d'une langue, et je le comprends parfaitement. Si vous cherchez une enseignante à l'anglais parlé et correct, alors c'est Irina. Elle dit vraiment que l'apprentissage d'une langue est long — là encore, selon le travail de chacun — mais que pour comprendre tout l'anglais, il faut énormément de temps. Alors armez-vous de patience, et tout finira par fonctionner. Irina vous guidera dans la bonne direction et vous donnera les connaissances nécessaires."
+      },
+      {
+        "avatar": "/assets/images/reviews/arina.webp",
+        "name": "Arina",
+        "occupation": "Élève de 9e année",
+        "age": "",
+        "city": "Iochkar-Ola",
+        "text": "Merci pour les cours ! Avec vous, l'anglais a cessé d'être quelque chose de difficile et d'incompréhensible : vous expliquez tout simplement et étape par étape, et si quelque chose ne marche pas, on reprend ensemble.\nJ'aime particulièrement qu'il y ait beaucoup de pratique : on n'apprend pas seulement des règles, on essaie tout de suite de les appliquer. On joue souvent à différents jeux, mais sans se détourner du cours. Vous expliquez tout de manière accessible et claire, et vous structurez aussi parfaitement les cours : grammaire, lecture, pratique orale, mots importants.\nJe sens que je parle avec plus d'assurance et que j'ai moins peur de faire des erreurs. Vous rendez les cours beaucoup plus intéressants !\nGrâce à vous, l'anglais n'est plus une matière à bachoter, mais un vrai savoir-faire ! Merci pour votre patience, votre implication et pour m'avoir aidée à aimer l'anglais !"
+      },
+      {
+        "avatar": "/assets/images/reviews/yulia.webp",
+        "name": "Yulia",
+        "occupation": "Organisatrice de voyages, artiste",
+        "age": "30 ans",
+        "city": "Moscou",
+        "text": "Ira, merci pour les cours !\nTu es une professeure très attentive et empathique, qui sait vraiment trouver une approche pour chaque élève (en tout cas pour moi — c'est certain).\nIl y avait toujours une atmosphère légère et encourageante pendant les cours, et je n'avais pas peur de me tromper) 🤍🤍🤍"
       },
       {
         "name": "Elena",
-        "occupation": "Designer UX/UI, Russie",
-        "text": "Je suis les cours d’Irina depuis plusieurs mois et j’ai enfin cessé d’avoir peur de parler anglais. Les leçons offrent beaucoup de pratique orale, des explications claires et des exemples utiles tirés de situations réelles."
+        "occupation": "Élève",
+        "age": "27 ans",
+        "city": "Mexique",
+        "text": "Irina Evgenievna, un jour vous m'avez appris à aimer l'anglais et à le parler sereinement. Et maintenant, je parle cette langue tous les jours 😄 Merci ❤️ Je vous en serai toujours reconnaissante !"
       },
       {
-        "name": "Elena",
-        "occupation": "Designer UX/UI, Russie",
-        "text": "Je suis les cours d’Irina depuis plusieurs mois et j’ai enfin cessé d’avoir peur de parler anglais. Les leçons offrent beaucoup de pratique orale, des explications claires et des exemples utiles tirés de situations réelles."
+        "avatar": "/assets/images/reviews/nika.webp",
+        "name": "Nika",
+        "occupation": "Élève",
+        "age": "28 ans",
+        "city": "Iochkar-Ola",
+        "text": "Tu sais, dans la vie, le professeur compte énormément. C'est grâce au bon mentor, celui qui nous correspond, que naît l'envie de découvrir de nouvelles choses, d'apprendre, de réfléchir. C'est le professeur qui détermine si nous allons aimer ou détester ce que nous entreprenons, y compris une nouvelle langue. C'est pourquoi il est si important de trouver son propre professeur, un professionnel.\nJ'ai eu beaucoup de chance d'étudier avec toi, car chacun de nos cours de français est un peu une histoire de dépassement de soi. Au début, on pense qu'on n'y arrivera pas, qu'on ne s'en sortira pas, mais sous ta direction attentive, on lit — en ronchonnant — un long texte dans une langue rencontrée pour la première fois il y a seulement six mois. Et on comprend qu'on peut. On peut en savoir plus et même, peut-être, vaincre ses peurs.\nC'est avec de tels professeurs qu'on a envie de continuer son chemin dans la vie et d'aimer ce que l'on fait.\nGrâce à toi, les frontières entre les pays, entre les gens, et même les frontières de notre esprit, s'effacent."
       },
       {
-        "name": "Elena",
-        "occupation": "Designer UX/UI, Russie",
-        "text": "Je suis les cours d’Irina depuis plusieurs mois et j’ai enfin cessé d’avoir peur de parler anglais. Les leçons offrent beaucoup de pratique orale, des explications claires et des exemples utiles tirés de situations réelles."
+        "avatar": "/assets/images/reviews/milena.webp",
+        "name": "Milena",
+        "occupation": "Étudiante en médecine",
+        "age": "18 ans",
+        "city": "Iochkar-Ola",
+        "text": "Je tiens à dire un immense merci à Irina Evgenievna pour nos cours d'anglais ! J'ai commencé à 12 ans, en 6e année, et pendant nos cours je me suis beaucoup améliorée — je comprends, je lis et je parle mieux. Je suis très heureuse d'avoir trouvé une professeure aussi merveilleuse 😊\nMaintenant, ma petite sœur étudie à son tour et ramène de bonnes notes de l'école 🥳 Je recommande vivement ✅️✅️\nMerci beaucoup pour les connaissances ❤️❤️❤️"
       },
       {
-        "name": "Elena",
-        "occupation": "Designer UX/UI, Russie",
-        "text": "Je suis les cours d’Irina depuis plusieurs mois et j’ai enfin cessé d’avoir peur de parler anglais. Les leçons offrent beaucoup de pratique orale, des explications claires et des exemples utiles tirés de situations réelles."
+        "name": "Tatiana",
+        "occupation": "Stratège de marque, mentore",
+        "age": "40 ans",
+        "city": "Saint-Pétersbourg",
+        "text": "Pendant plusieurs mois, j'ai suivi des cours particuliers d'anglais avec Irina. Pour l'instant, j'ai dû faire une pause, mais j'ai vraiment envie de revenir. J'ai enfin pris plaisir à apprendre la langue.\nLes croyances limitantes héritées de mes professeurs d'école — qui disaient que j'étais incapable et nulle en la matière — ont disparu.\nConclusion : quand il y a un désir conscient, un professeur qui croit en vous et aucune peur de faire des erreurs, on a toutes les chances d'atteindre le résultat. D'ailleurs, on atteint toujours un résultat — la question est seulement de savoir s'il nous satisfait."
       },
       {
-        "name": "Elena",
-        "occupation": "Designer UX/UI, Russie",
-        "text": "Je suis les cours d’Irina depuis plusieurs mois et j’ai enfin cessé d’avoir peur de parler anglais. Les leçons offrent beaucoup de pratique orale, des explications claires et des exemples utiles tirés de situations réelles."
+        "avatar": "/assets/images/reviews/ksenia-22.webp",
+        "name": "Ksenia",
+        "occupation": "Élève",
+        "age": "22 ans",
+        "city": "Kazan / Moscou",
+        "text": "Irina est une personne qui vit littéralement la langue, qui l'aime et qui contamine chaque élève avec cet amour 🫶🏻\nChaque cours était aussi informatif et intéressant que possible : on y abordait à la fois la grammaire et le nouveau vocabulaire, mais le plus génial, c'est qu'il y avait toujours un dialogue au début — et pour moi, qui ai une forte barrière linguistique, c'était particulièrement important et nécessaire.\nMême en dehors des cours, Ira est toujours disponible : elle m'aidait avec les devoirs, ré-expliquait quand il le fallait et conseillait des ressources complémentaires pour l'apprentissage en autonomie.\nBref, tout mon amour et ma recommandation ❤️\nBisous !"
+      },
+      {
+        "name": "Margarita",
+        "occupation": "Maman de deux fils",
+        "age": "",
+        "city": "Iochkar-Ola",
+        "text": "Je tiens à exprimer ma profonde gratitude à notre professeure d'anglais Irina Evgenievna pour son professionnalisme, sa patience et son approche délicate envers les enfants. Les cours se déroulent toujours de manière intéressante et vivante. Mon enfant étudie avec plaisir et a nettement amélioré ses notes à l'école. Merci pour votre travail, votre attention et pour transmettre aux enfants l'amour de la langue ! 🌸"
+      },
+      {
+        "name": "Elizaveta",
+        "occupation": "Photographe et vidéaste",
+        "age": "26 ans",
+        "city": "Serbie",
+        "text": "Bonjour ! J'aimerais partager mon retour sur les cours d'anglais.\nJ'aime beaucoup l'approche d'Irina Evgenievna pour apprendre la langue et consolider les connaissances déjà acquises. Ce qui me correspond le mieux, c'est l'accent mis sur la pratique orale. J'aime aussi énormément les documents complémentaires qu'elle m'envoie : divers sujets et textes, très pertinents et intéressants)\nMerci pour votre travail et vos efforts !"
+      },
+      {
+        "avatar": "/assets/images/reviews/natalia.webp",
+        "name": "Natalia",
+        "occupation": "Responsable commerciale auprès d’entreprises étrangères",
+        "age": "29 ans",
+        "city": "Iochkar-Ola",
+        "text": "Nous avons travaillé pendant un an, et j'ai beaucoup aimé l'approche communicative — nous parlions beaucoup de sujets du quotidien, de voyages, de travail, de relations et de motivation personnelle, ce qui a vraiment enrichi mon vocabulaire.\nÀ cette époque, Irina se formait aussi comme coach, et nous faisions de nombreuses expériences et tests psychologiques intéressants (tous en français) — c'était fascinant d'observer mon cerveau se battre et résister à la nouveauté, mais au final les résultats étaient très intéressants."
+      },
+      {
+        "avatar": "/assets/images/reviews/veronika.webp",
+        "name": "Veronika",
+        "occupation": "Élève, lycée Bauman",
+        "age": "16 ans",
+        "city": "Iochkar-Ola",
+        "text": "J'ai étudié avec Irina pendant quatre mois, et pendant ce temps mes connaissances de la langue ont nettement progressé ! Je maîtrise mieux la grammaire et je parle anglais plus couramment. Ce qui m'a plu dans les cours, c'est l'approche de la professeure envers l'élève. Il y avait toujours des présentations qui aidaient à structurer l'information et à mieux mémoriser la matière. Les exercices créatifs me motivaient à continuer d'apprendre.\nComme professeure, Ira est très compréhensive, sincère et joyeuse, mais elle est aussi stricte — et sans ces qualités, un professeur ne serait pas un professeur !\nBref, je la recommande à tous !"
+      },
+      {
+        "avatar": "/assets/images/reviews/masha.webp",
+        "name": "Masha",
+        "occupation": "Élève",
+        "age": "12 ans",
+        "city": "Iochkar-Ola",
+        "text": "J'aime beaucoup étudier avec Irina Evgenievna 😍 J'étudie avec elle depuis très longtemps — elle a aussi enseigné à ma sœur. Elle explique vraiment super bien 😎 tous les sujets que nous voyons. Je recommande à tout le monde d'apprendre l'anglais avec Irina Evgenievna ! ☺️"
+      },
+      {
+        "avatar": "/assets/images/reviews/diana.webp",
+        "name": "Diana",
+        "occupation": "Élève",
+        "age": "33 ans",
+        "city": "Monténégro / Kazan",
+        "text": "J'aimerais laisser un avis sur mes cours d'anglais avec Irina. Les cours se déroulent facilement et sans pression ; j'aime beaucoup sa façon de transmettre les connaissances et son approche. J'ai cessé d'avoir peur de parler anglais en voyage et j'ai appris beaucoup d'expressions familières intéressantes que les natifs utilisent réellement dans la vie — c'est très intéressant et enrichissant.\nMerci beaucoup, Irina, pour votre professionnalisme et l'ambiance chaleureuse des cours 👍🤗"
+      },
+      {
+        "avatar": "/assets/images/reviews/anastasia-milli.webp",
+        "name": "Anastasia",
+        "occupation": "Fondatrice du studio d'anglais pour enfants MILLI",
+        "age": "27 ans",
+        "city": "Iochkar-Ola",
+        "text": "J'ai étudié avec Irina Evgenievna quand j'étais au lycée.\nJe remercie infiniment l'Univers de m'avoir fait rencontrer Irina Evgenievna : les cours se déroulaient dans une ambiance légère et intéressante. J'ai acquis un volume colossal de connaissances et une direction pour continuer à progresser. Merci 🙏"
       }
     ]
   },
@@ -207,7 +382,12 @@
     "and": "et aux",
     "offer": "Conditions générales",
     "submit": "Envoyer la demande",
-    "note": "Nous vous répondrons prochainement par e-mail"
+    "note": "Nous vous répondrons prochainement par e-mail",
+    "successEyebrow": "Demande envoyée avec succès",
+    "successTitle": "Merci pour votre demande !",
+    "successText": "J’ai bien reçu vos coordonnées et je vous contacterai bientôt par e-mail.",
+    "successClose": "Très bien",
+    "successCloseLabel": "Fermer le message de confirmation"
   },
   "coffee": {
     "photoAlt": "Des participants au club de conversation échangent autour d’un café",
@@ -234,6 +414,10 @@
   "atmosphere": {
     "heading": "Mon univers",
     "qrAlt": "Code QR du réseau social",
+    "telegramQrAlt": "Code QR Telegram pour contacter Irina",
+    "openPhoto": "Ouvrir la photo : {{description}}",
+    "dialogLabel": "Visionneuse de photos de la section Mon univers",
+    "closePhoto": "Fermer la photo",
     "alts": [
       "Des élèves apprennent l’anglais ensemble",
       "Une équipe prépare une présentation professionnelle",
@@ -269,9 +453,16 @@
   "validation": {
     "emailRequired": "Saisissez votre e-mail",
     "emailInvalid": "Saisissez une adresse e-mail valide",
+    "commentTooLong": "Le commentaire ne doit pas dépasser 2 000 caractères",
     "consentRequired": "Veuillez accepter le traitement de vos données",
     "checkForm": "Veuillez vérifier le formulaire",
-    "success": "Vos données ont été vérifiées. L’envoi sera disponible après la connexion du backend."
+    "sending": "Envoi de votre demande…",
+    "success": "Votre demande a été envoyée. Je vous contacterai bientôt par e-mail.",
+    "sendError": "La demande n’a pas pu être envoyée. Veuillez réessayer plus tard.",
+    "rateLimited": "Trop de tentatives. Veuillez réessayer dans 10 minutes.",
+    "timeout": "Le serveur a mis trop de temps à répondre. Vérifiez votre connexion et réessayez.",
+    "networkError": "Impossible de se connecter au serveur. Vérifiez votre connexion Internet et réessayez.",
+    "serverUnavailable": "Le service d’envoi est temporairement indisponible. Veuillez réessayer plus tard."
   },
   "swiper": {
     "previousPhoto": "Photo précédente",

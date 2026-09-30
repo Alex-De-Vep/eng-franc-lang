@@ -1,6 +1,7 @@
 import 'swiper/css';
 import 'swiper/css/a11y';
 
+import './styles/fonts.css';
 import './styles/tokens.css';
 import './styles/reset.css';
 import './styles/typography.css';
@@ -27,10 +28,11 @@ import { CoffeeClub } from './sections/CoffeeClub.js';
 import { FrenchLessons } from './sections/FrenchLessons.js';
 import { Atmosphere } from './sections/Atmosphere.js';
 import { Footer } from './sections/Footer.js';
+import { ContactSuccessModal } from './components/ContactSuccessModal.js';
 import { createSiteContent } from './data/content.js';
 import { initI18n } from './i18n.js';
 import { resolveAssetMarkup } from './basePath.js';
-import { initAccordion, initContactForm, initLearningGoals, initMobileNavigation, initReviewModal, initReviewsSlider, initSmoothNavigation } from './interactions.js';
+import { initAccordion, initAtmosphereModal, initContactForm, initContactSuccessModal, initLearningGoals, initMobileNavigation, initReviewModal, initReviewsSlider, initSmoothNavigation } from './interactions.js';
 
 const app = document.querySelector('#app');
 const { locale, t } = await initI18n();
@@ -53,12 +55,17 @@ app.innerHTML = resolveAssetMarkup([
   Atmosphere(context),
   '</main>',
   Footer(context),
+  ContactSuccessModal(t),
 ].join(''));
 
 initSmoothNavigation();
 initMobileNavigation(document, t);
 initLearningGoals(document, t);
 initAccordion();
-initContactForm(document, t);
+const contactSuccessModal = initContactSuccessModal();
+initContactForm(document, t, locale, {
+  onSuccess: ({ submit }) => contactSuccessModal?.open(submit),
+});
 initReviewsSlider(document, t);
 initReviewModal();
+initAtmosphereModal();

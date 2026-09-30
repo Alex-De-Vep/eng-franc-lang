@@ -3,7 +3,7 @@ import { Button } from '../components/Button.js';
 
 function SocialItem(item, t) {
     if (!item.url) {
-        return `<span class="site-header__social-link site-header__social-link--disabled" aria-label="${item.label}: ${t('common.linkUnavailable')}"><img src="${item.icon}" alt="" /></span>`;
+        return `<span class="site-header__social-link site-header__social-link--disabled" aria-hidden="true"><img src="${item.icon}" alt="" /></span>`;
     }
 
     return `<a class="site-header__social-link" href="${item.url}" aria-label="${item.label}"><img src="${item.icon}" alt="" /></a>`;

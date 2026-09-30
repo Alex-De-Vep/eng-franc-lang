@@ -9,7 +9,7 @@
 }
 
 .site-footer__container {
-  width: 800px;
+  width: 1000px;
   height: 100%;
   margin-inline: auto;
   padding-top: 30px;
@@ -17,14 +17,21 @@
 
 .site-footer__inner {
   display: grid;
-  grid-template-columns: 223px 254px 151px;
-  justify-content: space-between;
+  grid-template-columns: 250px 450px 220px;
+  gap: 40px;
   height: 120px;
+}
+
+.site-footer__about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .site-footer__about > p {
   width: 214px;
-  margin: 8px 0 0 10px;
+  padding-left: 42px;
+  margin: 8px 0 0;
   font-family: var(--font-display);
   font-size: 14px;
   font-weight: 300;
@@ -47,8 +54,10 @@
 }
 
 .site-footer__navigation-columns {
-  display: flex;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  align-items: start;
   margin-top: 18px;
 }
 
@@ -56,15 +65,19 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 106px;
+  width: auto;
 }
 
 .site-footer__navigation a {
+  display: flex;
+  min-height: 24px;
+  align-items: center;
   font-family: var(--font-serif);
   font-size: 14px;
   line-height: 14px;
   letter-spacing: 0.1px;
-  white-space: nowrap;
+  text-align: left;
+  white-space: normal;
 }
 
 .site-footer__navigation a:hover {
@@ -108,6 +121,7 @@
   font-size: 10px;
   line-height: 10px;
   letter-spacing: 0.1px;
+  text-align: center;
 }
 
 @media (max-width: 1279px) {
@@ -122,14 +136,30 @@
   }
 
   .site-footer__inner {
-    grid-template-columns: minmax(190px, 1fr) minmax(260px, 1.3fr) minmax(190px, 1fr);
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.8fr) minmax(0, 0.85fr);
     gap: 24px;
     height: auto;
   }
 
+  .site-footer__navigation-columns {
+    gap: 28px;
+  }
+
   .site-footer__about > p {
-    width: auto;
+    width: 100%;
     max-width: 230px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .site-footer__email {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .site-footer__navigation a {
+    font-size: 20px;
+    line-height: 24px;
   }
 
   .site-footer__contacts {
@@ -155,8 +185,8 @@
   .site-footer__about > p {
     max-width: 280px;
     margin: 10px auto 0;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 20px;
+    line-height: 24px;
     text-align: center;
   }
 
@@ -186,8 +216,8 @@
 
   .site-footer__navigation a,
   .site-footer__email {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 24px;
     white-space: normal;
   }
 

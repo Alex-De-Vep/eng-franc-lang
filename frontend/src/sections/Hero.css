@@ -2,7 +2,7 @@
   padding: 80px 0 60px;
   overflow: hidden;
   color: var(--color-ink);
-  background: url('/assets/images/hero-background.png') center bottom / cover no-repeat;
+  background: url('/assets/images/hero-background.webp') center bottom / cover no-repeat;
 }
 
 .hero__monogram {
@@ -75,7 +75,20 @@
 @media (max-width: 1279px) {
   .hero {
     padding: 64px 0 54px;
-    background-position: 58% bottom;
+    background-color: #faf5ed;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(255, 252, 247, 0.99) 0%,
+        rgba(255, 252, 247, 0.98) 48%,
+        rgba(250, 245, 237, 0.92) 60%,
+        rgba(250, 245, 237, 0.35) 74%,
+        rgba(250, 245, 237, 0) 86%
+      ),
+      url('/assets/images/hero-background.webp');
+    background-position: center, right bottom;
+    background-size: 100% 100%, auto 100%;
+    background-repeat: no-repeat;
   }
 
   .hero__content {
@@ -103,7 +116,20 @@
   .hero {
     min-height: 650px;
     padding: 42px 0 220px;
-    background-position: 67% bottom;
+    background-color: #faf5ed;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(255, 252, 247, 1) 0%,
+        rgba(255, 252, 247, 1) 58%,
+        rgba(250, 245, 237, 0.98) 68%,
+        rgba(250, 245, 237, 0.72) 78%,
+        rgba(250, 245, 237, 0) 92%
+      ),
+      url('/assets/images/hero-background-960.webp');
+    background-position: center, right bottom;
+    background-size: 100% 100%, auto 40%;
+    background-repeat: no-repeat;
   }
 
   .hero__content {
@@ -136,11 +162,11 @@
   }
 
   .hero__benefit {
-    font-size: 17px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 25px;
   }
 
   .hero__benefit::marker {
-    font-size: 18px;
+    font-size: 20px;
   }
 }

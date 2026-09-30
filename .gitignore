@@ -1,4 +1,8 @@
 frontend/node_modules/
 frontend/dist/
 frontend/coverage/
+backend/vendor/
+backend/config/contact-config.php
+backend/var/rate-limit/
+.phpunit.cache/
 .DS_Store

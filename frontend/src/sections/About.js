@@ -9,7 +9,7 @@ export function About({ content }) {
         ${SectionHeading(about.heading, 'about__heading')}
         <div class="about__cards">
           <article class="about-card about-card--intro">
-            <div class="about-card__portrait"><img src="/assets/icons/person.svg" alt="${about.portraitAlt}" /></div>
+            <div class="about-card__portrait"><img src="/assets/images/irina-portrait.webp" alt="${about.portraitAlt}" /></div>
             <div class="about-card__intro-copy">
               <h3 class="about-card__title">${about.introCardTitle}</h3>
               <div class="about-card__ornament about-card__ornament--short"></div>

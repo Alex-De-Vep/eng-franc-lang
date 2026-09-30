@@ -1,7 +1,19 @@
 .french-lessons {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 20px 0 20px;
   margin: 90px 0;
-  background: url('/assets/images/french-lessons.png') center / cover no-repeat;
+}
+
+.french-lessons__background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .french-lessons__content-container {
@@ -69,7 +81,10 @@
 @media (max-width: 1279px) {
   .french-lessons {
     margin: 70px 0;
-    background-position: 58% center;
+  }
+
+  .french-lessons__background {
+    object-position: 58% center;
   }
 
   .french-lessons__content {
@@ -85,7 +100,13 @@
 
   .french-lessons__benefit {
     max-width: 440px;
+    font-size: 20px;
+    line-height: 25px;
     white-space: normal;
+  }
+
+  .french-lessons__cta {
+    font-size: 20px;
   }
 }
 
@@ -93,9 +114,18 @@
   .french-lessons {
     padding: 34px 0;
     margin: 56px 0;
-    background:
-      linear-gradient(rgba(255, 252, 247, 0.78), rgba(255, 252, 247, 0.78)),
-      url('/assets/images/french-lessons.png') 62% center / cover no-repeat;
+  }
+
+  .french-lessons::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(255, 252, 247, 0.78);
+    content: '';
+  }
+
+  .french-lessons__background {
+    object-position: 62% center;
   }
 
   .french-lessons__content {
@@ -120,8 +150,8 @@
     max-width: 100%;
     margin-top: 22px;
     padding-left: 0;
-    font-size: 17px;
-    line-height: 21px;
+    font-size: 20px;
+    line-height: 25px;
   }
 
   .french-lessons__benefit + .french-lessons__benefit {
@@ -132,6 +162,6 @@
     width: 100%;
     min-height: 48px;
     margin-top: 30px;
-    font-size: 17px;
+    font-size: 20px;
   }
 }

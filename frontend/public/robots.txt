@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iripurtova-languages.com/sitemap.xml

@@ -1,0 +1,8 @@
+Options -Indexes
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^(www\.)?iripurtova-languages\.ru$ [NC]
+RewriteRule ^ https://iripurtova-languages.com%{REQUEST_URI} [R=301,L,NE]
+
+RewriteCond %{HTTP_HOST} ^www\.iripurtova-languages\.com$ [NC]
+RewriteRule ^ https://iripurtova-languages.com%{REQUEST_URI} [R=301,L,NE]

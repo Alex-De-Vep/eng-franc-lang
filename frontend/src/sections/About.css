@@ -49,8 +49,10 @@
 }
 
 .about-card__portrait img {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
+  border-radius: 17px;
+  object-fit: cover;
 }
 
 .about-card__intro-copy {
@@ -204,6 +206,14 @@
     margin-top: 18px;
   }
 
+  .about-card__intro-copy,
+  .about-card__facts,
+  .about-card__list,
+  .about-card__stats dd {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
   .about-card__stats div + div {
     margin-top: 0;
     padding-top: 0;
@@ -251,8 +261,8 @@
   .about-card__title,
   .about-card__list,
   .about-card__stats dd {
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 20px;
+    line-height: 24px;
   }
 
   .about-card--education,
@@ -289,7 +299,7 @@
   }
 
   .about__quote blockquote {
-    font-size: 17px;
-    line-height: 21px;
+    font-size: 20px;
+    line-height: 24px;
   }
 }

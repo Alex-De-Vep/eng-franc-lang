@@ -1,0 +1,40 @@
+{
+  "name": "iripurtova/contact-api",
+  "description": "Contact form API for iripurtova-languages.com",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": "^8.2",
+    "ext-ctype": "*",
+    "ext-filter": "*",
+    "ext-hash": "*",
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "phpmailer/phpmailer": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Iripurtova\\Contact\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Iripurtova\\Contact\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "lint": "@php -l api/contact.php"
+  },
+  "config": {
+    "allow-plugins": {},
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.2.0"
+    },
+    "sort-packages": true
+  }
+}

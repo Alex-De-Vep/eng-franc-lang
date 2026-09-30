@@ -230,6 +230,52 @@ export function initReviewsSlider(root = document, t = (key) => key) {
   });
 }
 
+export function initAtmosphereModal(root = document) {
+  const dialog = root.querySelector('.atmosphere-modal');
+  if (!dialog) return null;
+
+  const documentRoot = root.nodeType === 9 ? root : root.ownerDocument;
+  const modalImage = dialog.querySelector('.atmosphere-modal__image');
+  const closeButton = dialog.querySelector('.atmosphere-modal__close');
+  let opener = null;
+
+  const closeModal = () => {
+    if (dialog.open) dialog.close();
+  };
+
+  root.querySelectorAll('.atmosphere__photo-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      const image = button.querySelector('.atmosphere__photo');
+
+      opener = button;
+      modalImage.setAttribute('src', image.dataset.fullSrc || image.currentSrc || image.getAttribute('src'));
+      modalImage.setAttribute('alt', image.getAttribute('alt'));
+      documentRoot.body.classList.add('atmosphere-modal-open');
+      dialog.showModal();
+      closeButton.focus();
+    });
+  });
+
+  closeButton.addEventListener('click', closeModal);
+
+  dialog.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    closeModal();
+  });
+
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) closeModal();
+  });
+
+  dialog.addEventListener('close', () => {
+    documentRoot.body.classList.remove('atmosphere-modal-open');
+    opener?.focus();
+    opener = null;
+  });
+
+  return dialog;
+}
+
 export function initReviewModal(root = document) {
   const dialog = root.querySelector('.review-modal');
   if (!dialog) return null;
@@ -240,6 +286,8 @@ export function initReviewModal(root = document) {
   const modalAvatar = dialog.querySelector('.review-modal__avatar');
   const modalName = dialog.querySelector('.review-modal__name');
   const modalOccupation = dialog.querySelector('.review-modal__occupation');
+  const modalAge = dialog.querySelector('.review-modal__age');
+  const modalCity = dialog.querySelector('.review-modal__city');
   const modalText = dialog.querySelector('.review-modal__text');
   const closeButton = dialog.querySelector('.review-modal__close');
   const backButton = dialog.querySelector('.review-modal__back');
@@ -267,6 +315,8 @@ export function initReviewModal(root = document) {
       modalAvatar.setAttribute('alt', avatar.getAttribute('alt'));
       modalName.textContent = card.querySelector('.review-card__name').textContent;
       modalOccupation.textContent = card.querySelector('.review-card__occupation').textContent;
+      modalAge.textContent = card.querySelector('.review-card__age').textContent;
+      modalCity.textContent = card.querySelector('.review-card__city').textContent;
       modalText.textContent = card.querySelector('.review-card__text').textContent;
       showReviewView();
       documentRoot.body.classList.add('review-modal-open');
@@ -331,32 +381,83 @@ export function initAccordion(root = document) {
 export function validateContactForm(form, t = (key) => key) {
   const email = form.elements.email;
   const consent = form.elements.consent;
+  const comment = form.elements.comment;
   const errors = {};
   const emailValue = email.value.trim();
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailValue) errors.email = t('validation.emailRequired');
   else if (!emailPattern.test(emailValue)) errors.email = t('validation.emailInvalid');
+  if (comment?.value.length > 2000) errors.comment = t('validation.commentTooLong');
   if (!consent.checked) errors.consent = t('validation.consentRequired');
 
   return errors;
 }
 
-export function initContactForm(root = document, t = (key) => key) {
+export function initContactSuccessModal(root = document) {
+  const dialog = root.querySelector('.contact-success-modal');
+  if (!dialog) return null;
+
+  const documentRoot = root.nodeType === 9 ? root : root.ownerDocument;
+  const closeButton = dialog.querySelector('.contact-success-modal__close');
+  const confirmButton = dialog.querySelector('.contact-success-modal__button');
+  let opener = null;
+
+  const close = () => {
+    if (dialog.open) dialog.close();
+  };
+
+  const open = (trigger = null) => {
+    opener = trigger;
+    documentRoot.body.classList.add('contact-success-modal-open');
+    if (!dialog.open) dialog.showModal();
+    confirmButton.focus();
+  };
+
+  closeButton.addEventListener('click', close);
+  confirmButton.addEventListener('click', close);
+  dialog.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    close();
+  });
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) close();
+  });
+  dialog.addEventListener('close', () => {
+    documentRoot.body.classList.remove('contact-success-modal-open');
+    opener?.focus();
+    opener = null;
+  });
+
+  return { dialog, open, close };
+}
+
+export function initContactForm(root = document, t = (key) => key, locale = 'ru', options = {}) {
   const forms = [...root.querySelectorAll('[data-contact-form]')];
+  const fetchImpl = options.fetchImpl ?? globalThis.fetch?.bind(globalThis);
+  const timeoutMs = options.timeoutMs ?? 12_000;
+
+  const fieldMessage = (field, code) => {
+    if (field === 'email') return t(code === 'required' ? 'validation.emailRequired' : 'validation.emailInvalid');
+    if (field === 'consent') return t('validation.consentRequired');
+    if (field === 'comment') return t('validation.commentTooLong');
+    return '';
+  };
 
   forms.forEach((form) => {
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const errors = validateContactForm(form, t);
-      const emailError = form.querySelector('[data-form-error="email"]');
-      const consentError = form.querySelector('[data-form-error="consent"]');
-      const status = form.querySelector('.contact-form__status');
+      if (form.dataset.submitting === 'true') return;
 
-      emailError.textContent = errors.email ?? '';
-      consentError.textContent = errors.consent ?? '';
-      form.elements.email.setAttribute('aria-invalid', String(Boolean(errors.email)));
-      form.elements.consent.setAttribute('aria-invalid', String(Boolean(errors.consent)));
+      const errors = validateContactForm(form, t);
+      const status = form.querySelector('.contact-form__status');
+      const submit = form.querySelector('[type="submit"]');
+
+      form.querySelectorAll('[data-form-error]').forEach((errorElement) => {
+        const field = errorElement.dataset.formError;
+        errorElement.textContent = errors[field] ?? '';
+        form.elements[field]?.setAttribute('aria-invalid', String(Boolean(errors[field])));
+      });
 
       if (Object.keys(errors).length) {
         status.textContent = t('validation.checkForm');
@@ -364,8 +465,75 @@ export function initContactForm(root = document, t = (key) => key) {
         return;
       }
 
-      status.textContent = t('validation.success');
-      status.dataset.state = 'success';
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), timeoutMs);
+      form.dataset.submitting = 'true';
+      form.setAttribute('aria-busy', 'true');
+      submit.disabled = true;
+      status.textContent = t('validation.sending');
+      status.dataset.state = 'pending';
+
+      try {
+        if (!fetchImpl) throw new TypeError('Fetch is unavailable');
+
+        const response = await fetchImpl('/api/contact.php', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: form.elements.email.value.trim(),
+            comment: form.elements.comment?.value.trim() ?? '',
+            consent: form.elements.consent.checked,
+            locale,
+            website: form.elements.website?.value.trim() ?? '',
+          }),
+          signal: controller.signal,
+        });
+
+        let payload = null;
+        try {
+          payload = await response.json();
+        } catch {
+          // A non-JSON response is treated as an unavailable API below.
+        }
+
+        if (response.ok && payload?.ok === true) {
+          form.reset();
+          form.querySelectorAll('[aria-invalid]').forEach((field) => field.setAttribute('aria-invalid', 'false'));
+          status.textContent = t('validation.success');
+          status.dataset.state = 'success';
+          options.onSuccess?.({ form, submit });
+          return;
+        }
+
+        if (response.status === 400 && payload?.error === 'VALIDATION_ERROR') {
+          Object.entries(payload.fields ?? {}).forEach(([field, code]) => {
+            const errorElement = form.querySelector(`[data-form-error="${field}"]`);
+            if (errorElement) errorElement.textContent = fieldMessage(field, code);
+            form.elements[field]?.setAttribute('aria-invalid', 'true');
+          });
+          status.textContent = t('validation.checkForm');
+        } else if (response.status === 429 || payload?.error === 'RATE_LIMITED') {
+          status.textContent = t('validation.rateLimited');
+        } else if (response.status >= 500 && response.status < 600) {
+          status.textContent = t('validation.sendError');
+        } else {
+          status.textContent = t('validation.serverUnavailable');
+        }
+        status.dataset.state = 'error';
+      } catch (error) {
+        status.textContent = error?.name === 'AbortError'
+          ? t('validation.timeout')
+          : t('validation.networkError');
+        status.dataset.state = 'error';
+      } finally {
+        clearTimeout(timeout);
+        delete form.dataset.submitting;
+        form.removeAttribute('aria-busy');
+        submit.disabled = false;
+      }
     });
   });
 

@@ -1,0 +1,3 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(?:src|vendor)(?:/|$) - [F,L,NC]

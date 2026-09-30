@@ -10,6 +10,7 @@ export function ContactBlock({ idPrefix, id = '', className = '', t, content }) 
   const emailId = `${idPrefix}-email`;
   const commentId = `${idPrefix}-comment`;
   const consentId = `${idPrefix}-consent`;
+  const websiteId = `${idPrefix}-website`;
   const headingId = `${idPrefix}-contacts-heading`;
 
   return `
@@ -19,13 +20,17 @@ export function ContactBlock({ idPrefix, id = '', className = '', t, content }) 
       <form class="contact-form" id="${idPrefix}-contact-form" data-contact-form novalidate>
         ${FormField({ id: emailId, name: 'email', label: t('contact.email'), type: 'email', placeholder: content.contact.email })}
         ${FormField({ id: commentId, name: 'comment', label: t('contact.comment'), placeholder: t('contact.commentPlaceholder'), textarea: true })}
+        <div class="contact-form__honeypot" aria-hidden="true">
+          <label for="${websiteId}">Website</label>
+          <input id="${websiteId}" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
         <div class="contact-form__consent">
           <input id="${consentId}" name="consent" type="checkbox" />
           <label for="${consentId}">${t('contact.consentStart')} ${LegalLabel(t('contact.privacy'), content.contact.privacyUrl)} ${t('contact.and')} ${LegalLabel(t('contact.offer'), content.contact.offerUrl)}</label>
         </div>
         <p class="contact-form__consent-error" id="${consentId}-error" data-form-error="consent" aria-live="polite"></p>
         <button class="button button--primary contact-form__submit" type="submit">${t('contact.submit')}</button>
-        <p class="contact-form__status" aria-live="polite"></p>
+        <p class="contact-form__status" aria-live="polite" role="status"></p>
       </form>
       <p class="contacts__note">${MailIcon()} ${t('contact.note')}</p>
     </div>

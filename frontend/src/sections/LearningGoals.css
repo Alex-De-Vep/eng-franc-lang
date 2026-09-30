@@ -138,26 +138,39 @@
   left: 50%;
   z-index: 2;
   display: flex;
-  gap: 6px;
+  gap: 0;
   width: max-content;
   transform: translateX(-50%);
 }
 
 .learning-goals__pagination-bullet {
-  display: block;
+  position: relative;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.8;
+  place-items: center;
+}
+
+.learning-goals__pagination-bullet::before {
   width: 7px;
   height: 7px;
-  padding: 0;
   border: 1px solid var(--color-gold);
   border-radius: 50%;
   background: var(--color-surface);
-  cursor: pointer;
-  opacity: 0.8;
+  content: '';
 }
 
 .learning-goals__pagination-bullet--active {
-  background: var(--color-gold);
   opacity: 1;
+}
+
+.learning-goals__pagination-bullet--active::before {
+  background: var(--color-gold);
 }
 
 .learning-goals__copy h3 {
@@ -248,8 +261,8 @@
   }
 
   .learning-goals__copy li {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 25px;
   }
 }
 
@@ -275,8 +288,8 @@
   .learning-goals__tab {
     justify-content: flex-start;
     min-height: 52px;
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 24px;
     text-align: left;
   }
 
@@ -308,7 +321,7 @@
   }
 
   .learning-goals__copy li {
-    font-size: 17px;
-    line-height: 21px;
+    font-size: 20px;
+    line-height: 25px;
   }
 }

@@ -27,7 +27,16 @@ export function LearningGoals({ t, content }) {
                 <div class="learning-goals__slides swiper-wrapper">
                   ${goal.images.map((image, imageIndex) => `
                     <div class="learning-goals__slide swiper-slide">
-                      <img src="${image}" alt="${t('learningGoals.imageAlt', { goal: goal.title, index: imageIndex + 1 })}" loading="lazy" decoding="async" />
+                      <img
+                        src="${image.src}"
+                        srcset="${image.srcSet}"
+                        sizes="(max-width: 767px) 100vw, (max-width: 1279px) 52vw, 570px"
+                        width="${image.width}"
+                        height="${image.height}"
+                        alt="${t('learningGoals.imageAlt', { goal: goal.title, index: imageIndex + 1 })}"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
                   `).join('')}
                 </div>

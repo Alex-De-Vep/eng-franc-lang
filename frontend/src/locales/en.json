@@ -36,7 +36,7 @@
   },
   "about": {
     "heading": "About the tutor",
-    "portraitAlt": "Silhouette of the tutor",
+    "portraitAlt": "Photo of Irina",
     "introCardTitle": "ABOUT ME",
     "educationCardTitle": "EDUCATION",
     "experienceCardTitle": "EXPERIENCE",
@@ -115,42 +115,217 @@
     "readMore": "Read the full review",
     "close": "Close review",
     "back": "Back to reviews",
-    "instagram": {
-      "aria": "Watch student video reviews on Instagram Reels",
-      "title": "More real-life reviews",
-      "text": "Visit Instagram for more genuine student reviews in short Reels videos",
-      "cta": "Watch Reels"
-    },
     "items": [
       {
-        "name": "Elena",
-        "occupation": "UX/UI Designer, Russia",
-        "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."
+        "avatar": "/assets/images/reviews/farid.webp",
+        "name": "Farid",
+        "occupation": "Entrepreneur",
+        "age": "31 years old",
+        "city": "Thailand",
+        "text": "I studied English with Ira! It's the best investment! Efficiency matters to me, but here I got much more! Lively, intelligent conversation and a great friend!)) Someone it's always fun and easy to be with, on the same wavelength.)\nThe progress in the language came naturally, without tedious cramming. I sincerely recommend her!"
+      },
+      {
+        "avatar": "/assets/images/reviews/ksenia-illustrator.webp",
+        "name": "Ksenia",
+        "occupation": "Illustrator and designer",
+        "age": "26 years old",
+        "city": "Yoshkar-Ola",
+        "text": "I have to admit, it is a little difficult to return to English lessons after a break 😅\n\nBy the way, I never told you why I decided to study. Maybe this will be useful to someone 💌\nMy English was very good at school because I took it for the Unified State Exam, but I always had problems with pronunciation 😢\nLater my level began to drop: you need to immerse yourself in the language to maintain and improve your skills. At university I studied Spanish and French, and I thought that understanding English was enough. But recently I caught myself losing the skill, forgetting words and not knowing how to form sentences.\n\nThe universe heard me, and I happened to meet my former tutor Irina in a café—we studied together when I was in years 5–6 😂 Of course I took it as a sign and signed up for speaking lessons! Now we study twice a week and I can feel progress. It may be small so far, but my brain has started working again, and that means the first step has been made ✌🏼"
+      },
+      {
+        "avatar": "/assets/images/reviews/dmitrii.webp",
+        "name": "Dmitry",
+        "occupation": "Software developer",
+        "age": "24 years old",
+        "city": "Yoshkar-Ola / Saint Petersburg",
+        "text": "A huge thanks to Irina Evgenievna for the English lessons! At first, holding a conversation in English felt unusual and a bit challenging, but after a while the nervousness and tension fade away, your brain adjusts, and speaking becomes a real pleasure.\nEvery lesson had a relaxed atmosphere, which made it much easier to take in the new material. I have only the most positive impressions of our classes!"
+      },
+      {
+        "name": "Ksyusha",
+        "occupation": "Artist and designer",
+        "age": "25 years old",
+        "city": "Yoshkar-Ola",
+        "text": "I take a useful break from work 🤭\nThese are our English lessons with Irina! At the end of every lesson we open the pages and choose what happiness is for me 🥰\n\nToday we even studied outdoors—the wind did not stop us.\n\nBy the way, Irina speaks French too, and you can study with her online! A truly gifted teacher—I recommend her!\n\nThis is the approach I had long dreamed of finding: you are not afraid or shaking before a lesson, but meet your teacher as you would meet a friend—to share energy and have a laugh. And, of course, you gain not dry theory but the practical skills you really need to communicate in English."
+      },
+      {
+        "avatar": "/assets/images/reviews/ekaterina-musician.webp",
+        "name": "Ekaterina",
+        "occupation": "Musician and English teacher",
+        "age": "45 years old",
+        "city": "Yoshkar-Ola",
+        "text": "Hello my friends! Today I would tell you about one of my dreams and the person who helped me to do it. This is my English teacher Irina! She is really cool! I studied English with her from the end of May. And now I feel I can speak English fluently! I can present my thoughts and dreams and so on! It's happiness for me! I'm proud of myself! Sure, I don't know English enough well and I have a lot of mistakes but it is okay. Everybody is not ideal!\nI had a dream to speak English fluently. And one of the day I stopped dreaming and saw her on social media. And I asked myself: “Why not?”\nWhile I was learning English with Irina I also was studying at Moscow university and now I have a new professional education. I am an English teacher too). It's so cool! I can do it! One of my dreams is realized. 🙌 Thank you, Irina! 😘"
+      },
+      {
+        "avatar": "/assets/images/reviews/anastasia-realestate.webp",
+        "name": "Anastasia",
+        "occupation": "Real estate investment expert",
+        "age": "43 years old",
+        "city": "UAE",
+        "text": "The lessons always take place in a warm, friendly atmosphere. I like that the words and phrases we discuss—and anything that raises a question—are also typed into the messenger during the lesson.\nThere is no need to write anything down: it all stays on your phone, so you can return to it and refresh your memory at any time.\nThank you 🫶"
+      },
+      {
+        "avatar": "/assets/images/reviews/tatiana-walker.webp",
+        "name": "Tatiana",
+        "occupation": "Nordic walking coach",
+        "age": "25 years old",
+        "city": "Yoshkar-Ola",
+        "text": "“And then HE appeared—a kizomba dancer I knew from Turkey. We danced kizomba and tarraxa for more than three hours...\n...Then my legs suddenly failed me. They simply were not used to that kind of strain, and every step hurt.\nI spent a long time thinking about how to explain this to my dance partner because he only speaks English. I needed to say it tactfully, without offending him, and be able to describe the situation when he asked, ‘What happened?’\nI rehearsed the conversation in English for an entire hour—from two until three in the morning, as I still remember—and every step sent pain through my foot...\nFinally I decided to tell him. My mouth went dry and I hardly recognised my own voice, but it seemed to work. I owe it to my English teacher Irina: at that moment I remembered all her lessons, and they helped me so much 🤗\nThank you, Irina!”"
+      },
+      {
+        "avatar": "/assets/images/reviews/maria.webp",
+        "name": "Maria",
+        "occupation": "Foreign languages student",
+        "age": "20 years old",
+        "city": "Yoshkar-Ola",
+        "text": "I would like to express my gratitude and recommend Irina as an excellent French and English teacher 🥰👍🏻 Our lessons took place at convenient times, and the atmosphere was always very friendly and cheerful 😄 You can be sure that she truly loves her work and will help you achieve results 🫶🏼"
+      },
+      {
+        "avatar": "/assets/images/reviews/zoya.webp",
+        "name": "Zoya",
+        "occupation": "Figure skater",
+        "age": "16 years old",
+        "city": "Moscow",
+        "text": "I have been studying with Irina for more than two years. During that time I have improved both my grammar and my speaking. Irina also helped me prepare successfully for the OGE exam. As a tutor, she is kind and considerate and explains everything clearly.\nThank you so much for your work, understanding and support! We are still studying together, and right now we are focusing especially on spoken English. It will be useful to me in the future for work, everyday life and travel.\nThank you! ❤️"
+      },
+      {
+        "avatar": "/assets/images/reviews/ekaterina-model.webp",
+        "name": "Ekaterina",
+        "occupation": "Fashion model",
+        "age": "30 years old",
+        "city": "Thailand",
+        "text": "Irina, thank you so much for our English lessons! I am genuinely grateful for your patience and for finally helping me get my head around that damned Past Simple 😄\n\nGrammar and all the basics were exactly where I stumbled every time and eventually gave up learning English. Thanks to you, I finally have an understanding I can build on.\n\nKnowing the basics feels like learning to ride a bicycle: once you truly understand it, you never forget it. Now it is much easier for me to navigate everything else and at least understand how it all fits together. Without that foundation, English simply never made sense to me.\n\nI am very sorry that I cannot continue regular lessons at the moment, but I truly want to thank you. You have helped me so much ❤️"
+      },
+      {
+        "avatar": "/assets/images/reviews/oksana.webp",
+        "name": "Oksana",
+        "occupation": "Student",
+        "age": "36 years old",
+        "city": "Thailand",
+        "text": "I'd like to tell you about our English lessons with Irina. Ira and I have been studying for about three years now. When I started out, my English was limited to Hello, my name is Oksana; I'm from Russia; How are you?; I'm fine; two beer please 😁\nAfter all this time, my English has become much, much, much better. I used to be unable to communicate without a translator; now I hardly use one at all.\nIra's approach to teaching is simply perfect: we don't study rules and grammar, I pick it all up in conversation, and the topics come very easily. Learning with Ira is very comfortable — we always laugh a lot, chat a lot, and my level keeps improving.\nI am not her most diligent student, I'm sure of that, but I am very grateful that Ira never gives up on me and sees my potential. Together we have gone through all my stages, from denial to accepting that I shouldn't give in to my laziness and should keep studying. I am sure no other teacher would support you like this, and I know that if I had studied with anyone else I would have given up long ago. But if Ira sees potential in you, you have no chance of quitting — you will learn to speak, believe me 😁\nWhat I want to say: if you are as scatterbrained, lazy and restless as I am, but you really want to travel and feel at home in different countries and learn the language, I wholeheartedly recommend Ira! With her you will gain the knowledge you've been waiting for!"
+      },
+      {
+        "avatar": "/assets/images/reviews/anna.webp",
+        "name": "Anna",
+        "occupation": "Student",
+        "age": "30 years old",
+        "city": "Portugal",
+        "text": "When I started studying with Irina, my English was practically zero. I could hardly put together even a simple sentence, and the mere thought of speaking to a foreigner made me freeze. I was afraid of saying something wrong and looking foolish.\nBut already now I comfortably handle any everyday situation abroad: ordering coffee, asking for directions, checking into a hotel — none of it is a problem anymore. And most importantly, the fear of speaking is completely gone.\nIrina gives an individual approach for each specific student and makes lessons comfortable, pressure-free, on a variety of interesting topics. She also lets you flexibly adjust your schedule — very convenient for working people.\nIrina is a wonderful teacher and a true professional. I strongly recommend her to everyone who is afraid to start!"
+      },
+      {
+        "avatar": "/assets/images/reviews/tamara.webp",
+        "name": "Tamara",
+        "occupation": "10th-grade student, Bauman Lyceum",
+        "age": "",
+        "city": "Yoshkar-Ola",
+        "text": "Good morning! ☀️\nLessons with Irina create an atmosphere of ease and lightness. To be honest, this is the first teacher with such an interesting and varied approach: you can sit however you like, you can even lie down; tea, coffee, let's dance; Irina's fascinating travel stories that you can listen to for hours and want to visit those places and learn English.\nThe material is also well assimilated — of course, depending on how hard you try and whether you study, but Irina does most of the work anyway. There is also practice, but not boring and tedious — it's quite reasonable and memorable, easy and clear. There are things to memorise, but that's the same everywhere.\nI like how Irina presents the language: not mindless rule memorisation, but real conversational style so you can communicate with people in other countries. Every lesson we cover different topics — that broadens your horizons and knowledge of the language.\nThe lessons really pay off, and I see it. I used to be unable to ask 'how are you?' in English, and now I describe how my day went. There is real progress, and most importantly, Irina always explains when something is unclear. She'll explain everything: the material, customs and traditions, even about 67. Irina is a multifaceted person, and it's interesting to study with her — it's a pity not all teachers have this quality.\nIrina loves athletes, because discipline in language learning matters above all, and I fully understand that. If you're choosing a teacher with conversational, correct English, then definitely Irina. She really says that learning a language takes a long time — again, depending on the person's effort — but to understand all of English you need a great deal of time. So be patient, and everything will work out. Irina will steer you in the right direction and give you the knowledge you need."
+      },
+      {
+        "avatar": "/assets/images/reviews/arina.webp",
+        "name": "Arina",
+        "occupation": "9th-grade student",
+        "age": "",
+        "city": "Yoshkar-Ola",
+        "text": "Thank you for the lessons! With you, English stopped being something difficult and confusing: you explain everything simply and step by step, and if something doesn't work, you go over it again.\nI especially like that there's a lot of practice in the lessons: we don't just learn rules, we immediately try to apply them. We often play different games, but we never lose track of the lesson. You explain everything in an accessible and clear way, and you also structure the lessons perfectly: there's grammar, reading, conversation practice and important vocabulary.\nI feel that I've become more confident speaking and less afraid of making mistakes. You make lessons so much more interesting!\nThanks to you, English is no longer a subject to cram, but a useful skill! Thank you for your patience, your involvement and for helping me fall in love with English!"
+      },
+      {
+        "avatar": "/assets/images/reviews/yulia.webp",
+        "name": "Yulia",
+        "occupation": "Travel organizer, artist",
+        "age": "30 years old",
+        "city": "Moscow",
+        "text": "Ira, thank you for the lessons!\nYou are a very sensitive and empathetic teacher who really knows how to find an approach to every student (at least to me — for sure).\nThere was always a light and supportive atmosphere in the lessons, and I wasn't afraid to make mistakes) 🤍🤍🤍"
       },
       {
         "name": "Elena",
-        "occupation": "UX/UI Designer, Russia",
-        "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."
+        "occupation": "Student",
+        "age": "27 years old",
+        "city": "Mexico",
+        "text": "Irina Evgenievna, once you taught me to love English and to speak it calmly. And now I speak this language every day 😄 Thank you ❤️ I will always be grateful to you for that!"
       },
       {
-        "name": "Elena",
-        "occupation": "UX/UI Designer, Russia",
-        "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."
+        "avatar": "/assets/images/reviews/nika.webp",
+        "name": "Nika",
+        "occupation": "Student",
+        "age": "28 years old",
+        "city": "Yoshkar-Ola",
+        "text": "You know, in life the teacher really matters. It is thanks to the right mentor, the one suited to us, that we gain the desire to discover new things, to learn, to think. The teacher decides whether we come to love or hate what we set out to do, including a new language. That is why it is so important to find your own teacher, a professional.\nI was very lucky to study with you, because every one of our French lessons is a little about overcoming yourself. At first you think you can't, you won't manage it, but under your careful guidance you read — grumbling — a long text in a language you first encountered only six months ago. And you understand that you can. You can know more and even, perhaps, overcome your fears.\nIt is with teachers like this that you want to keep moving through life and love what you do.\nThanks to you, those very borders between countries and people, and even the borders of our own minds, are erased."
       },
       {
-        "name": "Elena",
-        "occupation": "UX/UI Designer, Russia",
-        "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."
+        "avatar": "/assets/images/reviews/milena.webp",
+        "name": "Milena",
+        "occupation": "Medical college student",
+        "age": "18 years old",
+        "city": "Yoshkar-Ola",
+        "text": "I want to say a huge thank you to Irina Evgenievna for our English lessons! I started studying at 12, in the 6th grade, and during our lessons I improved a lot — I began to understand, read and speak better. I'm so glad I found such a wonderful teacher 😊\nNow my younger sister is studying too and brings home good grades from school 🥳 I highly recommend ✅️✅️\nThank you so much for the knowledge ❤️❤️❤️"
       },
       {
-        "name": "Elena",
-        "occupation": "UX/UI Designer, Russia",
-        "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."
+        "name": "Tatiana",
+        "occupation": "Brand strategist, mentor",
+        "age": "40 years old",
+        "city": "Saint Petersburg",
+        "text": "For several months I studied English one-on-one with Irina. For now I had to pause, but I really want to come back. I finally started to enjoy learning the language.\nThe unworking mindsets from my school teachers — who said I was incapable and a total failure at this — are gone.\nConclusion: when there is a conscious desire, a teacher who believes in you, and no fear of making a mistake, you have every chance of reaching the result. Although we reach a result in any case — the question is only whether it satisfies us."
       },
       {
-        "name": "Elena",
-        "occupation": "UX/UI Designer, Russia",
-        "text": "I have been studying with Irina for several months and have finally stopped being afraid to speak English. Her lessons include plenty of real conversation practice, clear explanations and useful examples from everyday situations."
+        "avatar": "/assets/images/reviews/ksenia-22.webp",
+        "name": "Ksenia",
+        "occupation": "Student",
+        "age": "22 years old",
+        "city": "Kazan / Moscow",
+        "text": "Irina is a person who literally lives the language, loves it and infects every student with that love 🫶🏻\nEvery lesson was as informative and interesting as possible, covering both grammar and new vocabulary, but the best part was that there was always a conversation at the start — and for me, a person with a strong language barrier, that was especially important and necessary.\nEven outside the lesson, Ira is always in touch: she helped with homework, explained things again when needed and recommended additional sources for self-study.\nIn short, my great love and recommendation ❤️\nBisous!"
+      },
+      {
+        "name": "Margarita",
+        "occupation": "Mother of two sons",
+        "age": "",
+        "city": "Yoshkar-Ola",
+        "text": "I want to express my deep gratitude to our English teacher Irina Evgenievna for her professionalism, patience and sensitive approach to children. The lessons are always held in an interesting, lively way. My child studies with pleasure and has significantly improved his grades at school. Thank you for your work, your attention and for instilling a love of language in children! 🌸"
+      },
+      {
+        "name": "Elizaveta",
+        "occupation": "Photographer and videomaker",
+        "age": "26 years old",
+        "city": "Serbia",
+        "text": "Good afternoon! I'd like to share my feedback on the English lessons.\nI really like Irina Evgenievna's approach to learning the language and refreshing existing knowledge. What's very close to me is the focus on speaking practice. I also really love the extra materials she sends me: various topics and texts — they are very relevant and interesting)\nThank you for your work and effort!"
+      },
+      {
+        "avatar": "/assets/images/reviews/natalia.webp",
+        "name": "Natalia",
+        "occupation": "Sales manager with international companies",
+        "age": "29 years old",
+        "city": "Yoshkar-Ola",
+        "text": "We studied for a year, and I really liked the communicative approach — we talked a lot about everyday topics, travel, work, relationships and personal motivation, which really helped build my vocabulary.\nAt that time Irina was also developing as a coach, and we did many interesting psychological experiments and tests (all in French) — it was fascinating to watch my brain struggle and resist something new, but in the end the results were very interesting."
+      },
+      {
+        "avatar": "/assets/images/reviews/veronika.webp",
+        "name": "Veronika",
+        "occupation": "Student, Bauman Lyceum",
+        "age": "16 years old",
+        "city": "Yoshkar-Ola",
+        "text": "I studied with Irina for four months, and in that time my knowledge of the language grew noticeably! I got better at grammar and began to speak English more fluently. What I liked about the lessons was the teacher's approach to the student. There were always presentations that helped structure the information and make the material easier to remember. The creative tasks motivated me to keep learning the language.\nAs a teacher, Ira is very understanding, sincere and cheerful, but she is also strict — and without those qualities a teacher wouldn't be a teacher!\nIn short, I recommend her to everyone!"
+      },
+      {
+        "avatar": "/assets/images/reviews/masha.webp",
+        "name": "Masha",
+        "occupation": "Student",
+        "age": "12 years old",
+        "city": "Yoshkar-Ola",
+        "text": "I really enjoy studying with Irina Evgenievna 😍 I've been studying with her for a very long time — she also taught my sister. She explains all the topics we cover in a really cool way 😎 I recommend studying English with Irina Evgenievna to everyone! ☺️"
+      },
+      {
+        "avatar": "/assets/images/reviews/diana.webp",
+        "name": "Diana",
+        "occupation": "Student",
+        "age": "33 years old",
+        "city": "Montenegro / Kazan",
+        "text": "I'd like to leave a review about my English lessons with Irina. The lessons are easy and relaxed; I really like the way she presents knowledge and her approach. I stopped being afraid to speak English while traveling and learned a lot of interesting slang expressions that native speakers actually use in real life — it's very interesting and enlightening.\nThank you so much, Irina, for your professionalism and the friendly atmosphere in the lessons 👍🤗"
+      },
+      {
+        "avatar": "/assets/images/reviews/anastasia-milli.webp",
+        "name": "Anastasia",
+        "occupation": "Founder of the MILLI children's English studio",
+        "age": "27 years old",
+        "city": "Yoshkar-Ola",
+        "text": "I studied with Irina Evgenievna when I was in high school.\nI am very grateful to the Universe for meeting Irina Evgenievna: the lessons took place in a light and interesting atmosphere. I gained a tremendous amount of knowledge and a direction for further growth. Thank you 🙏"
       }
     ]
   },
@@ -207,7 +382,12 @@
     "and": "and",
     "offer": "Terms of Service",
     "submit": "Send request",
-    "note": "We will reply by email shortly"
+    "note": "We will reply by email shortly",
+    "successEyebrow": "Request successfully sent",
+    "successTitle": "Thank you for your request!",
+    "successText": "I have received your details and will contact you by email shortly.",
+    "successClose": "Done",
+    "successCloseLabel": "Close the success message"
   },
   "coffee": {
     "photoAlt": "Conversation club members chatting over coffee",
@@ -234,6 +414,10 @@
   "atmosphere": {
     "heading": "My atmosphere",
     "qrAlt": "Social media QR code",
+    "telegramQrAlt": "Telegram QR code to contact Irina",
+    "openPhoto": "Open photo: {{description}}",
+    "dialogLabel": "Photo viewer for the My atmosphere section",
+    "closePhoto": "Close photo",
     "alts": [
       "Students learning English together",
       "A team preparing a business presentation",
@@ -269,9 +453,16 @@
   "validation": {
     "emailRequired": "Enter your email",
     "emailInvalid": "Enter a valid email address",
+    "commentTooLong": "The comment must be no longer than 2,000 characters",
     "consentRequired": "Please consent to the processing of your data",
     "checkForm": "Please check the form",
-    "success": "Your details have been checked. Sending will be available once the backend is connected."
+    "sending": "Sending your request…",
+    "success": "Your request has been sent. I will contact you by email shortly.",
+    "sendError": "The request could not be sent. Please try again later.",
+    "rateLimited": "Too many attempts. Please try again in 10 minutes.",
+    "timeout": "The server took too long to respond. Check your connection and try again.",
+    "networkError": "Could not connect to the server. Check your internet connection and try again.",
+    "serverUnavailable": "The sending service is temporarily unavailable. Please try again later."
   },
   "swiper": {
     "previousPhoto": "Previous photo",

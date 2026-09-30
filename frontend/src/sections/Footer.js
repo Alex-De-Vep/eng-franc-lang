@@ -1,7 +1,7 @@
 import { Logo } from '../components/Logo.js';
 import { MailIcon } from '../components/MailIcon.js';
 function FooterSocial(item, t) {
-  if (!item.url) return `<span class="site-footer__social site-footer__social--disabled" aria-label="${item.label}: ${t('common.linkUnavailable')}"><img src="${item.icon}" alt="" /></span>`;
+  if (!item.url) return `<span class="site-footer__social site-footer__social--disabled" aria-hidden="true"><img src="${item.icon}" alt="" /></span>`;
   return `<a class="site-footer__social" href="${item.url}" aria-label="${item.label}"><img src="${item.icon}" alt="" /></a>`;
 }
 
