@@ -27,23 +27,24 @@
 }
 
 .about-card--education {
-  background: var(--color-sage);
+  background: var(--color-surface);
 }
 
 .about-card--intro {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 150px 1fr;
   gap: 12px 20px;
   align-content: start;
   padding: 8px 17px 18px;
+  background: var(--color-sage);
 }
 
 .about-card__portrait {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 132px;
+  width: 150px;
+  height: 165px;
   border-radius: 17px;
   background: var(--color-beige);
 }
@@ -58,7 +59,7 @@
 .about-card__intro-copy {
   color: #684C3B;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 100%;
 }
@@ -74,7 +75,7 @@
 .about-card__title {
   color: #684C3B;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 100%;
   text-align: center;
@@ -91,7 +92,7 @@
   grid-column: 1 / -1;
   color: #684C3B;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 100%;
 }
@@ -121,7 +122,7 @@
   padding-left: 22px;
   color: #684C3B;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 20px;
   line-height: 100%;
 }
 
@@ -148,17 +149,17 @@
   margin: 0;
   color: #684C3B;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 20px;
   line-height: 100%;
 }
 
 .about__quote {
   display: grid;
-  grid-template-columns: 150px 570px 150px;
+  grid-template-columns: 150px 620px 150px;
   gap: 30px;
   align-items: center;
   justify-content: center;
-  margin-top: 18px;
+  margin-top: 40px;
 }
 
 .about__quote span {
@@ -169,7 +170,7 @@
 .about__quote blockquote {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 24px;
   font-style: italic;
   line-height: 22px;
   text-align: center;
@@ -246,14 +247,18 @@
   }
 
   .about-card--intro {
-    grid-template-columns: 96px 1fr;
+    order: -1;
+  }
+
+  .about-card--intro {
+    grid-template-columns: 110px 1fr;
     gap: 12px 16px;
     padding: 14px 16px 20px;
   }
 
   .about-card__portrait {
-    width: 96px;
-    height: 112px;
+    width: 110px;
+    height: 121px;
   }
 
   .about-card__intro-copy,

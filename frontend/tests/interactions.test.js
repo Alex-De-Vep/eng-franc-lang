@@ -47,8 +47,8 @@ describe('atmosphere gallery', () => {
     expect(document.querySelectorAll('.atmosphere__photo-button')).toHaveLength(photoTiles.length);
     expect(document.querySelectorAll('.atmosphere__qr')).toHaveLength(qrTiles.length);
     expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.getAttribute('src').endsWith('-640.webp'))).toBe(true);
-    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.getAttribute('srcset').endsWith('640w'))).toBe(true);
-    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => !image.getAttribute('srcset').includes(image.dataset.fullSrc))).toBe(true);
+    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.getAttribute('srcset').endsWith('1200w'))).toBe(true);
+    expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.getAttribute('srcset').includes('640w'))).toBe(true);
     expect([...document.querySelectorAll('.atmosphere__photo')].every((image) => image.dataset.fullSrc.endsWith('.webp'))).toBe(true);
     qrTiles.forEach((tile) => {
       const link = document.querySelector(`.atmosphere__qr-link[href="${tile.qr.url}"]`);
@@ -269,7 +269,7 @@ describe('learning goals', () => {
     expect([...panels].slice(1).every((panel) => panel.hidden)).toBe(true);
     expect([...mediaPanels].slice(1).every((panel) => panel.hidden)).toBe(true);
     expect([...document.querySelectorAll('.learning-goals__slide img')].every((image) => image.getAttribute('src').endsWith('-640.webp'))).toBe(true);
-    expect([...document.querySelectorAll('.learning-goals__slide img')].every((image) => image.getAttribute('srcset').endsWith('640w'))).toBe(true);
+    expect([...document.querySelectorAll('.learning-goals__slide img')].every((image) => image.getAttribute('srcset').endsWith('1200w'))).toBe(true);
     expect([...document.querySelectorAll('.learning-goals__slide img')].every((image) => image.hasAttribute('width') && image.hasAttribute('height'))).toBe(true);
   });
 
@@ -281,7 +281,7 @@ describe('learning goals', () => {
     expect(tabs[0].getAttribute('aria-selected')).toBe('false');
     expect(tabs[2].getAttribute('aria-selected')).toBe('true');
     expect(panel.hidden).toBe(false);
-    expect(panel.querySelector('h3').textContent).toBe(siteContent.learningGoals[2].title);
+    expect(tabs[2].lastElementChild.textContent).toBe(siteContent.learningGoals[2].title);
     expect([...panel.querySelectorAll('li')].map((item) => item.textContent)).toEqual(siteContent.learningGoals[2].points);
     expect(document.querySelector('[data-learning-goal-media="2"]').hidden).toBe(false);
     expect(document.querySelectorAll('[data-learning-goal-media="2"] .learning-goals__slide')).toHaveLength(siteContent.learningGoals[2].images.length);

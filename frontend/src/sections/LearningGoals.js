@@ -1,6 +1,7 @@
-import { SectionHeading } from '../components/SectionHeading.js';
-export function LearningGoals({ t, content }) {
-  return `
+import {SectionHeading} from '../components/SectionHeading.js';
+
+export function LearningGoals({t, content}) {
+    return `
     <section class="learning-goals" id="goals" aria-labelledby="goals-title">
       <div class="container learning-goals__inner">
         ${SectionHeading(t('learningGoals.heading'), 'learning-goals__heading')}
@@ -33,17 +34,17 @@ export function LearningGoals({ t, content }) {
                         sizes="(max-width: 767px) 100vw, (max-width: 1279px) 52vw, 570px"
                         width="${image.width}"
                         height="${image.height}"
-                        alt="${t('learningGoals.imageAlt', { goal: goal.title, index: imageIndex + 1 })}"
+                        alt="${t('learningGoals.imageAlt', {goal: goal.title, index: imageIndex + 1})}"
                         loading="lazy"
                         decoding="async"
                       />
                     </div>
                   `).join('')}
                 </div>
-                <button class="learning-goals__arrow learning-goals__arrow--prev" type="button" aria-label="${t('learningGoals.previousImage', { goal: goal.title })}">
+                <button class="learning-goals__arrow learning-goals__arrow--prev" type="button" aria-label="${t('learningGoals.previousImage', {goal: goal.title})}">
                   <img src="/assets/icons/arrow-right.svg" alt="" />
                 </button>
-                <button class="learning-goals__arrow learning-goals__arrow--next" type="button" aria-label="${t('learningGoals.nextImage', { goal: goal.title })}">
+                <button class="learning-goals__arrow learning-goals__arrow--next" type="button" aria-label="${t('learningGoals.nextImage', {goal: goal.title})}">
                   <img src="/assets/icons/arrow-right.svg" alt="" />
                 </button>
                 <div class="learning-goals__pagination" aria-label="${t('learningGoals.pagination')}"></div>
@@ -59,7 +60,6 @@ export function LearningGoals({ t, content }) {
                 aria-labelledby="learning-goal-tab-${index}"
                 ${index === 0 ? '' : 'hidden'}
               >
-                <h3>${goal.title}</h3>
                 <ul>${goal.points.map((point) => `<li>${point}</li>`).join('')}</ul>
               </div>
             `).join('')}

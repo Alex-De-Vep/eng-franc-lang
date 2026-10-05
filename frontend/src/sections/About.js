@@ -1,13 +1,20 @@
-import { SectionHeading } from '../components/SectionHeading.js';
-import { Divider } from '../components/Divider.js';
-export function About({ content }) {
-  const { about } = content;
+import {SectionHeading} from '../components/SectionHeading.js';
+import {Divider} from '../components/Divider.js';
 
-  return `
+export function About({content}) {
+    const {about} = content;
+
+    return `
     <section class="about" id="about" aria-labelledby="about-title">
       <div class="container about__inner">
         ${SectionHeading(about.heading, 'about__heading')}
         <div class="about__cards">
+          <article class="about-card about-card--education">
+            <img class="about-card__icon" src="/assets/icons/education.svg" alt="${about.educationIconAlt}" />
+            <h3 class="about-card__title">${about.educationCardTitle}</h3>
+            ${Divider('about-card__divider')}
+            <ul class="about-card__list">${about.education.map((item) => `<li>${item}</li>`).join('')}</ul>
+          </article>
           <article class="about-card about-card--intro">
             <div class="about-card__portrait"><img src="/assets/images/irina-portrait.webp" alt="${about.portraitAlt}" /></div>
             <div class="about-card__intro-copy">
@@ -17,12 +24,6 @@ export function About({ content }) {
               <p>${about.introText}</p>
             </div>
             <div class="about-card__facts">${about.facts.map((fact) => `<p>${fact}</p>`).join('')}</div>
-          </article>
-          <article class="about-card about-card--education">
-            <img class="about-card__icon" src="/assets/icons/education.svg" alt="${about.educationIconAlt}" />
-            <h3 class="about-card__title">${about.educationCardTitle}</h3>
-            ${Divider('about-card__divider')}
-            <ul class="about-card__list">${about.education.map((item) => `<li>${item}</li>`).join('')}</ul>
           </article>
           <article class="about-card about-card--experience">
             <img class="about-card__icon" src="/assets/icons/experience.svg" alt="${about.experienceIconAlt}" />

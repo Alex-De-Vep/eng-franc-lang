@@ -298,6 +298,7 @@ export function initReviewModal(root = document) {
   const showReviewView = () => {
     reviewView.hidden = false;
     contactView.hidden = true;
+    reviewView.scrollTop = 0;
     dialog.setAttribute('aria-labelledby', 'review-modal-name');
   };
 
@@ -331,6 +332,7 @@ export function initReviewModal(root = document) {
   ctaButton.addEventListener('click', () => {
     reviewView.hidden = true;
     contactView.hidden = false;
+    contactView.scrollTop = 0;
     dialog.setAttribute('aria-labelledby', contactHeading.id);
     contactHeading.focus();
   });
