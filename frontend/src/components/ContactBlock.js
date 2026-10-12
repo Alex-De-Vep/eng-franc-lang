@@ -12,6 +12,7 @@ export function ContactBlock({ idPrefix, id = '', className = '', t, content }) 
   const consentId = `${idPrefix}-consent`;
   const websiteId = `${idPrefix}-website`;
   const headingId = `${idPrefix}-contacts-heading`;
+  const telegramLinkId = `${idPrefix}-telegram-link`;
 
   return `
     <div class="contacts ${className}"${id ? ` id="${id}"` : ''}>
@@ -33,6 +34,14 @@ export function ContactBlock({ idPrefix, id = '', className = '', t, content }) 
         <p class="contact-form__status" aria-live="polite" role="status"></p>
       </form>
       <p class="contacts__note">${MailIcon()} ${t('contact.note')}</p>
+      <section class="contacts__alternative" aria-labelledby="${telegramLinkId}">
+        <p class="contacts__alternative-divider"><span>${t('contact.alternativeOr')}</span></p>
+        <a class="contacts__telegram" id="${telegramLinkId}" href="${content.contact.telegramUrl}" target="_blank" rel="noopener noreferrer">
+          <span class="contacts__telegram-icon" aria-hidden="true"><img src="/assets/icons/telegram.svg" alt="" width="24" height="24" /></span>
+          <span class="contacts__telegram-label">${t('contact.telegramApplication')}</span>
+          <span class="contacts__telegram-arrow" aria-hidden="true">↗</span>
+        </a>
+      </section>
     </div>
   `;
 }

@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  padding-top: 180px;
+  padding-top: 100px;
 }
 
 .coffee-club__photo {

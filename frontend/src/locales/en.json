@@ -17,10 +17,12 @@
   "navigation": [
     "Home",
     "About",
-    "Lessons",
+    "Classes",
     "Reviews",
     "FAQ",
-    "Contact"
+    "Contact",
+    "Club",
+    "Atmosphere"
   ],
   "hero": {
     "titleStart": "English",
@@ -60,6 +62,45 @@
       "years of private teaching"
     ],
     "quote": "“I will help you make a foreign language more than a school subject — your second voice: natural, confident and precise.”"
+  },
+  "approach": {
+    "heading": "My lessons",
+    "statement": "English or French — your pace, your goals, your results.",
+    "description": "My approach is about freedom, real-life situations, motivation and humour. Here’s how it works:",
+    "items": [
+      {
+        "title": "A flexible format, wherever you are.",
+        "text": "Online or in person: a café, restaurant, business lunch, by the sea, in a car and more. You can even have a lesson from bed, just after waking up or before going to sleep. The schedule fits you. You don’t put your life on hold for a language — the language becomes part of it."
+      },
+      {
+        "title": "No textbooks or repetitive exercises.",
+        "text": "We follow what engages your mind: videos, lively topics, humour and current events. New vocabulary goes straight into conversation — note it down and put it to use."
+      },
+      {
+        "title": "Fast preparation for real-life tasks.",
+        "text": "A trip, a meeting, negotiations? We focus on what you need right now. Nothing but practice and confidence."
+      },
+      {
+        "title": "Homework only when you ask for it.",
+        "text": "Want to reinforce what you’ve learnt? I’ll give you something to practise. It’s all about your own motivation and results."
+      },
+      {
+        "title": "Online with the camera off — sharpen your listening.",
+        "text": "Your listening becomes sharper: you start understanding speech better instead of translating in your head. Comfortable, much faster and more effective."
+      },
+      {
+        "title": "In-person lessons in real settings — build concentration.",
+        "text": "A café or restaurant isn’t silence — it’s life. We learn to speak and listen here and now. You leave ready for real conversations."
+      },
+      {
+        "title": "A bonus: films, videos and visual materials in the original language.",
+        "text": "We watch, discuss and explore — you absorb the language naturally. Engaging, vivid and useful."
+      }
+    ],
+    "closingTitle": "Why me?",
+    "closingText": "Because you can feel the results from the very first lesson. No stress, boredom or school rules.",
+    "invitation": "Book now — and start speaking tomorrow!",
+    "cta": "Book a trial lesson"
   },
   "learningGoals": {
     "heading": "What do you need English for?",
@@ -141,6 +182,14 @@
         "text": "A huge thanks to Irina Evgenievna for the English lessons! At first, holding a conversation in English felt unusual and a bit challenging, but after a while the nervousness and tension fade away, your brain adjusts, and speaking becomes a real pleasure.\nEvery lesson had a relaxed atmosphere, which made it much easier to take in the new material. I have only the most positive impressions of our classes!"
       },
       {
+        "avatar": "/assets/images/reviews/helene.webp",
+        "name": "Hélène",
+        "occupation": "Designer",
+        "age": "27 years old",
+        "city": "Mexico",
+        "text": "Before my lessons with Irina Evgenievna, I did not understand English grammar at all in the way it is usually explained in textbooks. But Irina Evgenievna knows how to explain everything as clearly and simply as possible — I still remember the schemes we learned in class 13 years ago!\n\nMoreover, our lessons were held entirely in English, which helped me immerse myself in the language very quickly, start understanding spoken English and use it more freely. And fall in love with this language 🫶\n\nNow English has become an inseparable part of my life — I use it constantly both in everyday life and at work. Thank you so much for the knowledge that has stayed with me for so many years! ❤️"
+      },
+      {
         "name": "Ksyusha",
         "occupation": "Artist and designer",
         "age": "25 years old",
@@ -186,6 +235,13 @@
         "age": "16 years old",
         "city": "Moscow",
         "text": "I have been studying with Irina for more than two years. During that time I have improved both my grammar and my speaking. Irina also helped me prepare successfully for the OGE exam. As a tutor, she is kind and considerate and explains everything clearly.\nThank you so much for your work, understanding and support! We are still studying together, and right now we are focusing especially on spoken English. It will be useful to me in the future for work, everyday life and travel.\nThank you! ❤️"
+      },
+      {
+        "name": "Dasha",
+        "occupation": "Student",
+        "age": "29 years old",
+        "city": "Denver, USA",
+        "text": "For 3 months now Irina has been dealing with my cringy (non-)French accent, but I can already understand funny YouTube videos and memes, and I can tell you almost without stumbling what I did today, am doing now and will do next 😄\nI started learning French without any particular expectations, but the process is going great!\n\nIrina is so great that she even teaches me in English, because I find educational content in Russian a bit hard to follow.\n\nMerci, Irina! Tu es super 🥖🍷🇫🇷"
       },
       {
         "avatar": "/assets/images/reviews/ekaterina-model.webp",
@@ -238,8 +294,8 @@
       {
         "name": "Elena",
         "occupation": "Student",
-        "age": "27 years old",
-        "city": "Mexico",
+        "age": "24 years old",
+        "city": "Yoshkar-Ola",
         "text": "Irina Evgenievna, once you taught me to love English and to speak it calmly. And now I speak this language every day 😄 Thank you ❤️ I will always be grateful to you for that!"
       },
       {
@@ -383,6 +439,8 @@
     "offer": "Terms of Service",
     "submit": "Send request",
     "note": "We will reply by email shortly",
+    "telegramApplication": "Telegram",
+    "alternativeOr": "or",
     "successEyebrow": "Request successfully sent",
     "successTitle": "Thank you for your request!",
     "successText": "I have received your details and will contact you by email shortly.",
@@ -414,7 +472,7 @@
   "atmosphere": {
     "heading": "My atmosphere",
     "qrAlt": "Social media QR code",
-    "telegramQrAlt": "Telegram QR code to contact Irina",
+    "telegramQrAlt": "QR code for Irina's travel Telegram channel",
     "openPhoto": "Open photo: {{description}}",
     "dialogLabel": "Photo viewer for the My atmosphere section",
     "closePhoto": "Close photo",
@@ -446,7 +504,10 @@
     "navigation": "Navigation",
     "aboutTeacher": "About the tutor",
     "learningGoals": "Learning goals",
+    "coffeeClub": "Coffee Club",
+    "frenchLessons": "French lessons",
     "contacts": "Contact",
+    "telegramApplication": "Apply via Telegram",
     "privacy": "Privacy Policy",
     "rights": "All rights reserved"
   },

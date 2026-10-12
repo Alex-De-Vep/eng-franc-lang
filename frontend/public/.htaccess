@@ -1,8 +1,14 @@
 Options -Indexes
 RewriteEngine On
 
-RewriteCond %{HTTP_HOST} ^(www\.)?iripurtova-languages\.ru$ [NC]
-RewriteRule ^ https://iripurtova-languages.com%{REQUEST_URI} [R=301,L,NE]
+RewriteCond %{HTTP_HOST} ^www\.iripurtova-languages\.ru$ [NC]
+RewriteRule ^ https://iripurtova-languages.ru%{REQUEST_URI} [R=301,L,NE]
+
+RewriteCond %{HTTP_HOST} ^iripurtova-languages\.ru$ [NC]
+RewriteRule ^$ /ru/ [R=301,L,NE]
 
 RewriteCond %{HTTP_HOST} ^www\.iripurtova-languages\.com$ [NC]
 RewriteRule ^ https://iripurtova-languages.com%{REQUEST_URI} [R=301,L,NE]
+
+RewriteCond %{HTTP_HOST} ^iripurtova-languages\.com$ [NC]
+RewriteRule ^$ /en/ [R=301,L,NE]

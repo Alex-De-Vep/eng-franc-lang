@@ -1,6 +1,6 @@
 import { localePath, supportedLocales } from '../i18n.js';
 
-const navigationHrefs = ['#home', '#about', '#goals', '#reviews', '#faq', '#contacts'];
+const navigationHrefs = ['#home', '#about', '#approach', '#reviews', '#faq', '#contacts', '#coffee-club', '#atmosphere'];
 
 const galleryImage = (name, height) => ({
   src: `/assets/images/learning-goals/${name}-640.webp`,
@@ -103,7 +103,7 @@ const atmosphereAssets = [
   ['atmosphere__tile--pbig2', galleryImages.atmosphereImg7151],
   ['atmosphere__tile--telegram', null, {
     image: '/assets/images/qr-telegram.webp',
-    url: 'https://t.me/iriskame',
+    url: 'https://t.me/irina_purtova_voyage',
     altKey: 'telegramQrAlt',
   }],
   ['atmosphere__tile--p9', galleryImages.atmosphereImg6441],
@@ -122,22 +122,37 @@ export function createSiteContent(t, locale, hash = '') {
   const localizedReviews = t('reviews.items', { returnObjects: true });
   const atmosphereAlts = t('atmosphere.alts', { returnObjects: true });
 
+  const telegramBotUrl = `https://t.me/PurtovaLanguagesBot?start=website_${locale}`;
+
   return {
     navigation: navigationHrefs.map((href, index) => ({ href, label: navigationLabels[index] })),
+    footerNavigation: [
+      { href: '#home', label: navigationLabels[0] },
+      { href: '#about', label: t('footer.aboutTeacher') },
+      { href: '#approach', label: t('approach.heading') },
+      { href: '#goals', label: t('footer.learningGoals') },
+      { href: '#reviews', label: navigationLabels[3] },
+      { href: '#faq', label: navigationLabels[4] },
+      { href: '#contacts', label: navigationLabels[5] },
+      { href: '#coffee-club', label: t('footer.coffeeClub') },
+      { href: '#french-lessons', label: t('footer.frenchLessons') },
+      { href: '#atmosphere', label: t('atmosphere.heading') },
+    ],
     socialLinks: [
-      { label: 'Telegram', icon: '/assets/icons/telegram.svg', url: 'https://t.me/iriskame' },
+      { label: 'Telegram', icon: '/assets/icons/telegram.svg', url: telegramBotUrl },
       { label: 'WhatsApp', icon: '/assets/icons/whatsapp.svg', url: 'https://wa.me/qr/7XAE6K2W2LJLM1' },
     ],
     languages: supportedLocales.map((code) => ({ code: code.toUpperCase(), locale: code, active: code === locale, href: localePath(code, hash) })),
     hero: t('hero', { returnObjects: true }),
     about: t('about', { returnObjects: true }),
+    approach: t('approach', { returnObjects: true }),
     learningGoals: goalAssets.map((assets, index) => ({ ...assets, ...localizedGoals[index] })),
     reviews: localizedReviews.map((review, index) => ({
       ...review,
       avatar: review.avatar || reviewAvatars[index % reviewAvatars.length],
     })),
     faq: t('faq.items', { returnObjects: true }),
-    contact: { email: 'ipurtova.37@gmail.com', privacyUrl: null, offerUrl: null },
+    contact: { email: 'ipurtova.37@gmail.com', privacyUrl: null, offerUrl: null, telegramUrl: telegramBotUrl },
     atmosphereTiles: atmosphereAssets.map(([className, image, qr], index) => ({
       className,
       ...(image ? { image, alt: atmosphereAlts[index] } : { qr: { ...qr, alt: t(`atmosphere.${qr.altKey}`) } }),

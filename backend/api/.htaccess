@@ -1,3 +1,5 @@
 Options -Indexes
 RewriteEngine On
-RewriteRule ^(?:src|vendor)(?:/|$) - [F,L,NC]
+RewriteRule ^(?:src|vendor|scripts|config)(?:/|$) - [F,L,NC]
+RewriteRule (?:^|/)(?:telegram-config|contact-config)\.php$ - [F,L,NC]
+RewriteRule (?:^|/)telegram-bot(?:/|$) - [F,L,NC]

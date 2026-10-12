@@ -6,9 +6,11 @@
   "require": {
     "php": "^8.2",
     "ext-ctype": "*",
+    "ext-curl": "*",
     "ext-filter": "*",
     "ext-hash": "*",
     "ext-json": "*",
+    "ext-mbstring": "*",
     "ext-openssl": "*",
     "phpmailer/phpmailer": "^7.1"
   },
@@ -17,12 +19,14 @@
   },
   "autoload": {
     "psr-4": {
-      "Iripurtova\\Contact\\": "src/"
+      "Iripurtova\\Contact\\": "src/",
+      "Iripurtova\\Telegram\\": "src/Telegram/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Iripurtova\\Contact\\Tests\\": "tests/"
+      "Iripurtova\\Contact\\Tests\\": "tests/",
+      "Iripurtova\\Telegram\\Tests\\": "tests/Telegram/"
     }
   },
   "scripts": {

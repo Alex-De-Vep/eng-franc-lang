@@ -1,5 +1,4 @@
 .site-footer {
-  height: 240px;
   color: #000;
   background: linear-gradient(
     to bottom,
@@ -10,16 +9,16 @@
 
 .site-footer__container {
   width: 1000px;
-  height: 100%;
   margin-inline: auto;
   padding-top: 30px;
+  padding-bottom: 24px;
 }
 
 .site-footer__inner {
   display: grid;
   grid-template-columns: 250px 450px 220px;
   gap: 40px;
-  height: 120px;
+  align-items: start;
 }
 
 .site-footer__about {
@@ -41,6 +40,7 @@
 
 .site-footer__navigation,
 .site-footer__contacts {
+  min-width: 0;
   padding: 9px;
   border-left: 1px solid #000;
 }
@@ -78,6 +78,7 @@
   letter-spacing: 0.1px;
   text-align: left;
   white-space: normal;
+  overflow-wrap: break-word;
 }
 
 .site-footer__navigation a:hover {
@@ -93,7 +94,8 @@
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.1px;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .site-footer__mail {
@@ -171,6 +173,19 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.7fr);
+  }
+
+  .site-footer__contacts {
+    grid-column: 1 / -1;
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(83, 59, 44, 0.45);
+    border-left: 0;
+  }
+}
+
 @media (max-width: 767px) {
   .site-footer__container {
     padding: 38px 16px 24px;
@@ -179,6 +194,7 @@
   .site-footer__inner {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: 26px;
   }
 

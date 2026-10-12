@@ -10,6 +10,7 @@ import './styles/global.css';
 import './sections/Header.css';
 import './sections/Hero.css';
 import './sections/About.css';
+import './sections/Approach.css';
 import './sections/LearningGoals.css';
 import './sections/Reviews.css';
 import './sections/FaqContact.css';
@@ -21,6 +22,7 @@ import './sections/Footer.css';
 import { Header } from './sections/Header.js';
 import { Hero } from './sections/Hero.js';
 import { About } from './sections/About.js';
+import { Approach } from './sections/Approach.js';
 import { LearningGoals } from './sections/LearningGoals.js';
 import { Reviews } from './sections/Reviews.js';
 import { FaqContact } from './sections/FaqContact.js';
@@ -47,6 +49,7 @@ app.innerHTML = resolveAssetMarkup([
   '<main>',
   Hero(context),
   About(context),
+  Approach(context),
   LearningGoals(context),
   Reviews(context),
   FaqContact(context),

@@ -112,10 +112,48 @@ describe('social contact links', () => {
   it('renders active Telegram and WhatsApp links in the header and footer', () => {
     document.body.innerHTML = `${Header(context)}${Footer(context)}`;
 
-    ['https://t.me/iriskame', 'https://wa.me/qr/7XAE6K2W2LJLM1'].forEach((url) => {
+    ['https://t.me/PurtovaLanguagesBot?start=website_ru', 'https://wa.me/qr/7XAE6K2W2LJLM1'].forEach((url) => {
       expect(document.querySelector(`.site-header__social-link[href="${url}"]`)).not.toBeNull();
       expect(document.querySelector(`.site-footer__social[href="${url}"]`)).not.toBeNull();
     });
+
+    // Both Telegram social links open in a new tab safely.
+    document.querySelectorAll('.site-header__social-link, .site-footer__social').forEach((link) => {
+      expect(link.getAttribute('target')).toBe('_blank');
+      expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+    });
+  });
+
+  it('builds the Telegram deep link from the active locale', () => {
+    expect(siteContent.contact.telegramUrl).toBe('https://t.me/PurtovaLanguagesBot?start=website_ru');
+
+    const enContent = createSiteContent(createTestTranslator(en), 'en');
+    const frContent = createSiteContent(createTestTranslator(fr), 'fr');
+    expect(enContent.contact.telegramUrl).toBe('https://t.me/PurtovaLanguagesBot?start=website_en');
+    expect(frContent.contact.telegramUrl).toBe('https://t.me/PurtovaLanguagesBot?start=website_fr');
+    expect(frContent.socialLinks[0].url).toBe('https://t.me/PurtovaLanguagesBot?start=website_fr');
+  });
+
+  it('renders the Telegram application link in both contact forms and near the footer email', () => {
+    document.body.innerHTML = `${FaqContact(context)}${Footer(context)}${Reviews(context)}`;
+
+    const pageLink = document.querySelector('.contacts__telegram');
+    const footerLink = document.querySelector('.site-footer__telegram');
+    const modalLink = document.querySelector('.review-modal .contacts__telegram');
+    expect(pageLink).not.toBeNull();
+    expect(footerLink).not.toBeNull();
+    expect(modalLink).not.toBeNull();
+
+    [pageLink, footerLink, modalLink].forEach((link) => {
+      expect(link.getAttribute('href')).toBe('https://t.me/PurtovaLanguagesBot?start=website_ru');
+      expect(link.getAttribute('target')).toBe('_blank');
+      expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+    });
+  });
+
+  it('keeps the QR code pointing at the Telegram channel', () => {
+    const qrTile = siteContent.atmosphereTiles.find((tile) => tile.qr);
+    expect(qrTile.qr.url).toBe('https://t.me/irina_purtova_voyage');
   });
 
   it('hides unavailable decorative social fallbacks from assistive technology', () => {
@@ -131,6 +169,48 @@ describe('social contact links', () => {
       expect(fallback.hasAttribute('aria-label')).toBe(false);
       expect(fallback.querySelector('img').getAttribute('alt')).toBe('');
     });
+  });
+});
+
+describe('brand links', () => {
+  it('links the header and footer logos to the start of the current page', () => {
+    document.body.innerHTML = `${Header(context)}${Footer(context)}`;
+
+    const brandLinks = document.querySelectorAll('.site-header__brand, .site-footer__brand');
+
+    expect(brandLinks).toHaveLength(2);
+    brandLinks.forEach((link) => {
+      expect(link.tagName).toBe('A');
+      expect(link.getAttribute('href')).toBe('#home');
+      expect(link.getAttribute('aria-label')).toBe(ru.common.logoLabel);
+    });
+  });
+});
+
+describe('footer email', () => {
+  it('opens the visitor email client through a mailto link', () => {
+    document.body.innerHTML = Footer(context);
+
+    const emailLink = document.querySelector('.site-footer__email');
+
+    expect(emailLink.tagName).toBe('A');
+    expect(emailLink.getAttribute('href')).toBe(`mailto:${siteContent.contact.email}`);
+    expect(emailLink.textContent).toContain(siteContent.contact.email);
+  });
+});
+
+describe('footer copyright', () => {
+  it('uses the current year instead of a hardcoded value', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2034-06-15T12:00:00Z'));
+
+    try {
+      document.body.innerHTML = Footer(context);
+
+      expect(document.querySelector('.site-footer__copyright').textContent).toContain('© 2034');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });
 

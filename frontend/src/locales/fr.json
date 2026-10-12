@@ -20,7 +20,9 @@
     "Cours",
     "Avis",
     "FAQ",
-    "Contact"
+    "Contact",
+    "Club",
+    "Ambiance"
   ],
   "hero": {
     "titleStart": "English",
@@ -60,6 +62,45 @@
       "ans de cours particuliers"
     ],
     "quote": "« Je vous aiderai à faire d’une langue étrangère bien plus qu’une matière scolaire : votre deuxième voix, naturelle, libre et précise. »"
+  },
+  "approach": {
+    "heading": "Mes cours",
+    "statement": "Anglais ou français — votre rythme, vos objectifs, vos résultats.",
+    "description": "Mon approche : liberté, situations réelles, motivation et humour. Voici comment cela fonctionne :",
+    "items": [
+      {
+        "title": "Un format flexible, sans frontières.",
+        "text": "En ligne ou en présentiel : au café, au restaurant, lors d’un déjeuner d’affaires, au bord de la mer, en voiture, etc. Vous pouvez même suivre un cours depuis votre lit, au réveil ou avant de dormir. L’emploi du temps s’adapte à vous. Vous ne sacrifiez pas votre vie à la langue : elle s’y intègre."
+      },
+      {
+        "title": "Ni manuels ni exercices répétitifs.",
+        "text": "Nous suivons ce qui stimule votre esprit : vidéos, sujets vivants, humour et actualité. Le nouveau vocabulaire passe immédiatement dans la conversation : on le note et on l’utilise."
+      },
+      {
+        "title": "Une préparation express à vos besoins réels.",
+        "text": "Un voyage, une réunion, une négociation ? Nous travaillons sur ce dont vous avez besoin maintenant. Rien que de la pratique et de l’assurance."
+      },
+      {
+        "title": "Des devoirs uniquement à votre demande.",
+        "text": "Vous souhaitez consolider vos acquis ? Je vous propose des activités. Seuls comptent votre envie et votre résultat."
+      },
+      {
+        "title": "En ligne sans caméra : affiner l’écoute.",
+        "text": "Votre écoute s’affine : vous comprenez mieux ce que vous entendez, au lieu de traduire dans votre tête. C’est confortable, bien plus rapide et plus efficace."
+      },
+      {
+        "title": "En présentiel, dans la vie réelle : développer la concentration.",
+        "text": "Un café, un restaurant : ce n’est pas le silence, c’est la vie. Nous apprenons à parler et à écouter ici et maintenant. Vous repartez prêt à communiquer pour de vrai."
+      },
+      {
+        "title": "En bonus : films, vidéos et supports visuels en version originale.",
+        "text": "Nous regardons, discutons et analysons : la langue s’imprègne naturellement. C’est agréable, concret et utile."
+      }
+    ],
+    "closingTitle": "Pourquoi moi ?",
+    "closingText": "Parce que les résultats se ressentent dès le premier cours. Sans stress, sans ennui et sans règles scolaires.",
+    "invitation": "Inscrivez-vous maintenant et commencez à parler dès demain !",
+    "cta": "Réserver un cours d’essai"
   },
   "learningGoals": {
     "heading": "Pourquoi souhaitez-vous apprendre l’anglais ?",
@@ -141,6 +182,14 @@
         "text": "Un immense merci à Irina Evgenievna pour les cours d’anglais ! Au début, tenir une conversation en anglais était inhabituel et un peu difficile. Mais peu à peu, la nervosité et la tension disparaissent, le cerveau s’adapte et parler devient un véritable plaisir.\nChaque cours se déroulait dans une ambiance détendue, ce qui facilitait l’assimilation des nouvelles notions. Je ne garde que des impressions très positives de nos cours !"
       },
       {
+        "avatar": "/assets/images/reviews/helene.webp",
+        "name": "Hélène",
+        "occupation": "Designer",
+        "age": "27 ans",
+        "city": "Mexique",
+        "text": "Avant mes cours avec Irina Evgenievna, je ne comprenais pas du tout la grammaire anglaise telle qu’elle est habituellement expliquée dans les manuels. Mais Irina Evgenievna sait tout expliquer de façon très claire et accessible — je me souviens encore des schémas que nous avons appris en cours il y a 13 ans !\n\nDe plus, nos cours se déroulaient exclusivement en anglais, ce qui m’a permis de m’immerger très vite dans la langue, de commencer à la comprendre à l’oral et de l’utiliser plus librement. Et de tomber amoureuse de cette langue 🫶\n\nAujourd’hui, l’anglais fait partie intégrante de ma vie — je l’utilise sans cesse, au quotidien comme au travail. Un immense merci pour ces connaissances qui m’accompagnent depuis tant d’années ! ❤️"
+      },
+      {
         "name": "Ksyusha",
         "occupation": "Artiste et designer",
         "age": "25 ans",
@@ -186,6 +235,13 @@
         "age": "16 ans",
         "city": "Moscou",
         "text": "Je travaille avec Irina depuis plus de deux ans. Pendant cette période, j’ai progressé aussi bien en grammaire qu’à l’oral. Avec elle, j’ai également préparé et réussi l’examen OGE. Comme professeure, elle est attentionnée, bienveillante et explique tout très clairement.\nMerci beaucoup pour votre travail, votre compréhension et votre soutien ! Nous continuons encore aujourd’hui et travaillons tout particulièrement l’anglais oral, qui me sera utile plus tard pour mon métier, dans la vie quotidienne et pendant mes voyages.\nThank you! ❤️"
+      },
+      {
+        "name": "Dasha",
+        "occupation": "Élève",
+        "age": "29 ans",
+        "city": "Denver, États-Unis",
+        "text": "Depuis 3 mois déjà, Irina compose avec mon (non-)accent français cringy, mais j’arrive déjà à comprendre des vidéos drôles sur YouTube, des mêmes, et je peux vous raconter presque sans hésiter ce que j’ai fait aujourd’hui, ce que je fais et ce que je vais faire 😄\nJ’ai commencé à apprendre le français sans attentes particulières, mais le processus avance bien !\n\nIrina est tellement géniale qu’elle me donne même des cours en anglais, car j’ai un peu de mal à suivre le contenu pédagogique en russe.\n\nMerci, Irina ! Tu es super 🥖🍷🇫🇷"
       },
       {
         "avatar": "/assets/images/reviews/ekaterina-model.webp",
@@ -238,8 +294,8 @@
       {
         "name": "Elena",
         "occupation": "Élève",
-        "age": "27 ans",
-        "city": "Mexique",
+        "age": "24 ans",
+        "city": "Iochkar-Ola",
         "text": "Irina Evgenievna, un jour vous m'avez appris à aimer l'anglais et à le parler sereinement. Et maintenant, je parle cette langue tous les jours 😄 Merci ❤️ Je vous en serai toujours reconnaissante !"
       },
       {
@@ -383,6 +439,8 @@
     "offer": "Conditions générales",
     "submit": "Envoyer la demande",
     "note": "Nous vous répondrons prochainement par e-mail",
+    "telegramApplication": "Telegram",
+    "alternativeOr": "ou",
     "successEyebrow": "Demande envoyée avec succès",
     "successTitle": "Merci pour votre demande !",
     "successText": "J’ai bien reçu vos coordonnées et je vous contacterai bientôt par e-mail.",
@@ -414,7 +472,7 @@
   "atmosphere": {
     "heading": "Mon univers",
     "qrAlt": "Code QR du réseau social",
-    "telegramQrAlt": "Code QR Telegram pour contacter Irina",
+    "telegramQrAlt": "Code QR de la chaîne Telegram de voyages d'Irina",
     "openPhoto": "Ouvrir la photo : {{description}}",
     "dialogLabel": "Visionneuse de photos de la section Mon univers",
     "closePhoto": "Fermer la photo",
@@ -446,7 +504,10 @@
     "navigation": "Navigation",
     "aboutTeacher": "À propos de la professeure",
     "learningGoals": "Objectifs d’apprentissage",
+    "coffeeClub": "Club de conversation",
+    "frenchLessons": "Cours de français",
     "contacts": "Contact",
+    "telegramApplication": "Demande via Telegram",
     "privacy": "Politique de confidentialité",
     "rights": "Tous droits réservés"
   },

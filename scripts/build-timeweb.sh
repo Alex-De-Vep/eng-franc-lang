@@ -55,20 +55,21 @@ echo "Running PHP lint, PHPUnit and PHP 8.2 platform checks..."
 while IFS= read -r -d '' php_file; do
   relative_path="${php_file#"$BACKEND_DIR"/}"
   php_in_backend -l "$relative_path" >/dev/null
-done < <(find "$BACKEND_DIR/api" "$BACKEND_DIR/src" "$BACKEND_DIR/tests" -type f -name '*.php' -print0)
+done < <(find "$BACKEND_DIR/api" "$BACKEND_DIR/src" "$BACKEND_DIR/scripts" "$BACKEND_DIR/tests" -type f -name '*.php' -print0)
 php_in_backend vendor/bin/phpunit
 composer_in "$BACKEND_DIR" check-platform-reqs
 
 echo "Preparing production package..."
 cp -R "$FRONTEND_DIR/dist/." "$STAGING_DIR/"
 mkdir -p "$STAGING_DIR/api"
-cp "$BACKEND_DIR/api/contact.php" "$BACKEND_DIR/api/.htaccess" "$STAGING_DIR/api/"
+cp "$BACKEND_DIR/api/contact.php" "$BACKEND_DIR/api/telegram-webhook.php" "$BACKEND_DIR/api/.htaccess" "$STAGING_DIR/api/"
 cp -R "$BACKEND_DIR/src" "$STAGING_DIR/api/src"
+cp -R "$BACKEND_DIR/scripts" "$STAGING_DIR/api/scripts"
 cp "$BACKEND_DIR/composer.json" "$BACKEND_DIR/composer.lock" "$STAGING_DIR/api/"
 composer_in "$STAGING_DIR/api" install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 rm "$STAGING_DIR/api/composer.json" "$STAGING_DIR/api/composer.lock"
 
-if find "$STAGING_DIR" -name 'contact-config.php' -o -path '*/tests/*' | grep -q .; then
+if find "$STAGING_DIR" -name 'contact-config.php' -o -name 'telegram-config.php' -o -path '*/tests/*' -o -path '*/.phpunit.cache/*' -o -path '*/private/*' | grep -q .; then
   echo "Unsafe files found in the package." >&2
   exit 1
 fi

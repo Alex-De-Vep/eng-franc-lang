@@ -1,8 +1,11 @@
 frontend/node_modules/
 frontend/dist/
 frontend/coverage/
+frontend/timeweb-frontend.zip
 backend/vendor/
 backend/config/contact-config.php
+backend/config/telegram-config.php
 backend/var/rate-limit/
+backend/var/telegram-bot/
 .phpunit.cache/
 .DS_Store

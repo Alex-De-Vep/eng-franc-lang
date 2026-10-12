@@ -6,7 +6,7 @@ const featureIcons = ['/assets/icons/group.svg', '/assets/icons/coffee.svg', '/a
 export function CoffeeClub({ t }) {
   const features = t('coffee.features', { returnObjects: true });
   return `
-    <section class="coffee-club" aria-labelledby="coffee-title">
+    <section class="coffee-club" id="coffee-club" aria-labelledby="coffee-title">
       <div class="container coffee-club__inner">
         <div class="coffee-club__visual">
           <img class="coffee-club__photo" src="/assets/images/coffee-club.webp" width="446" height="456" alt="${t('coffee.photoAlt')}" loading="lazy" decoding="async" />

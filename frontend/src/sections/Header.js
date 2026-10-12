@@ -6,7 +6,7 @@ function SocialItem(item, t) {
         return `<span class="site-header__social-link site-header__social-link--disabled" aria-hidden="true"><img src="${item.icon}" alt="" /></span>`;
     }
 
-    return `<a class="site-header__social-link" href="${item.url}" aria-label="${item.label}"><img src="${item.icon}" alt="" /></a>`;
+    return `<a class="site-header__social-link" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="${item.label}"><img src="${item.icon}" alt="" /></a>`;
 }
 
 export function Header({ t, content }) {
@@ -26,7 +26,7 @@ export function Header({ t, content }) {
         </div>
         <div class="site-header__panel" id="site-header-menu">
           <nav class="site-header__nav" aria-label="${t('common.mainNavigation')}">
-            ${content.navigation.map((item) => `<a class="site-header__nav-link" href="${item.href}">${item.label}</a>`).join('')}
+            ${content.navigation.filter((item) => !['#home', '#contacts'].includes(item.href)).map((item) => `<a class="site-header__nav-link" href="${item.href}">${item.label}</a>`).join('')}
           </nav>
           <div class="site-header__right">
             ${Button({ label: t('common.trial'), href: '#contacts', className: 'site-header__cta' })}

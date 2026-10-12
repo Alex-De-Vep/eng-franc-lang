@@ -10,7 +10,7 @@ describe('localized SEO and critical assets', () => {
     const html = readFileSync(resolve(frontendRoot, locale, 'index.html'), 'utf8');
 
     expect(html).toContain(`rel="canonical" href="${origin}/${locale}/"`);
-    expect(html).toContain(`hreflang="x-default" href="${origin}/"`);
+    expect(html).toContain(`hreflang="x-default" href="${origin}/en/"`);
     expect(html).toContain(`hreflang="ru" href="${origin}/ru/"`);
     expect(html).toContain(`hreflang="en" href="${origin}/en/"`);
     expect(html).toContain(`hreflang="fr" href="${origin}/fr/"`);
@@ -25,7 +25,7 @@ describe('localized SEO and critical assets', () => {
     const html = readFileSync(resolve(frontendRoot, 'index.html'), 'utf8');
 
     expect(html).toContain('content="noindex,follow"');
-    expect(html).toContain(`rel="canonical" href="${origin}/"`);
+    expect(html).toContain(`rel="canonical" href="${origin}/en/"`);
   });
 
   it('publishes only localized pages in the sitemap', () => {

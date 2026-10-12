@@ -1,7 +1,7 @@
 import { SectionHeading } from '../components/SectionHeading.js';
 export function Atmosphere({ t, content }) {
   return `
-    <section class="atmosphere" aria-labelledby="atmosphere-title">
+    <section class="atmosphere" id="atmosphere" aria-labelledby="atmosphere-title">
       <div class="container atmosphere__inner">
         ${SectionHeading(t('atmosphere.heading'), 'atmosphere__heading')}
         <img class="atmosphere__watermark" src="/assets/icons/atmosphere-watermark.svg" alt="" />
