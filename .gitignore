@@ -2,6 +2,9 @@ frontend/node_modules/
 frontend/dist/
 frontend/coverage/
 frontend/timeweb-frontend.zip
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
 backend/vendor/
 backend/config/contact-config.php
 backend/config/telegram-config.php

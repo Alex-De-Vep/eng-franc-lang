@@ -11,12 +11,59 @@ export function initMobileNavigation(root = document, t = (key) => key) {
   const mobileMedia = typeof window.matchMedia === 'function' ? window.matchMedia('(max-width: 767px)') : null;
   const headerTop = header.querySelector('.site-header__top');
   const headerInner = header.querySelector('.site-header__inner');
+  const viewport = window.visualViewport;
+  let scrollLock = null;
+  const placeholder = documentRoot.createElement('div');
+  placeholder.className = 'site-header__placeholder';
+  placeholder.setAttribute('aria-hidden', 'true');
+  placeholder.hidden = true;
+  header.before(placeholder);
 
   const updateHeaderHeight = () => {
     if (!mobileMedia?.matches || !headerTop || !headerInner) return;
     const innerStyles = window.getComputedStyle(headerInner);
     const verticalPadding = Number.parseFloat(innerStyles.paddingTop || 0) + Number.parseFloat(innerStyles.paddingBottom || 0);
-    header.style.setProperty('--mobile-header-height', `${Math.ceil(headerTop.getBoundingClientRect().height + verticalPadding)}px`);
+    const height = Math.ceil(headerTop.getBoundingClientRect().height + verticalPadding);
+    header.style.setProperty('--mobile-header-height', `${height}px`);
+    placeholder.style.height = `${height}px`;
+    header.style.setProperty('--mobile-menu-viewport-height', `${viewport?.height ?? window.innerHeight}px`);
+    header.style.setProperty('--mobile-menu-viewport-top', `${viewport?.offsetTop ?? 0}px`);
+  };
+
+  const lockScroll = () => {
+    if (scrollLock) return;
+    const body = documentRoot.body;
+    const properties = ['position', 'top', 'left', 'right', 'width'];
+    scrollLock = {
+      x: window.scrollX,
+      y: window.scrollY,
+      styles: properties.map(property => [property, body.style.getPropertyValue(property), body.style.getPropertyPriority(property)]),
+    };
+    body.style.setProperty('position', 'fixed');
+    body.style.setProperty('top', `${-scrollLock.y}px`);
+    body.style.setProperty('left', `${-scrollLock.x}px`);
+    body.style.setProperty('right', '0');
+    body.style.setProperty('width', '100%');
+    documentRoot.body.classList.add('mobile-menu-open');
+  };
+
+  const unlockScroll = () => {
+    documentRoot.body.classList.remove('mobile-menu-open');
+    if (!scrollLock) return;
+    const saved = scrollLock;
+    scrollLock = null;
+    saved.styles.forEach(([property, value, priority]) => {
+      if (value) documentRoot.body.style.setProperty(property, value, priority);
+      else documentRoot.body.style.removeProperty(property);
+    });
+    // Override the site's CSS smooth scrolling only for this synchronous restore.
+    const html = documentRoot.documentElement;
+    const behavior = html.style.getPropertyValue('scroll-behavior');
+    const priority = html.style.getPropertyPriority('scroll-behavior');
+    html.style.setProperty('scroll-behavior', 'auto', 'important');
+    window.scrollTo({ left: saved.x, top: saved.y, behavior: 'auto' });
+    if (behavior) html.style.setProperty('scroll-behavior', behavior, priority);
+    else html.style.removeProperty('scroll-behavior');
   };
 
   const setPanelAvailability = (isAvailable) => {
@@ -28,52 +75,67 @@ export function initMobileNavigation(root = document, t = (key) => key) {
     header.classList.remove('site-header--menu-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', t('common.openMenu'));
-    documentRoot.body.classList.remove('mobile-menu-open');
+    placeholder.hidden = true;
+    unlockScroll();
     if (mobileMedia?.matches) setPanelAvailability(false);
-    if (restoreFocus) toggle.focus();
+    if (restoreFocus) toggle.focus({ preventScroll: true });
   };
 
   const openMenu = () => {
+    if (!mobileMedia?.matches || scrollLock) return;
     updateHeaderHeight();
+    placeholder.hidden = false;
     header.classList.add('site-header--menu-open');
+    lockScroll();
+    updateHeaderHeight();
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', t('common.closeMenu'));
-    documentRoot.body.classList.add('mobile-menu-open');
     setPanelAvailability(true);
   };
 
-  toggle.addEventListener('click', () => {
+  const onToggle = () => {
     if (toggle.getAttribute('aria-expanded') === 'true') closeMenu();
     else openMenu();
-  });
+  };
+  toggle.addEventListener('click', onToggle);
 
-  panel.querySelectorAll('a[href]').forEach((link) => link.addEventListener('click', () => closeMenu()));
+  const onLink = () => closeMenu();
+  const links = [...panel.querySelectorAll('a[href]')];
+  // Capture closes/unlocks before initSmoothNavigation's click handler runs.
+  links.forEach(link => link.addEventListener('click', onLink, true));
 
-  documentRoot.addEventListener('keydown', (event) => {
+  const onKeyDown = event => {
     if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeMenu({ restoreFocus: true });
-  });
+  };
+  documentRoot.addEventListener('keydown', onKeyDown);
 
-  documentRoot.addEventListener('click', (event) => {
+  const onOutsideClick = event => {
     if (
       toggle.getAttribute('aria-expanded') === 'true'
       && !panel.contains(event.target)
       && !toggle.contains(event.target)
     ) closeMenu();
-  });
+  };
+  documentRoot.addEventListener('click', onOutsideClick, true);
 
-  mobileMedia?.addEventListener?.('change', (event) => {
+  const onMediaChange = event => {
     if (!event.matches) {
       closeMenu();
       setPanelAvailability(true);
       header.style.removeProperty('--mobile-header-height');
+      header.style.removeProperty('--mobile-menu-viewport-height');
+      header.style.removeProperty('--mobile-menu-viewport-top');
       return;
     }
 
     updateHeaderHeight();
     closeMenu();
-  });
+  };
+  mobileMedia?.addEventListener?.('change', onMediaChange);
 
   window.addEventListener?.('resize', updateHeaderHeight);
+  viewport?.addEventListener('resize', updateHeaderHeight);
+  viewport?.addEventListener('scroll', updateHeaderHeight);
   documentRoot.fonts?.ready?.then(updateHeaderHeight);
 
   if (mobileMedia?.matches) {
@@ -83,7 +145,21 @@ export function initMobileNavigation(root = document, t = (key) => key) {
     setPanelAvailability(true);
   }
 
-  return { openMenu, closeMenu, updateHeaderHeight };
+  return {
+    openMenu, closeMenu, updateHeaderHeight,
+    destroy() {
+      closeMenu();
+      placeholder.remove();
+      toggle.removeEventListener('click', onToggle);
+      links.forEach(link => link.removeEventListener('click', onLink, true));
+      documentRoot.removeEventListener('keydown', onKeyDown);
+      documentRoot.removeEventListener('click', onOutsideClick, true);
+      mobileMedia?.removeEventListener?.('change', onMediaChange);
+      window.removeEventListener('resize', updateHeaderHeight);
+      viewport?.removeEventListener('resize', updateHeaderHeight);
+      viewport?.removeEventListener('scroll', updateHeaderHeight);
+    },
+  };
 }
 
 export function initLearningGoals(root = document, t = (key) => key) {

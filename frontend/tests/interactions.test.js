@@ -112,7 +112,7 @@ describe('social contact links', () => {
   it('renders active Telegram and WhatsApp links in the header and footer', () => {
     document.body.innerHTML = `${Header(context)}${Footer(context)}`;
 
-    ['https://t.me/PurtovaLanguagesBot?start=website_ru', 'https://wa.me/qr/7XAE6K2W2LJLM1'].forEach((url) => {
+    ['https://t.me/languages_purtova_bot?start=website_ru', 'https://wa.me/qr/7XAE6K2W2LJLM1'].forEach((url) => {
       expect(document.querySelector(`.site-header__social-link[href="${url}"]`)).not.toBeNull();
       expect(document.querySelector(`.site-footer__social[href="${url}"]`)).not.toBeNull();
     });
@@ -125,30 +125,44 @@ describe('social contact links', () => {
   });
 
   it('builds the Telegram deep link from the active locale', () => {
-    expect(siteContent.contact.telegramUrl).toBe('https://t.me/PurtovaLanguagesBot?start=website_ru');
+    expect(siteContent.contact.telegramUrl).toBe('https://t.me/languages_purtova_bot?start=website_ru');
 
     const enContent = createSiteContent(createTestTranslator(en), 'en');
     const frContent = createSiteContent(createTestTranslator(fr), 'fr');
-    expect(enContent.contact.telegramUrl).toBe('https://t.me/PurtovaLanguagesBot?start=website_en');
-    expect(frContent.contact.telegramUrl).toBe('https://t.me/PurtovaLanguagesBot?start=website_fr');
-    expect(frContent.socialLinks[0].url).toBe('https://t.me/PurtovaLanguagesBot?start=website_fr');
+    expect(enContent.contact.telegramUrl).toBe('https://t.me/languages_purtova_bot?start=website_en');
+    expect(frContent.contact.telegramUrl).toBe('https://t.me/languages_purtova_bot?start=website_fr');
+    expect(frContent.socialLinks[0].url).toBe('https://t.me/languages_purtova_bot?start=website_fr');
   });
 
-  it('renders the Telegram application link in both contact forms and near the footer email', () => {
+  it('renders Telegram buttons in both contact forms and only the Telegram icon in the footer', () => {
     document.body.innerHTML = `${FaqContact(context)}${Footer(context)}${Reviews(context)}`;
 
     const pageLink = document.querySelector('.contacts__telegram');
-    const footerLink = document.querySelector('.site-footer__telegram');
+    const footerLink = document.querySelector('.site-footer__social[aria-label="Telegram"]');
     const modalLink = document.querySelector('.review-modal .contacts__telegram');
     expect(pageLink).not.toBeNull();
     expect(footerLink).not.toBeNull();
     expect(modalLink).not.toBeNull();
+    expect(document.querySelector('.site-footer__telegram')).toBeNull();
+    expect(footerLink.querySelector('img').getAttribute('src')).toBe('/assets/icons/telegram.svg');
 
     [pageLink, footerLink, modalLink].forEach((link) => {
-      expect(link.getAttribute('href')).toBe('https://t.me/PurtovaLanguagesBot?start=website_ru');
+      expect(link.getAttribute('href')).toBe('https://t.me/languages_purtova_bot?start=website_ru');
       expect(link.getAttribute('target')).toBe('_blank');
       expect(link.getAttribute('rel')).toBe('noopener noreferrer');
     });
+  });
+
+  it.each([['ru', ru], ['en', en], ['fr', fr]])('opens the application bot through the %s footer icon without a duplicate text link', (locale, resources) => {
+    const translator = createTestTranslator(resources);
+    const content = createSiteContent(translator, locale);
+    document.body.innerHTML = Footer({ t: translator, content });
+    const telegramLinks = document.querySelectorAll('.site-footer a[href*="t.me/"]');
+    expect(telegramLinks).toHaveLength(1);
+    expect(telegramLinks[0].getAttribute('href')).toBe(`https://t.me/languages_purtova_bot?start=website_${locale}`);
+    expect(telegramLinks[0].getAttribute('aria-label')).toBe('Telegram');
+    expect(telegramLinks[0].querySelector('img')).not.toBeNull();
+    expect(telegramLinks[0].textContent).toBe('');
   });
 
   it('keeps the QR code pointing at the Telegram channel', () => {
@@ -217,6 +231,8 @@ describe('footer copyright', () => {
 describe('mobile navigation', () => {
   let mobileMedia;
   let mediaListeners;
+  let navigation;
+  let viewport;
 
   beforeEach(() => {
     mediaListeners = [];
@@ -227,12 +243,20 @@ describe('mobile navigation', () => {
       }),
     };
     vi.stubGlobal('matchMedia', vi.fn(() => mobileMedia));
+    vi.stubGlobal('scrollTo', vi.fn());
+    vi.stubGlobal('scrollX', 0);
+    vi.stubGlobal('scrollY', 0);
+    viewport = Object.assign(new EventTarget(), { height: 844, offsetTop: 0 });
+    vi.stubGlobal('visualViewport', viewport);
     document.body.className = '';
+    document.body.style.cssText = '';
     document.body.innerHTML = Header(context);
-    initMobileNavigation(document, t);
+    navigation = initMobileNavigation(document, t);
   });
 
   afterEach(() => {
+    navigation.destroy();
+    vi.restoreAllMocks();
     vi.unstubAllGlobals();
   });
 
@@ -310,6 +334,71 @@ describe('mobile navigation', () => {
     expect(panel.getAttribute('aria-hidden')).toBe('false');
     expect(panel.inert).toBe(false);
     expect(document.body.classList.contains('mobile-menu-open')).toBe(false);
+    expect(document.body.style.position).toBe('');
+    expect(document.querySelector('.site-header__placeholder').hidden).toBe(true);
+  });
+
+  it('freezes a scrolled page without losing its position when closing', () => {
+    vi.stubGlobal('scrollY', 1450);
+    vi.stubGlobal('scrollX', 3);
+    const toggle = document.querySelector('.site-header__menu-toggle');
+    document.body.style.setProperty('position', 'relative', 'important');
+    document.body.style.top = '4px';
+    document.body.style.color = 'red';
+    toggle.click();
+    expect(document.body.style.position).toBe('fixed');
+    expect(document.body.style.top).toBe('-1450px');
+    expect(document.body.style.left).toBe('-3px');
+    expect(document.querySelector('.site-header__placeholder').hidden).toBe(false);
+    navigation.openMenu();
+    toggle.click();
+    expect(window.scrollTo).toHaveBeenCalledExactlyOnceWith({ left: 3, top: 1450, behavior: 'auto' });
+    expect(document.body.style.position).toBe('relative');
+    expect(document.body.style.getPropertyPriority('position')).toBe('important');
+    expect(document.body.style.top).toBe('4px');
+    expect(document.body.style.left).toBe('');
+    expect(document.body.style.color).toBe('red');
+  });
+
+  it('unlocks before the anchor handler even when it was registered first', () => {
+    vi.stubGlobal('scrollY', 900);
+    navigation.destroy();
+    document.body.innerHTML = Header(context) + '<section id="goals"></section>';
+    const target = document.querySelector('#goals');
+    target.scrollIntoView = vi.fn(() => {
+      expect(document.body.style.position).not.toBe('fixed');
+      expect(document.body.classList.contains('mobile-menu-open')).toBe(false);
+      expect(window.scrollTo).toHaveBeenCalledWith({ left: 0, top: 900, behavior: 'auto' });
+    });
+    initSmoothNavigation();
+    navigation = initMobileNavigation(document, t);
+    navigation.openMenu();
+    document.querySelector('.site-header__nav-link[href="#goals"]').click();
+    expect(target.scrollIntoView).toHaveBeenCalledOnce();
+    expect(window.location.hash).toBe('#goals');
+  });
+
+  it('updates the menu bounds when Safari changes the visual viewport', () => {
+    const header = document.querySelector('.site-header');
+    vi.spyOn(document.querySelector('.site-header__top'), 'getBoundingClientRect').mockReturnValue({ height: 65 });
+    document.querySelector('.site-header__inner').style.padding = '12px 16px';
+    navigation.openMenu();
+    expect(header.style.getPropertyValue('--mobile-header-height')).toBe('89px');
+    expect(header.style.getPropertyValue('--mobile-menu-viewport-height')).toBe('844px');
+    viewport.height = 420;
+    viewport.offsetTop = 12;
+    viewport.dispatchEvent(new Event('resize'));
+    expect(header.style.getPropertyValue('--mobile-menu-viewport-height')).toBe('420px');
+    expect(header.style.getPropertyValue('--mobile-menu-viewport-top')).toBe('12px');
+    expect(document.querySelector('.site-header__placeholder').style.height).toBe('89px');
+  });
+
+  it('does not lock scrolling when asked to open outside the mobile breakpoint', () => {
+    mobileMedia.matches = false;
+    navigation.openMenu();
+    expect(document.body.style.position).toBe('');
+    expect(document.querySelector('.site-header__menu-toggle').getAttribute('aria-expanded')).not.toBe('true');
+    expect(window.scrollTo).not.toHaveBeenCalled();
   });
 });
 

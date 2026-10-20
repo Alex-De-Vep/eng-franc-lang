@@ -23,7 +23,7 @@ const sections = [Hero, About, Approach, LearningGoals, Reviews, FaqContact, Cof
 const hrefs = ['#home', '#about', '#approach', '#goals', '#reviews', '#faq', '#contacts', '#coffee-club', '#french-lessons', '#atmosphere'];
 
 describe('section navigation', () => {
-  it.each([['ru', ru], ['en', en], ['fr', fr]])('links to all %s sections in the footer and adds Club and Atmosphere without Home or Contact in the header', (locale, resources) => {
+  it.each([['ru', ru], ['en', en], ['fr', fr]])('links to all %s sections in the footer and adds Goals, Club and Atmosphere without Home or Contact in the header', (locale, resources) => {
     const t = key => key.split('.').reduce((value, part) => value?.[part], resources);
     const content = createSiteContent(t, locale);
     const context = { t, content, locale };
@@ -42,8 +42,10 @@ describe('section navigation', () => {
     expect(document.querySelector('.site-header__nav-link[href="#home"]')).toBeNull();
     expect(document.querySelector('.site-header__nav-link[href="#contacts"]')).toBeNull();
     expect(document.querySelector('.site-header__cta').getAttribute('href')).toBe('#contacts');
-    expect(document.querySelector('.site-header__nav-link[href="#coffee-club"]').textContent).toBe(resources.navigation[6]);
-    expect(document.querySelector('.site-header__nav-link[href="#atmosphere"]').textContent).toBe(resources.navigation[7]);
+    expect(document.querySelector('.site-header__nav-link[href="#goals"]').textContent).toBe(resources.navigation[3]);
+    expect(document.querySelector('#goals .section-heading').textContent).toBe(resources.learningGoals.heading);
+    expect(document.querySelector('.site-header__nav-link[href="#coffee-club"]').textContent).toBe(resources.navigation[7]);
+    expect(document.querySelector('.site-header__nav-link[href="#atmosphere"]').textContent).toBe(resources.navigation[8]);
     headerLinks.forEach(link => expect(document.querySelectorAll(link.getAttribute('href'))).toHaveLength(1));
     expect(document.querySelector('.site-header__brand').getAttribute('href')).toBe('#home');
   });
@@ -53,12 +55,12 @@ describe('section navigation', () => {
     const content = createSiteContent(t, 'ru');
     const context = { t, content, locale: 'ru' };
     window.history.replaceState({}, '', '/ru/');
-    document.body.innerHTML = sections.map(render => render(context)).join('') + Footer(context);
+    document.body.innerHTML = Header(context) + sections.map(render => render(context)).join('') + Footer(context);
     initSmoothNavigation();
-    for (const href of ['#approach', '#coffee-club', '#french-lessons', '#atmosphere']) {
+    for (const href of ['#goals', '#approach', '#coffee-club', '#french-lessons', '#atmosphere']) {
       const target = document.querySelector(href);
       target.scrollIntoView = vi.fn();
-      document.querySelector(`.site-footer__navigation a[href="${href}"]`).click();
+      document.querySelector(href === '#goals' ? `.site-header__nav-link[href="${href}"]` : `.site-footer__navigation a[href="${href}"]`).click();
       expect(target.scrollIntoView).toHaveBeenCalled();
       expect(window.location.hash).toBe(href);
     }

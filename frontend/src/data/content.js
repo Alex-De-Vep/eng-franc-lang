@@ -1,6 +1,8 @@
 import { localePath, supportedLocales } from '../i18n.js';
+import { withBasePath } from '../basePath.js';
+import { privacyOperator } from './privacyOperator.js';
 
-const navigationHrefs = ['#home', '#about', '#approach', '#reviews', '#faq', '#contacts', '#coffee-club', '#atmosphere'];
+const navigationHrefs = ['#home', '#about', '#approach', '#goals', '#reviews', '#faq', '#contacts', '#coffee-club', '#atmosphere'];
 
 const galleryImage = (name, height) => ({
   src: `/assets/images/learning-goals/${name}-640.webp`,
@@ -122,7 +124,7 @@ export function createSiteContent(t, locale, hash = '') {
   const localizedReviews = t('reviews.items', { returnObjects: true });
   const atmosphereAlts = t('atmosphere.alts', { returnObjects: true });
 
-  const telegramBotUrl = `https://t.me/PurtovaLanguagesBot?start=website_${locale}`;
+  const telegramBotUrl = `https://t.me/languages_purtova_bot?start=website_${locale}`;
 
   return {
     navigation: navigationHrefs.map((href, index) => ({ href, label: navigationLabels[index] })),
@@ -131,9 +133,9 @@ export function createSiteContent(t, locale, hash = '') {
       { href: '#about', label: t('footer.aboutTeacher') },
       { href: '#approach', label: t('approach.heading') },
       { href: '#goals', label: t('footer.learningGoals') },
-      { href: '#reviews', label: navigationLabels[3] },
-      { href: '#faq', label: navigationLabels[4] },
-      { href: '#contacts', label: navigationLabels[5] },
+      { href: '#reviews', label: navigationLabels[4] },
+      { href: '#faq', label: navigationLabels[5] },
+      { href: '#contacts', label: navigationLabels[6] },
       { href: '#coffee-club', label: t('footer.coffeeClub') },
       { href: '#french-lessons', label: t('footer.frenchLessons') },
       { href: '#atmosphere', label: t('atmosphere.heading') },
@@ -152,7 +154,7 @@ export function createSiteContent(t, locale, hash = '') {
       avatar: review.avatar || reviewAvatars[index % reviewAvatars.length],
     })),
     faq: t('faq.items', { returnObjects: true }),
-    contact: { email: 'ipurtova.37@gmail.com', privacyUrl: null, offerUrl: null, telegramUrl: telegramBotUrl },
+    contact: { email: privacyOperator.email, privacyUrl: withBasePath(`${locale}/privacy/`), telegramUrl: telegramBotUrl },
     atmosphereTiles: atmosphereAssets.map(([className, image, qr], index) => ({
       className,
       ...(image ? { image, alt: atmosphereAlts[index] } : { qr: { ...qr, alt: t(`atmosphere.${qr.altKey}`) } }),

@@ -6,6 +6,12 @@ const frontendRoot = resolve(import.meta.dirname, '..');
 const origin = 'https://iripurtova-languages.com';
 
 describe('localized SEO and critical assets', () => {
+  it.each(['index.html', 'ru/index.html', 'en/index.html', 'fr/index.html', 'ru/privacy/index.html', 'en/privacy/index.html', 'fr/privacy/index.html'])('has no unconditional analytics script or noscript pixel in %s', path => {
+    const html = readFileSync(resolve(frontendRoot, path), 'utf8');
+    expect(html).not.toContain('mc.yandex.ru/metrika/tag.js');
+    expect(html).not.toContain('mc.yandex.ru/watch/');
+  });
+
   it.each(['ru', 'en', 'fr'])('uses absolute canonical and hreflang links for %s', (locale) => {
     const html = readFileSync(resolve(frontendRoot, locale, 'index.html'), 'utf8');
 

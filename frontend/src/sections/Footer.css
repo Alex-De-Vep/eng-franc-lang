@@ -126,6 +126,13 @@
   text-align: center;
 }
 
+.site-footer__privacy {
+  display: inline-block;
+  min-height: 24px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 1279px) {
   .site-footer {
     height: auto;

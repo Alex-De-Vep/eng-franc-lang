@@ -6,6 +6,7 @@ import './styles/tokens.css';
 import './styles/reset.css';
 import './styles/typography.css';
 import './styles/global.css';
+import './styles/cookieNotice.css';
 
 import './sections/Header.css';
 import './sections/Hero.css';
@@ -31,6 +32,10 @@ import { FrenchLessons } from './sections/FrenchLessons.js';
 import { Atmosphere } from './sections/Atmosphere.js';
 import { Footer } from './sections/Footer.js';
 import { ContactSuccessModal } from './components/ContactSuccessModal.js';
+import { CookieNotice } from './components/CookieNotice.js';
+import { createMetrika } from './analytics.js';
+import { getMetrikaConfig } from './metrikaConfig.js';
+import { initCookieNotice } from './cookiePreferences.js';
 import { createSiteContent } from './data/content.js';
 import { initI18n } from './i18n.js';
 import { resolveAssetMarkup } from './basePath.js';
@@ -40,6 +45,7 @@ const app = document.querySelector('#app');
 const { locale, t } = await initI18n();
 const content = createSiteContent(t, locale, window.location.hash);
 const context = { locale, t, content };
+const analytics = createMetrika(getMetrikaConfig(import.meta.env));
 
 document.title = t('meta.title');
 document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
@@ -59,6 +65,7 @@ app.innerHTML = resolveAssetMarkup([
   '</main>',
   Footer(context),
   ContactSuccessModal(t),
+  CookieNotice({ t, analyticsEnabled: analytics.enabled, privacyUrl: content.contact.privacyUrl }),
 ].join(''));
 
 initSmoothNavigation();
@@ -72,3 +79,4 @@ initContactForm(document, t, locale, {
 initReviewsSlider(document, t);
 initReviewModal();
 initAtmosphereModal();
+initCookieNotice({ analytics });

@@ -1,0 +1,54 @@
+.privacy-page {
+  width: min(100%, 980px);
+  margin-inline: auto;
+  padding: 28px 48px 40px;
+  color: var(--color-ink);
+  font-size: 20px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.privacy-page__header,
+.privacy-page__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 12px 24px;
+  border-bottom: 1px solid var(--color-border-gold);
+}
+
+.privacy-page__brand {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.privacy-page__header nav { display: flex; gap: 8px; }
+.privacy-page__header nav a { padding: 6px 8px; }
+.privacy-page__header [aria-current] { color: var(--color-text); text-decoration: underline; }
+.privacy-page a { color: #80651f; text-decoration: underline; text-underline-offset: 3px; }
+.privacy-page__back { display: inline-block; margin-block: 32px 16px; }
+.privacy-page h1 { font-family: var(--font-display); font-size: clamp(32px, 5vw, 46px); font-weight: 500; line-height: 1.15; color: var(--color-text); }
+.privacy-page h2 { font-family: var(--font-display); font-size: 27px; font-weight: 600; line-height: 1.25; color: var(--color-text); margin-bottom: 16px; }
+.privacy-page__date { margin-top: 12px; color: var(--color-text-soft); }
+.privacy-page__draft { margin-top: 24px; padding: 14px 18px; border-left: 3px solid var(--color-gold); background: var(--color-surface); }
+.privacy-page__operator { margin-block: 28px; }
+.privacy-page__contents { padding-block: 24px; border-block: 1px solid var(--color-border-gold); }
+.privacy-page__contents ul { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 24px; }
+.privacy-page article section { margin-top: 36px; scroll-margin-top: 24px; }
+.privacy-page article p + p { margin-top: 16px; }
+.privacy-page__settings { margin-top: 20px; min-height: 44px; padding: 10px 18px; border: 1px solid var(--color-olive); border-radius: var(--radius-medium); background: var(--color-surface); color: #555b32; cursor: pointer; }
+.privacy-page__settings:hover { background: var(--color-sage); }
+.privacy-page__settings[hidden] { display: none; }
+.privacy-page__footer { margin-top: 40px; padding-block: 24px 0; border-bottom: 0; border-top: 1px solid var(--color-border-gold); flex-wrap: wrap; }
+
+@media (max-width: 767px) {
+  .privacy-page { padding: 16px 20px 28px; }
+  .privacy-page__header { gap: 12px; }
+  .privacy-page__brand { font-size: 24px; }
+  .privacy-page__header nav { gap: 0; }
+  .privacy-page__header nav a { padding-inline: 6px; }
+  .privacy-page__contents ul { grid-template-columns: 1fr; }
+}

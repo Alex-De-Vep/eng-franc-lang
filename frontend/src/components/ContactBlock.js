@@ -2,7 +2,7 @@ import { FormField } from './FormField.js';
 import { MailIcon } from './MailIcon.js';
 
 function LegalLabel(label, url) {
-  if (url) return `<a class="contact-form__legal-link" href="${url}">${label}</a>`;
+  if (url) return `<a class="contact-form__legal-link" href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   return `<span class="contact-form__legal-link contact-form__legal-link--disabled">${label}</span>`;
 }
 
@@ -27,7 +27,7 @@ export function ContactBlock({ idPrefix, id = '', className = '', t, content }) 
         </div>
         <div class="contact-form__consent">
           <input id="${consentId}" name="consent" type="checkbox" />
-          <label for="${consentId}">${t('contact.consentStart')} ${LegalLabel(t('contact.privacy'), content.contact.privacyUrl)} ${t('contact.and')} ${LegalLabel(t('contact.offer'), content.contact.offerUrl)}</label>
+          <label for="${consentId}">${t('contact.consentStart')} ${LegalLabel(t('contact.privacy'), content.contact.privacyUrl)}.</label>
         </div>
         <p class="contact-form__consent-error" id="${consentId}-error" data-form-error="consent" aria-live="polite"></p>
         <button class="button button--primary contact-form__submit" type="submit">${t('contact.submit')}</button>
