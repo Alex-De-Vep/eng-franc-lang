@@ -33,8 +33,7 @@ import { Atmosphere } from './sections/Atmosphere.js';
 import { Footer } from './sections/Footer.js';
 import { ContactSuccessModal } from './components/ContactSuccessModal.js';
 import { CookieNotice } from './components/CookieNotice.js';
-import { createMetrika } from './analytics.js';
-import { getMetrikaConfig } from './metrikaConfig.js';
+import { createSiteAnalytics } from './siteAnalytics.js';
 import { initCookieNotice } from './cookiePreferences.js';
 import { createSiteContent } from './data/content.js';
 import { initI18n } from './i18n.js';
@@ -45,7 +44,7 @@ const app = document.querySelector('#app');
 const { locale, t } = await initI18n();
 const content = createSiteContent(t, locale, window.location.hash);
 const context = { locale, t, content };
-const analytics = createMetrika(getMetrikaConfig(import.meta.env));
+const analytics = createSiteAnalytics(import.meta.env);
 
 document.title = t('meta.title');
 document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));

@@ -32,10 +32,16 @@ describe('privacy policy pages', () => {
     expect(document.querySelector('link[rel="canonical"]').href).toBe(`https://iripurtova-languages.com/${locale}/privacy/`);
     expect(document.querySelectorAll('link[rel="alternate"]')).toHaveLength(4);
     expect(document.querySelector('#cookies').textContent).toContain('site_cookie_preferences');
+    expect(document.querySelector('#cookies').textContent).toContain('MyTracker');
+    expect(document.querySelector('#cookies').textContent).toContain('tmr_lvid');
+    expect(document.querySelector('#services').textContent).toContain('3808064');
+    expect(document.querySelector('time').dateTime).toBe(privacyOperator.revision);
+    expect(document.querySelector('a[href="https://docs.tracker.my.com/ru/sdk/web/api/"]')).not.toBeNull();
     document.querySelectorAll('.privacy-page__contents a').forEach(link => {
       expect(document.querySelector(link.getAttribute('href'))).not.toBeNull();
     });
     expect(document.querySelectorAll('[src*="mc.yandex.ru"]')).toHaveLength(0);
+    expect(document.querySelectorAll('[src*="mytopf.com"], [src*="top-fwz1.mail.ru"]')).toHaveLength(0);
     expect(html).not.toContain('privacy-content');
     expect(html).not.toContain('privacy-metadata');
     expect(html).not.toContain('hero-background');

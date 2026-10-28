@@ -4,7 +4,7 @@ export function normalizeCounterId(value) {
   return /^\d+$/.test(text) && Number.isSafeInteger(number) && number > 0 ? number : null;
 }
 
-function cleanUrl(value, fallback = '') {
+export function cleanUrl(value, fallback = '') {
   try {
     const url = new URL(value);
     return ['http:', 'https:'].includes(url.protocol) ? url.origin + url.pathname : fallback;
@@ -13,12 +13,12 @@ function cleanUrl(value, fallback = '') {
   }
 }
 
-function clearMetrikaStorage(windowRoot, documentRoot) {
+export function clearAnalyticsStorage(windowRoot, documentRoot, matches) {
   for (const name of ['localStorage', 'sessionStorage']) {
     try {
       const storage = windowRoot[name];
       for (const key of Object.keys(storage)) {
-        if (key.startsWith('_ym')) storage.removeItem(key);
+        if (matches(key)) storage.removeItem(key);
       }
     } catch { /* The browser may block storage access. */ }
   }
@@ -28,7 +28,7 @@ function clearMetrikaStorage(windowRoot, documentRoot) {
     for (let index = 0; index < parts.length - 1; index++) domains.push('.' + parts.slice(index).join('.'));
     for (const cookie of documentRoot.cookie.split(';')) {
       const name = cookie.split('=')[0].trim();
-      if (!name.startsWith('_ym')) continue;
+      if (!matches(name)) continue;
       for (const domain of domains) {
         documentRoot.cookie = `${name}=; Max-Age=0; Path=/;${domain ? ` Domain=${domain};` : ''}`;
       }
@@ -88,7 +88,7 @@ export function createMetrika({ counterId, enabled = false, windowRoot = window,
     running = false;
     script?.remove();
     script = null;
-    clearMetrikaStorage(windowRoot, documentRoot);
+    clearAnalyticsStorage(windowRoot, documentRoot, key => key.startsWith('_ym'));
   };
 
   return { counterId: id, enabled: isEnabled, start, stop };

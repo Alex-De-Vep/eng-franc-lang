@@ -35,6 +35,7 @@ export function PrivacyPage({ locale, basePath = '/' }) {
             <h2>${escape(section.title)}</h2>
             ${section.paragraphs.map(paragraph => `<p>${escape(paragraph)}</p>`).join('')}
             ${section.id === 'cookies' ? `<p><a href="https://yandex.ru/support/metrica/ru/general/cookie-usage" target="_blank" rel="noopener noreferrer">${escape(policy.yandexDetails)}</a></p>
+            <p><a href="https://docs.tracker.my.com/ru/sdk/web/api/" target="_blank" rel="noopener noreferrer">${escape(policy.myTrackerDetails)}</a></p>
             <button class="privacy-page__settings" type="button" data-cookie-settings hidden>${escape(policy.cookieSettings)}</button>` : ''}
           </section>`).join('')}
         </article>

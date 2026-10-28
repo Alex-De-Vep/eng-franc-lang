@@ -16,7 +16,7 @@
   },
   "navigation": [
     "Home",
-    "About",
+    "About me",
     "Classes",
     "Goals",
     "Reviews",
@@ -49,12 +49,12 @@
     "introText": "I’m Irina, 37, an English and French tutor and translator with international experience.",
     "facts": [
       "I have been teaching English & French privately since I was 20.",
-      "Since 2016, I have lived and worked in France and worked with international guests as a translator for the Mosturflot cruise company. This experience helped me achieve near-native fluency in both languages.",
-      "During this time, I visited 10 European countries, including France, the Netherlands, Belgium and Luxembourg."
+      "Since 2016, I have lived and worked in France. Also I worked with international guests as a translator for the Mosturflot cruise company. This experience has enabled me to master foreign languages to a native-speaker level.",
+      "During this time, I visited 10 European countries, including France, the Netherlands, Belgium, Luxembourg and etc."
     ],
     "education": [
-      "Faculty of Foreign Languages, Mari State University",
-      "L'université de Montpellier-III Paul-Valéry, faculté des lettres et de la littérature",
+      "Faculty of Foreign Languages, Mari State University, Yoshkar-Ola",
+      "L'université de Montpellier-III Paul-Valéry, faculté des lettres et de la littérature, Montpellier, France",
       "English teacher — Grammar School No. 14, Yoshkar-Ola"
     ],
     "stats": [
@@ -71,7 +71,7 @@
     "items": [
       {
         "title": "A flexible format, wherever you are.",
-        "text": "Online or in person: a café, restaurant, business lunch, by the sea, in a car and more. You can even have a lesson from bed, just after waking up or before going to sleep. The schedule fits you. You don’t put your life on hold for a language — the language becomes part of it."
+        "text": "Online or offline: a café, restaurant, business lunch, by the sea, in a car and etc. You can even have a lesson from a bed, just after waking up or before going to sleep. The schedule fits you. You don’t put your life on hold for a language — the language becomes part of it."
       },
       {
         "title": "No textbooks or repetitive exercises.",
@@ -83,10 +83,10 @@
       },
       {
         "title": "Homework only when you ask for it.",
-        "text": "Want to reinforce what you’ve learnt? I’ll give you something to practise. It’s all about your own motivation and results."
+        "text": "Want to reinforce what you’ve learnt? I’ll give you tasks to practise. It’s all about your own motivation and results."
       },
       {
-        "title": "Online with the camera off — sharpen your listening.",
+        "title": "Online with the camera off — improve your listening skills.",
         "text": "Your listening becomes sharper: you start understanding speech better instead of translating in your head. Comfortable, much faster and more effective."
       },
       {
@@ -511,14 +511,15 @@
   },
   "cookieNotice": {
     "title": "Cookies and preferences",
-    "text": "The site remembers your language and preferences in your browser. Allow Yandex Metrica for visitor statistics? Analytics is not loaded before permission.",
+    "text": "The site remembers your language and preferences in your browser. Allow Yandex Metrica and MyTracker (Top.Mail.Ru) for visitor statistics? Analytics is not loaded before permission.",
     "disabledText": "The site remembers your language in browser local storage. Analytics is not connected yet.",
     "details": "More details",
     "necessaryDetails": "i18nextLng stores your language until browser data is cleared. site_cookie_preferences stores your choice for 180 days. These preferences are not sent as application content.",
-    "analyticsDetails": "If allowed, Yandex Metrica analyses visits and browser characteristics using cookies and local storage. This integration disables Session Replay, click maps and link tracking. Emails, comments and questionnaire answers are not sent to Metrica.",
-    "disabledDetails": "Analytics collection is disabled, so the site does not load Yandex Metrica. When the counter is enabled, you will be asked separately for analytics permission.",
-    "changeDetails": "You can change your choice through Cookie settings in the footer. Refusing analytics does not prevent browsing or submitting an application.",
+    "analyticsDetails": "If allowed, Yandex Metrica and MyTracker analyse visits and browser characteristics using cookies and local storage. Metrica has Session Replay, click maps and link tracking disabled. Website code does not send emails, comments or questionnaire answers to the counters.",
+    "disabledDetails": "Analytics collection is disabled, so the site does not load counter scripts. When enabled, you will be asked separately for analytics permission.",
+    "changeDetails": "You can change your choice through Cookie settings in the footer. Withdrawing permission after MyTracker loads refreshes the page to disable the counter; unsaved input may be lost. Refusing analytics does not prevent browsing or submitting an application.",
     "yandexDetails": "Cookies used by Yandex Metrica",
+    "myTrackerDetails": "About the MyTracker web counter",
     "accept": "Allow analytics",
     "reject": "No analytics",
     "acknowledge": "Understood",

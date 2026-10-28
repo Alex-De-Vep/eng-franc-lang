@@ -10,6 +10,9 @@ describe('localized SEO and critical assets', () => {
     const html = readFileSync(resolve(frontendRoot, path), 'utf8');
     expect(html).not.toContain('mc.yandex.ru/metrika/tag.js');
     expect(html).not.toContain('mc.yandex.ru/watch/');
+    expect(html).not.toContain('mytopf.com/js/');
+    expect(html).not.toContain('mytopf.com/counter');
+    expect(html).not.toContain('top-fwz1.mail.ru');
   });
 
   it.each(['ru', 'en', 'fr'])('uses absolute canonical and hreflang links for %s', (locale) => {

@@ -1,5 +1,5 @@
 export const COOKIE_PREFERENCES_KEY = 'site_cookie_preferences';
-export const COOKIE_PREFERENCES_VERSION = 2;
+export const COOKIE_PREFERENCES_VERSION = 3;
 export const COOKIE_PREFERENCES_MAX_AGE = 180 * 24 * 60 * 60 * 1000;
 
 function readChoice(storage, counterId, analyticsAvailable, now) {
@@ -13,7 +13,7 @@ function readChoice(storage, counterId, analyticsAvailable, now) {
   } catch { return null; }
 }
 
-export function initCookieNotice({ root = document, windowRoot = window, analytics, now = () => Date.now() } = {}) {
+export function initCookieNotice({ root = document, windowRoot = window, analytics, now = () => Date.now(), reload = () => windowRoot.location.reload() } = {}) {
   const notice = root.querySelector('[data-cookie-notice]');
   if (!notice || !analytics) return null;
   let storage;
@@ -25,7 +25,7 @@ export function initCookieNotice({ root = document, windowRoot = window, analyti
 
   const applyChoice = () => {
     if (choice?.analytics && analytics.enabled) analytics.start();
-    else analytics.stop();
+    else if (analytics.stop() === true) reload();
     notice.hidden = choice !== null;
     closeButton.hidden = choice === null;
   };

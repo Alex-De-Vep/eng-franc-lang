@@ -10,6 +10,7 @@ export function CookieNotice({ t, analyticsEnabled = false, privacyUrl = null })
           <p>${t(analyticsEnabled ? 'cookieNotice.analyticsDetails' : 'cookieNotice.disabledDetails')}</p>
           <p>${t('cookieNotice.changeDetails')}</p>
           ${analyticsEnabled ? `<a href="https://yandex.ru/support/metrica/ru/general/cookie-usage" target="_blank" rel="noopener noreferrer">${t('cookieNotice.yandexDetails')}</a>` : ''}
+          ${analyticsEnabled ? `<p><a href="https://docs.tracker.my.com/ru/sdk/web/api/" target="_blank" rel="noopener noreferrer">${t('cookieNotice.myTrackerDetails')}</a></p>` : ''}
           ${privacyUrl ? `<p><a href="${privacyUrl}#cookies" target="_blank" rel="noopener noreferrer">${t('footer.privacy')}</a></p>` : ''}
         </details>
       </div>

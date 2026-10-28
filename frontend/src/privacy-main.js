@@ -8,12 +8,11 @@ import './styles/cookieNotice.css';
 import { initI18n } from './i18n.js';
 import { withBasePath } from './basePath.js';
 import { CookieNotice } from './components/CookieNotice.js';
-import { createMetrika } from './analytics.js';
-import { getMetrikaConfig } from './metrikaConfig.js';
+import { createSiteAnalytics } from './siteAnalytics.js';
 import { initCookieNotice } from './cookiePreferences.js';
 
 const { t, locale } = await initI18n();
-const analytics = createMetrika(getMetrikaConfig(import.meta.env));
+const analytics = createSiteAnalytics(import.meta.env);
 document.body.insertAdjacentHTML('beforeend', CookieNotice({
   t, analyticsEnabled: analytics.enabled, privacyUrl: withBasePath(`${locale}/privacy/`),
 }));
