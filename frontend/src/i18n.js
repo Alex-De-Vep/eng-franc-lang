@@ -9,7 +9,7 @@ import { basePathSegmentCount, withBasePath } from './basePath.js';
 export const supportedLocales = ['ru', 'en', 'fr'];
 export const fallbackLocale = 'ru';
 
-const resources = {
+export const resources = {
   ru: { translation: ru },
   en: { translation: en },
   fr: { translation: fr },

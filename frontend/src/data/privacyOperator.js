@@ -3,6 +3,7 @@
 export const privacyOperator = Object.freeze({
   name: 'Пуртова Ирина Евгеньевна',
   email: 'ipurtova.37@gmail.com',
+  applicationMailbox: 'website@iripurtova-languages.com',
   applicationRetentionDays: 90,
-  revision: '2026-10-23',
+  revision: '2026-10-29',
 });

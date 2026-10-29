@@ -257,7 +257,8 @@ export function initSmoothNavigation(root = document) {
       window.history.replaceState(null, '', hash);
       root.querySelectorAll('.site-header__language').forEach((languageLink) => {
         const url = new URL(languageLink.getAttribute('href'), window.location.origin);
-        languageLink.setAttribute('href', `${url.pathname}${hash}`);
+        const crossDomain = url.origin !== window.location.origin;
+        languageLink.setAttribute('href', `${crossDomain ? url.origin : ''}${url.pathname}${hash}`);
       });
     });
   });

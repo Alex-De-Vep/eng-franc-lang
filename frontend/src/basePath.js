@@ -3,7 +3,7 @@ function normalizeBasePath(basePath) {
   return normalized ? `/${normalized}/` : '/';
 }
 
-export const siteBasePath = normalizeBasePath(import.meta.env.BASE_URL);
+export const siteBasePath = normalizeBasePath(import.meta.env?.BASE_URL);
 
 export function withBasePath(path = '', basePath = siteBasePath) {
   return `${normalizeBasePath(basePath)}${String(path).replace(/^\/+/, '')}`;

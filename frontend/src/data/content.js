@@ -1,5 +1,6 @@
-import { localePath, supportedLocales } from '../i18n.js';
-import { withBasePath } from '../basePath.js';
+import { supportedLocales } from '../i18n.js';
+import { siteBasePath } from '../basePath.js';
+import { isPublicSite, localizedHref } from '../siteUrls.js';
 import { privacyOperator } from './privacyOperator.js';
 
 const navigationHrefs = ['#home', '#about', '#approach', '#goals', '#reviews', '#faq', '#contacts', '#coffee-club', '#atmosphere'];
@@ -118,7 +119,7 @@ const atmosphereAssets = [
   ['atmosphere__tile--s2', galleryImages.atmosphereImg4362],
 ];
 
-export function createSiteContent(t, locale, hash = '') {
+export function createSiteContent(t, locale, hash = '', { basePath = siteBasePath, canonicalLinks = isPublicSite() } = {}) {
   const navigationLabels = t('navigation', { returnObjects: true });
   const localizedGoals = t('learningGoals.items', { returnObjects: true });
   const localizedReviews = t('reviews.items', { returnObjects: true });
@@ -144,7 +145,7 @@ export function createSiteContent(t, locale, hash = '') {
       { label: 'Telegram', icon: '/assets/icons/telegram.svg', url: telegramBotUrl },
       { label: 'WhatsApp', icon: '/assets/icons/whatsapp.svg', url: 'https://wa.me/qr/7XAE6K2W2LJLM1' },
     ],
-    languages: supportedLocales.map((code) => ({ code: code.toUpperCase(), locale: code, active: code === locale, href: localePath(code, hash) })),
+    languages: supportedLocales.map((code) => ({ code: code.toUpperCase(), locale: code, active: code === locale, href: localizedHref(code, { hash, basePath, canonical: canonicalLinks }) })),
     hero: t('hero', { returnObjects: true }),
     about: t('about', { returnObjects: true }),
     approach: t('approach', { returnObjects: true }),
@@ -154,7 +155,7 @@ export function createSiteContent(t, locale, hash = '') {
       avatar: review.avatar || reviewAvatars[index % reviewAvatars.length],
     })),
     faq: t('faq.items', { returnObjects: true }),
-    contact: { email: privacyOperator.email, privacyUrl: withBasePath(`${locale}/privacy/`), telegramUrl: telegramBotUrl },
+    contact: { email: privacyOperator.email, privacyUrl: localizedHref(locale, { page: 'privacy', basePath, canonical: canonicalLinks }), telegramUrl: telegramBotUrl },
     atmosphereTiles: atmosphereAssets.map(([className, image, qr], index) => ({
       className,
       ...(image ? { image, alt: atmosphereAlts[index] } : { qr: { ...qr, alt: t(`atmosphere.${qr.altKey}`) } }),

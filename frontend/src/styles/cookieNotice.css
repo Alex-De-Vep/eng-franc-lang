@@ -59,9 +59,11 @@
   margin-top: 10px;
 }
 
-.cookie-notice__details a {
+.cookie-notice__details a,
+.cookie-notice__policy {
   color: var(--color-link);
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .cookie-notice__actions {

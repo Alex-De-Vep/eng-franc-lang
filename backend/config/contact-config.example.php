@@ -13,7 +13,7 @@ return [
         'password' => 'replace-with-the-timeweb-mailbox-password',
         'from_email' => 'website@iripurtova-languages.com',
         'from_name' => 'Irina Purtova Languages',
-        'to_email' => 'teacher@gmail.com',
+        'to_email' => 'website@iripurtova-languages.com',
         'to_name' => 'Irina Purtova',
     ],
     'security' => [

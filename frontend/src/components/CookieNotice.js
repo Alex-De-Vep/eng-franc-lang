@@ -3,15 +3,12 @@ export function CookieNotice({ t, analyticsEnabled = false, privacyUrl = null })
     <section class="cookie-notice" data-cookie-notice role="region" aria-labelledby="cookie-notice-title" hidden>
       <div class="cookie-notice__copy">
         <h2 class="cookie-notice__title" id="cookie-notice-title" tabindex="-1">${t('cookieNotice.title')}</h2>
-        <p class="cookie-notice__text">${t(analyticsEnabled ? 'cookieNotice.text' : 'cookieNotice.disabledText')}</p>
+        <p class="cookie-notice__text">${t(analyticsEnabled ? 'cookieNotice.text' : 'cookieNotice.disabledText')}${privacyUrl ? ` <a class="cookie-notice__policy" href="${privacyUrl}#cookies" target="_blank" rel="noopener noreferrer">${t('cookieNotice.privacyLink')}</a>` : ''}</p>
         <details class="cookie-notice__details">
           <summary>${t('cookieNotice.details')}</summary>
           <p>${t('cookieNotice.necessaryDetails')}</p>
           <p>${t(analyticsEnabled ? 'cookieNotice.analyticsDetails' : 'cookieNotice.disabledDetails')}</p>
           <p>${t('cookieNotice.changeDetails')}</p>
-          ${analyticsEnabled ? `<a href="https://yandex.ru/support/metrica/ru/general/cookie-usage" target="_blank" rel="noopener noreferrer">${t('cookieNotice.yandexDetails')}</a>` : ''}
-          ${analyticsEnabled ? `<p><a href="https://docs.tracker.my.com/ru/sdk/web/api/" target="_blank" rel="noopener noreferrer">${t('cookieNotice.myTrackerDetails')}</a></p>` : ''}
-          ${privacyUrl ? `<p><a href="${privacyUrl}#cookies" target="_blank" rel="noopener noreferrer">${t('footer.privacy')}</a></p>` : ''}
         </details>
       </div>
       <div class="cookie-notice__actions">

@@ -39,7 +39,7 @@ describe('teaching approach', () => {
   });
 
   it('places the new section after About and before Learning Goals', () => {
-    const source = readFileSync(resolve(import.meta.dirname, '../src/main.js'), 'utf8');
+    const source = readFileSync(resolve(import.meta.dirname, '../src/renderLanding.js'), 'utf8');
     expect(source.indexOf('Approach(context)')).toBeGreaterThan(source.indexOf('About(context)'));
     expect(source.indexOf('Approach(context)')).toBeLessThan(source.indexOf('LearningGoals(context)'));
   });

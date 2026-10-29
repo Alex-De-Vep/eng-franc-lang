@@ -32,7 +32,7 @@ export function Footer({ t, content }) {
             <div class="site-footer__socials">${content.socialLinks.map((item) => FooterSocial(item, t)).join('')}</div>
           </div>
         </div>
-        <p class="site-footer__copyright">© ${currentYear} [Irina Purtova] • <a class="site-footer__privacy" href="${content.contact.privacyUrl}">${t('footer.privacy')}</a> • <button class="site-footer__cookie-settings" type="button" data-cookie-settings>${t('cookieNotice.settings')}</button> • ${t('footer.rights')}</p>
+        <p class="site-footer__copyright">© <span data-current-year>${currentYear}</span> [Irina Purtova] • <a class="site-footer__privacy" href="${content.contact.privacyUrl}">${t('footer.privacy')}</a> • <button class="site-footer__cookie-settings" type="button" data-cookie-settings>${t('cookieNotice.settings')}</button> • ${t('footer.rights')}</p>
       </div>
     </footer>
   `;

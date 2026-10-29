@@ -20,24 +20,12 @@ import './sections/FrenchLessons.css';
 import './sections/Atmosphere.css';
 import './sections/Footer.css';
 
-import { Header } from './sections/Header.js';
-import { Hero } from './sections/Hero.js';
-import { About } from './sections/About.js';
-import { Approach } from './sections/Approach.js';
-import { LearningGoals } from './sections/LearningGoals.js';
-import { Reviews } from './sections/Reviews.js';
-import { FaqContact } from './sections/FaqContact.js';
-import { CoffeeClub } from './sections/CoffeeClub.js';
-import { FrenchLessons } from './sections/FrenchLessons.js';
-import { Atmosphere } from './sections/Atmosphere.js';
-import { Footer } from './sections/Footer.js';
-import { ContactSuccessModal } from './components/ContactSuccessModal.js';
+import { renderLanding } from './renderLanding.js';
 import { CookieNotice } from './components/CookieNotice.js';
 import { createSiteAnalytics } from './siteAnalytics.js';
 import { initCookieNotice } from './cookiePreferences.js';
 import { createSiteContent } from './data/content.js';
 import { initI18n } from './i18n.js';
-import { resolveAssetMarkup } from './basePath.js';
 import { initAccordion, initAtmosphereModal, initContactForm, initContactSuccessModal, initLearningGoals, initMobileNavigation, initReviewModal, initReviewsSlider, initSmoothNavigation } from './interactions.js';
 
 const app = document.querySelector('#app');
@@ -49,23 +37,16 @@ const analytics = createSiteAnalytics(import.meta.env);
 document.title = t('meta.title');
 document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
 
-app.innerHTML = resolveAssetMarkup([
-  Header(context),
-  '<main>',
-  Hero(context),
-  About(context),
-  Approach(context),
-  LearningGoals(context),
-  Reviews(context),
-  FaqContact(context),
-  CoffeeClub(context),
-  FrenchLessons(context),
-  Atmosphere(context),
-  '</main>',
-  Footer(context),
-  ContactSuccessModal(t),
-  CookieNotice({ t, analyticsEnabled: analytics.enabled, privacyUrl: content.contact.privacyUrl }),
-].join(''));
+if (app.dataset.prerenderLocale !== locale) app.innerHTML = renderLanding(context);
+// Local previews keep navigation local; production links cross the two domains.
+app.querySelectorAll('.site-header__language').forEach((link, index) => {
+  link.setAttribute('href', content.languages[index].href);
+});
+app.querySelectorAll('a[href*="/privacy/"]').forEach(link => {
+  link.setAttribute('href', content.contact.privacyUrl);
+});
+app.querySelectorAll('[data-current-year]').forEach(node => { node.textContent = new Date().getFullYear(); });
+app.insertAdjacentHTML('beforeend', CookieNotice({ t, analyticsEnabled: analytics.enabled, privacyUrl: content.contact.privacyUrl }));
 
 initSmoothNavigation();
 initMobileNavigation(document, t);
@@ -74,6 +55,10 @@ initAccordion();
 const contactSuccessModal = initContactSuccessModal();
 initContactForm(document, t, locale, {
   onSuccess: ({ submit }) => contactSuccessModal?.open(submit),
+});
+app.querySelectorAll('[data-prerender-disabled]').forEach(button => {
+  button.disabled = false;
+  delete button.dataset.prerenderDisabled;
 });
 initReviewsSlider(document, t);
 initReviewModal();

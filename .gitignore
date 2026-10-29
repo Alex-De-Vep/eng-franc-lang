@@ -2,6 +2,7 @@ frontend/node_modules/
 frontend/dist/
 frontend/coverage/
 frontend/timeweb-frontend.zip
+frontend/timeweb-seo.zip
 frontend/.env
 frontend/.env.local
 frontend/.env.*.local

@@ -1,3 +1,3 @@
-import { localePath } from './i18n.js';
+import { rootRedirectTarget } from './siteUrls.js';
 
-window.location.replace(localePath('en', window.location.hash));
+window.location.replace(rootRedirectTarget(window.location));

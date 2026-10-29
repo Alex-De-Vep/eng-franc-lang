@@ -1,26 +1,27 @@
 import { privacyDocuments, privacyOperator } from '../data/privacy.js';
+import { localizedHref } from '../siteUrls.js';
 
 const escape = value => String(value).replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character]);
 
 // Also rendered by Vite: the entire policy remains readable without JavaScript.
-export function PrivacyPage({ locale, basePath = '/' }) {
+export function PrivacyPage({ locale, basePath = '/', canonicalLinks = false }) {
   const language = Object.hasOwn(privacyDocuments, locale) ? locale : 'ru';
   const policy = privacyDocuments[language];
-  const prefix = `/${String(basePath).replace(/^\/+|\/+$/g, '')}/`.replace(/^\/\//, '/');
+  const homeHref = localizedHref(language, { basePath, canonical: canonicalLinks });
+  const policyHref = code => localizedHref(code, { page: 'privacy', basePath, canonical: canonicalLinks });
   return `
     <div class="privacy-page">
       <header class="privacy-page__header">
-        <a class="privacy-page__brand" href="${escape(prefix)}${language}/">Irina Purtova</a>
+        <a class="privacy-page__brand" href="${escape(homeHref)}">Irina Purtova</a>
         <nav aria-label="${escape(policy.languages)}">${Object.keys(privacyDocuments).map(code =>
-          `<a href="${escape(prefix)}${code}/privacy/" lang="${code}"${code === language ? ' aria-current="page"' : ''}>${code.toUpperCase()}</a>`).join('')}</nav>
+          `<a href="${escape(policyHref(code))}" lang="${code}"${code === language ? ' aria-current="page"' : ''}>${code.toUpperCase()}</a>`).join('')}</nav>
       </header>
       <main id="privacy-main">
-        <a class="privacy-page__back" href="${escape(prefix)}${language}/">← ${escape(policy.back)}</a>
+        <a class="privacy-page__back" href="${escape(homeHref)}">← ${escape(policy.back)}</a>
         <h1>${escape(policy.title)}</h1>
         <p class="privacy-page__date"><time datetime="${privacyOperator.revision}">${escape(policy.updated)}</time></p>
-        <p class="privacy-page__draft" role="note">${escape(policy.draft)}</p>
         <div class="privacy-page__operator">
           <p>${escape(policy.operatorLabel)}</p>
           <p><strong>${escape(privacyOperator.name)}</strong> · ${escape(policy.country)}</p>
@@ -34,12 +35,11 @@ export function PrivacyPage({ locale, basePath = '/' }) {
           ${policy.sections.map(section => `<section id="${section.id}">
             <h2>${escape(section.title)}</h2>
             ${section.paragraphs.map(paragraph => `<p>${escape(paragraph)}</p>`).join('')}
-            ${section.id === 'cookies' ? `<p><a href="https://yandex.ru/support/metrica/ru/general/cookie-usage" target="_blank" rel="noopener noreferrer">${escape(policy.yandexDetails)}</a></p>
-            <p><a href="https://docs.tracker.my.com/ru/sdk/web/api/" target="_blank" rel="noopener noreferrer">${escape(policy.myTrackerDetails)}</a></p>
+            ${section.id === 'cookies' ? `<p><a href="https://docs.tracker.my.com/ru/sdk/web/api/" target="_blank" rel="noopener noreferrer">${escape(policy.myTrackerDetails)}</a></p>
             <button class="privacy-page__settings" type="button" data-cookie-settings hidden>${escape(policy.cookieSettings)}</button>` : ''}
           </section>`).join('')}
         </article>
       </main>
-      <footer class="privacy-page__footer"><a href="${escape(prefix)}${language}/">← ${escape(policy.back)}</a><span>© ${new Date().getFullYear()} Irina Purtova</span></footer>
+      <footer class="privacy-page__footer"><a href="${escape(homeHref)}">← ${escape(policy.back)}</a><span>© <span data-current-year>${new Date().getFullYear()}</span> Irina Purtova</span></footer>
     </div>`;
 }

@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 const frontendRoot = resolve(import.meta.dirname, '..');
 const origin = 'https://iripurtova-languages.com';
+const russianOrigin = 'https://iripurtova-languages.ru';
 
 describe('localized SEO and critical assets', () => {
   it.each(['index.html', 'ru/index.html', 'en/index.html', 'fr/index.html', 'ru/privacy/index.html', 'en/privacy/index.html', 'fr/privacy/index.html'])('has no unconditional analytics script or noscript pixel in %s', path => {
@@ -18,9 +19,9 @@ describe('localized SEO and critical assets', () => {
   it.each(['ru', 'en', 'fr'])('uses absolute canonical and hreflang links for %s', (locale) => {
     const html = readFileSync(resolve(frontendRoot, locale, 'index.html'), 'utf8');
 
-    expect(html).toContain(`rel="canonical" href="${origin}/${locale}/"`);
+    expect(html).toContain(`rel="canonical" href="${locale === 'ru' ? russianOrigin : origin}/${locale}/"`);
     expect(html).toContain(`hreflang="x-default" href="${origin}/en/"`);
-    expect(html).toContain(`hreflang="ru" href="${origin}/ru/"`);
+    expect(html).toContain(`hreflang="ru" href="${russianOrigin}/ru/"`);
     expect(html).toContain(`hreflang="en" href="${origin}/en/"`);
     expect(html).toContain(`hreflang="fr" href="${origin}/fr/"`);
     expect(html).toContain('hero-background-960.webp');
@@ -40,7 +41,8 @@ describe('localized SEO and critical assets', () => {
   it('publishes only localized pages in the sitemap', () => {
     const sitemap = readFileSync(resolve(frontendRoot, 'public/sitemap.xml'), 'utf8');
 
-    expect(sitemap).toContain(`${origin}/ru/`);
+    expect(sitemap).toContain(`${russianOrigin}/ru/`);
+    expect(sitemap).not.toContain(`${origin}/ru/`);
     expect(sitemap).toContain(`${origin}/en/`);
     expect(sitemap).toContain(`${origin}/fr/`);
     expect(sitemap).not.toMatch(/<loc>https:\/\/iripurtova-languages\.com\/<\/loc>/);

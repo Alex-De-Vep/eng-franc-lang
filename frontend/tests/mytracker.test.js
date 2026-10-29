@@ -42,7 +42,7 @@ describe('consent-controlled MyTracker', () => {
     expect(window._tmr).toBeUndefined();
     expect(window.ym).toBeUndefined();
     expect(document.querySelector('img[src*="mytopf.com"]')).toBeNull();
-    expect(document.querySelector('[data-cookie-notice]').textContent).toContain('MyTracker');
+    expect(document.querySelector('[data-cookie-notice]').textContent).toContain(ru.cookieNotice.text);
   });
 
   it('does not load either provider when rejected, including after a new initialization', () => {
@@ -55,13 +55,14 @@ describe('consent-controlled MyTracker', () => {
     expect(document.querySelector('[data-cookie-notice]').hidden).toBe(true);
   });
 
-  it('loads each provider once after permission and sends exactly one minimal page view', () => {
+  it('loads only MyTracker once after permission and sends exactly one minimal page view', () => {
     const { analytics } = mount();
     action('accept');
     analytics.start();
     analytics.start();
     expect(document.querySelectorAll('[data-mytracker-loader]')).toHaveLength(1);
-    expect(document.querySelectorAll('[data-metrika-loader]')).toHaveLength(1);
+    expect(document.querySelectorAll('[data-metrika-loader]')).toHaveLength(0);
+    expect(window.ym).toBeUndefined();
     expect(loader().id).toBe('tmr-code');
     expect(loader().src).toBe(MYTRACKER_SCRIPT_URL);
     expect(loader().async).toBe(true);
@@ -95,13 +96,9 @@ describe('consent-controlled MyTracker', () => {
     mount(createSiteAnalytics(), reload);
     action('accept');
     loader().onload();
-    const ym = vi.fn();
-    window.ym = ym;
-    document.querySelector('[data-metrika-loader]').onload();
     document.querySelector('[data-cookie-settings]').click();
     action('reject');
     expect(reload).toHaveBeenCalledOnce();
-    expect(ym).toHaveBeenCalledWith(113677290, 'destruct');
     controller.destroy();
     mount(); // The new document must not load analytics after withdrawal.
     expect(loader()).toBeNull();
@@ -148,11 +145,10 @@ describe('consent-controlled MyTracker', () => {
     expect(window.ym).toBeUndefined();
   });
 
-  it('binds consent to both counter IDs and availability flags', () => {
+  it('binds consent to the MyTracker counter ID and availability flag', () => {
     const original = createSiteAnalytics().counterId;
     for (const env of [
       { VITE_MYTRACKER_ID: '123456' }, { VITE_MYTRACKER_ENABLED: 'false' },
-      { VITE_YANDEX_METRIKA_ID: '78910' }, { VITE_YANDEX_METRIKA_ENABLED: 'false' },
     ]) expect(createSiteAnalytics(env).counterId).not.toBe(original);
     expect(createSiteAnalytics().counterId).toBe(original);
   });
@@ -171,16 +167,16 @@ describe('consent-controlled MyTracker', () => {
     expect(loader()).toBeNull();
   });
 
-  it('keeps one enabled provider independent of the other', () => {
-    mount(createSiteAnalytics({ VITE_YANDEX_METRIKA_ENABLED: 'false' }));
+  it('does not enable Yandex Metrica even with a legacy environment override', () => {
+    mount(createSiteAnalytics({ VITE_YANDEX_METRIKA_ENABLED: 'true' }));
     action('accept');
     expect(loader()).not.toBeNull();
     expect(window.ym).toBeUndefined();
     expect(document.querySelector('[data-metrika-loader]')).toBeNull();
   });
 
-  it('shows the informational notice with both counters globally disabled', () => {
-    const { analytics } = mount(createSiteAnalytics({ VITE_YANDEX_METRIKA_ENABLED: 'false', VITE_MYTRACKER_ENABLED: 'false' }));
+  it('shows the informational notice with MyTracker globally disabled', () => {
+    const { analytics } = mount(createSiteAnalytics({ VITE_MYTRACKER_ENABLED: 'false' }));
     expect(analytics.enabled).toBe(false);
     expect(document.querySelector('[data-cookie-action="accept"]')).toBeNull();
     action('acknowledge');
