@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { JSDOM } from 'jsdom';
 import { createMyTracker, MYTRACKER_SCRIPT_URL, MYTRACKER_FALLBACK_URL } from '../src/myTracker.js';
 import { getMyTrackerConfig, myTrackerConfig } from '../src/myTrackerConfig.js';
 import { createSiteAnalytics } from '../src/siteAnalytics.js';
@@ -9,6 +10,12 @@ import ru from '../src/locales/ru.json';
 const t = key => key.split('.').reduce((value, part) => value?.[part], ru);
 const loader = () => document.querySelector('[data-mytracker-loader]');
 const action = name => document.querySelector(`[data-cookie-action="${name}"]`).click();
+const trackerKeys = ['tmr_lvid', 'tmr_lvidTS', 'tmr_detect', 'tmr_reqNum', 'tmr_trgfpid', 'tmr_future_key', 'rb_sync_id', 'domain_sid'];
+function seedTrackerStorage(windowRoot) {
+  for (const name of ['localStorage', 'sessionStorage']) {
+    for (const key of trackerKeys) windowRoot[name].setItem(key, 'tracker-value');
+  }
+}
 let controller;
 function mount(analytics = createSiteAnalytics(), reload = vi.fn()) {
   document.body.innerHTML = CookieNotice({ t, analyticsEnabled: analytics.enabled })
@@ -240,5 +247,80 @@ describe('consent-controlled MyTracker', () => {
     expect(window.localStorage.getItem(COOKIE_PREFERENCES_KEY)).toBe('keep');
     expect(document.cookie).not.toContain('tmr_detect');
     expect(document.cookie).toContain('other=keep');
+  });
+
+  it.each(['iripurtova-languages.ru', 'iripurtova-languages.com'])('clears SDK identifiers at accessible cookie paths and domains on %s', hostname => {
+    const dom = new JSDOM('', { url: `https://www.${hostname}/ru/privacy/` });
+    const windowRoot = dom.window;
+    const documentRoot = windowRoot.document;
+    try {
+      seedTrackerStorage(windowRoot);
+      for (const name of ['localStorage', 'sessionStorage']) {
+        for (const key of ['i18nextLng', COOKIE_PREFERENCES_KEY, 'other', 'tmrSetting']) windowRoot[name].setItem(key, 'keep');
+      }
+      for (const key of trackerKeys) {
+        for (const path of ['/', '/ru', '/ru/', '/ru/privacy', '/ru/privacy/']) {
+          documentRoot.cookie = `${key}=host; Path=${path}; Secure`;
+          documentRoot.cookie = `${key}=domain; Domain=.${hostname}; Path=${path}; Secure`;
+        }
+      }
+      documentRoot.cookie = 'other=keep; Path=/';
+      expect(documentRoot.cookie).toContain('tmr_reqNum=');
+      expect(documentRoot.cookie).toContain('domain_sid=');
+
+      createMyTracker({ ...myTrackerConfig, windowRoot, documentRoot }).stop();
+
+      for (const name of ['localStorage', 'sessionStorage']) {
+        for (const key of trackerKeys) expect(windowRoot[name].getItem(key), `${name}: ${key}`).toBeNull();
+        for (const key of ['i18nextLng', COOKIE_PREFERENCES_KEY, 'other', 'tmrSetting']) expect(windowRoot[name].getItem(key)).toBe('keep');
+      }
+      expect(documentRoot.cookie).toBe('other=keep');
+    } finally {
+      dom.window.close();
+    }
+  });
+
+  it('cleans SDK storage before withdrawal reload and cleans late SDK writes on the next initialization', () => {
+    const reload = vi.fn(() => {
+      for (const key of trackerKeys) {
+        expect(window.localStorage.getItem(key)).toBeNull();
+        expect(window.sessionStorage.getItem(key)).toBeNull();
+      }
+      expect(document.cookie).not.toMatch(/domain_sid|rb_sync_id|tmr_/);
+      expect(JSON.parse(window.localStorage.getItem(COOKIE_PREFERENCES_KEY)).analytics).toBe(false);
+    });
+    mount(createSiteAnalytics(), reload);
+    action('accept');
+    loader().onload();
+    seedTrackerStorage(window);
+    document.cookie = 'domain_sid=tracker; Path=/';
+    document.cookie = 'rb_sync_id=tracker; Path=/';
+    window.localStorage.setItem('i18nextLng', 'fr');
+    action('reject');
+    expect(reload).toHaveBeenCalledOnce();
+    controller.destroy();
+
+    // Simulate an SDK unload handler writing identifiers during the reload.
+    seedTrackerStorage(window);
+    document.cookie = 'domain_sid=late-write; Path=/';
+    const { reload: nextReload } = mount();
+    for (const key of trackerKeys) expect(window.localStorage.getItem(key)).toBeNull();
+    expect(document.cookie).not.toContain('domain_sid');
+    expect(window.localStorage.getItem('i18nextLng')).toBe('fr');
+    expect(JSON.parse(window.localStorage.getItem(COOKIE_PREFERENCES_KEY)).analytics).toBe(false);
+    expect(loader()).toBeNull();
+    expect(nextReload).not.toHaveBeenCalled();
+  });
+
+  it('still clears SDK cookies when browser storage access is blocked', () => {
+    const windowRoot = {
+      location: window.location,
+      get localStorage() { throw new Error('Storage blocked'); },
+      get sessionStorage() { throw new Error('Storage blocked'); },
+    };
+    document.cookie = 'domain_sid=tracker; Path=/';
+    document.cookie = 'tmr_reqNum=tracker; Path=/';
+    expect(() => createMyTracker({ ...myTrackerConfig, windowRoot, documentRoot: document }).stop()).not.toThrow();
+    expect(document.cookie).not.toMatch(/domain_sid|tmr_reqNum/);
   });
 });

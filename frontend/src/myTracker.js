@@ -3,7 +3,9 @@ import { cleanUrl, clearAnalyticsStorage, normalizeCounterId } from './analytics
 export const MYTRACKER_SCRIPT_URL = 'https://mytopf.com/js/code.js';
 export const MYTRACKER_FALLBACK_URL = 'https://top-fwz1.mail.ru/js/code.js';
 const scriptUrls = [MYTRACKER_SCRIPT_URL, MYTRACKER_FALLBACK_URL];
-const storageKeys = new Set(['tmr_lvid', 'tmr_lvidTS', 'tmr_detect']);
+// MyTracker also creates first-party identifiers through its privacy sync SDK.
+const syncStorageKeys = new Set(['rb_sync_id', 'domain_sid']);
+const isTrackerStorageKey = key => key.startsWith('tmr_') || syncStorageKeys.has(key);
 
 export function createMyTracker({ counterId, enabled = false, windowRoot = window, documentRoot = document } = {}) {
   const id = normalizeCounterId(counterId);
@@ -62,7 +64,7 @@ export function createMyTracker({ counterId, enabled = false, windowRoot = windo
       script.remove();
       script = null;
     }
-    clearAnalyticsStorage(windowRoot, documentRoot, key => storageKeys.has(key));
+    clearAnalyticsStorage(windowRoot, documentRoot, isTrackerStorageKey);
     return needsReload;
   };
 
